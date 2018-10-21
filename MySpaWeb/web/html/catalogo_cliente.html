@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<html lang = "es">
+	<meta charset = "UTF-8">
+	<meta name = "description" content = "Cátalogo de Clientes">
+	<meta name = "keywords" content = "Cátalogo, Clientes, MySPA">
+	<meta name = "author" content = "SolSistemas">
+	<link rel="stylesheet" type="text/css" href="../css/estilo.css">
+        <script src="../js/consultaClientes.js"></script>
+        <title>Catálogo Clientes</title>
+        
+</head>
+<body onload="datosCliente()">
+	<header>
+		<h1><a href="MySPA.html">MySPA</a></h1>
+		<nav id="menuSuperior">
+			<ul>
+				<li><a href="Sucursal.html">Sucursales</a></li>
+				<li><a href="Cliente.html">Clientes</a></li>
+					<ul>
+						<li><a href="Cliente.html">Modificar perfil</a></li>
+						<li><a href="Servicio.html">Mis Reservaciones</a></li>
+					</ul>
+				<li><a href="servicio.html">Servicio</a></li>
+					<ul>
+						<li><a href="tratamientos_servicio.html">Tratamiento</a></li>
+						<li><a href="Producto.html">Productos</a></li>
+						<li><a href="Sala.html">Salas</a></li>
+					</ul>
+				<li><a href="login.html">Login</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<aside>
+			<p id="pMenuAside"><a href="Cliente.html">Cliente</a></p>
+			<p id="pMenuAside"><a href="Reservacion.html">Reservaciones</a></p>
+
+			
+		</aside>
+		<article id="datosCliente">
+			<table id="tableServicio">
+				<th colspan="13"><h2>Cliente</h2></th>
+				<tr>
+                                        <td>Cve. Cliente</td>                                                                                
+                                        <td>Nombre</td>
+					<td>Apellido Paterno</td>
+					<td>Apellido Materno</td>
+					<td>Género</td>
+					<td>Domicilio</td>
+					<td>Teléfono</td>
+					<td>RFC</td>
+                                        <td>Correo</td>					
+                                        <td>Clv. SUsuario </td>
+					<td>Nombre de Usuario</td>
+					<td>Contraseña</td>
+                                        <td>Estatus</td>
+				</tr>
+				
+			</table>
+		</article>
+	</section>
+	<footer>
+		<p><a href="MySPA.html"> MySPA HOME </a></p>
+		<img src="../images/iconFacebook.png">
+		<img src="../images/iconTwitter.png">
+		<img src="../images/iconInstagram.png">
+		<p>Derechos Reservados 2018 MySPA</p>
+	</footer>
+</body>
+</html>

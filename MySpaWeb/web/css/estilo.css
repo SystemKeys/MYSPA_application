@@ -1,0 +1,276 @@
+body{
+	padding: 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+header{
+	width: 100%;
+	height: 50px;
+	display: inline-block;
+	padding: 0px;
+	margin: 0px 0px 0px 0px;
+	background: #006565;
+}
+
+header>h1{
+	font-size: 40px;
+	color: white;
+	clear: both;
+	float: left;
+	margin: 0px;
+}
+
+header h1 a{
+	color: white;
+	text-decoration: none;
+}
+
+section{
+	padding: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	height: 630px;
+	width: 100%;
+	display: inline-block;
+}
+
+#sectionS{
+	padding: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	height: 400px;
+	width: 100%;
+	display: inline-block;
+}
+
+article{
+	width: 82%;
+	height: 100%;
+	margin: 0px;
+	clear: right;
+	float: right;
+	text-align: center;
+}
+
+article div{
+	margin-right: 15%;
+	margin-left: 15%;
+	width: 700px;
+	text-align: right;
+}
+
+#divTitulo{
+	display: inline-block;
+	margin-left: 11%;
+}
+
+#divTitulo h3{
+	font-size: 15px;
+	color: #006565;
+	clear: right;
+	float: left;
+}
+
+#divTitulo button{
+	font-size: 15px;
+	color: #006565;
+	clear: right;
+	float: left;
+	margin-left: 5px;
+	margin-top: 10px;
+}
+
+#divTitulo select{
+	font-size: 15px;
+	color: #006565;
+	clear: right;
+	float: left;
+	margin-top: 10px;
+	margin-left: 170px;
+}
+
+aside{
+	border-right: 3px solid #006565;
+	width: 15%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	clear: left;
+	float: left;
+}
+
+#pMenuAside{
+	width: 100%;
+	height: 30px;
+	font-size: 20px;
+	color: #006565;
+	font-style: italic;
+	margin-top: 40px;
+	margin-left: 20px;
+}
+
+#pMenuAside a{
+	color: #006565;
+}
+
+#mapa{
+	height: 420px;
+	width: 710px;
+	border:1px solid;
+}
+
+footer{
+	margin: 0% 0% 0% 0%;
+	width: 100%;
+	height: 150px;
+	text-align: center;
+	color: white;
+	background-color: #006969;
+	padding: 10px;
+}
+
+#tableServicio{
+	border: 1px solid black;
+	margin-top: 50px;
+	width: 75%;
+	margin-left: 12%;
+	margin-right: 12%;
+}
+
+#tableServicio td{
+	border: 1px solid black;
+}
+
+#tableServicio th{
+	border: 1px solid black;
+	background-color: #0F414F;
+	color: white;
+}
+
+#tdTotal{
+	text-align: right;
+}
+
+#menuSuperior{
+	float: right;
+	background-color: #006565;
+	margin-right: 0px;
+}
+
+#menuSuperior ul{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#menuSuperior ul li{
+	color: white;
+	position: relative;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+}
+
+#menuSuperior ul a{
+	display: block;
+	color: white;
+	text-decoration: none;
+	font-weight: 400px;
+	font-size: 25px;
+	padding: 10px;
+}
+
+#menuSuperior ul li:hover{
+	background: white;
+	color: #006565;
+}
+
+#menuSuperior ul a:hover{
+	color: #006565;
+}
+
+#menuSuperior>li:hover>ul{
+	display: block;
+}
+
+#menuSuperior ul ul{
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0px;
+	background: white;
+	padding: 0px;
+}
+
+#menuSuperior ul ul li{
+	float: none;
+	width: 150px;
+}
+
+#menuSuperior ul ul a{
+	line-height: 120%;
+	padding: 10px 15px;
+}
+
+#menuSuperior ul li:hover > ul{
+	display: block;
+}
+
+#formRegistro{
+	text-align: left;
+	margin-right: 25%;
+	margin-left: 30%;
+	padding: 0px;
+	width: 30%;
+}
+
+#formRegistro p{
+	height: 30px;
+	padding: 2px;
+	margin: 0px 0px 0px 0px;
+	
+}
+
+#formRegistro p input{
+	clear: right;
+	float: right;
+	
+	margin-top: 2px;
+}
+
+#formRegistro p select{
+	clear: right;
+	float: right;
+
+	
+}
+
+#formRegistro p label{
+	clear: left;
+	float: left;
+	margin-top: 5px;
+}
+
+#chbEstatus{
+	margin-right: 200px;
+}
+.ing{
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+	color: #006565;
+}
+
+#imgfo{
+	width: 20px;
+	height: 20px;
+}
+select, button, input{
+	border-radius:  7px 7px 7px 7px;
+	border-color: #006565;
+	margin: 3px;
+}
+img{
+	width: 50px;
+	height:50px;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="descripcion" content="MySpa">
+            <meta name="keywords" content="myspa, spa, productos">
+            <meta name="author" content="DEGHA Solution">
+            <link rel="stylesheet" type = "text/css" href= "hoja2.css">
+            <title>Productos MySpa</title>
+    </head>
+    <body>
+        <div id='contenedor'>
+        <script>
+    var section = document.querySelector('section');    
+    var requestURL = 'http://localhost:8084/MySpa/jsproducto.json';
+    var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function() {
+      var productos = request.response;
+      showProductos(productos);
+    };
+    function showProductos(jsonObj) {
+        var productos = jsonObj["productos"];
+      for(var i = 0; i < productos.length; i++) {
+        var article = document.querySelector('article');
+        var myh1=document.createElement('h3');
+        var myh3=document.createElement('p');
+        var myh4=document.createElement('p');
+        
+        //se toman los valores del objeto json, en cada posición, y atributo
+        myh1.textContent= salas[i].nombre;
+        myh3.textContent= salas[i].marca;
+        myh4.textContent= salas[i].precio;
+        
+        //se agregan los elementos creados al section
+        article.appendChild(myh1);
+        article.appendChild(myh3);
+        article.appendChild(myh4);
+      }
+    }
+    </script>
+        <header>
+			<img id="imgprincipal" src="imgs/myspa.png">
+			<h1>MySpa</h1>
+			<h2 id="title">Salas</h2>
+		<nav>
+			<ul>
+				<li><a title="Página principal" href="myspa.html">Página Principal</a></li>
+				<li><a title="Salas" href="salas.html">Salas</a></li>
+				<li><a title="Sucursales" href="sucursales.html">Sucursales</a></li>
+				<li><a title="Productos" href="productos.html">Productos</a></li>
+				<li><a title="Tratamientos" href="tratamientos.html">Tratamientos</a></li>
+				<li><a title="Reservaciones" href="reservaciones.html">Reservaciones</a></li>
+				<li><a title="Horarios" href="horarios.html">Horarios</a></li>
+				<li><a title="Servicios" href="servicios.html">Servicios</a></li>
+				<li><a title="Tratamientos en servicios" href="tratamiento_servicio.html">Tratamientos en servicios</a></li>
+			</ul>
+		</nav>
+	</header>
+        <aside>
+			<h4>Contáctanos</h4>
+			<div class="contenedor-img ejemplo-1">  
+				<img id="redes" src="imgs/fb.png">
+			</div>
+			<div class="contenedor-img ejemplo-1">
+				<img id="redes" src="imgs/tw.jpg">
+			</div>
+			<div class="contenedor-img ejemplo-1">
+				<img id="redes" src="imgs/ig.png">
+			</div>
+	</aside>
+        <aside id="more">
+	</aside>
+		<article>
+                    <input type="search" id="miBusqueda" name="q">
+                    <button id="boton">Buscar</button>
+		</article>
+		<section>
+			
+                </section>
+        <nav>
+			<br>
+			<ul>
+				<li><a title="Página principal" href="myspa.html">Página Principal</a></li>
+				<li><a title="Salas" href="salas.html">Salas</a></li>
+				<li><a title="Sucursales" href="sucursales.html">Sucursales</a></li>
+				<li><a title="Productos" href="productos.html">Productos</a></li>
+				<li><a title="Tratamientos" href="tratamientos.html">Tratamientos</a></li>
+				<li><a title="Reservaciones" href="reservaciones.html">Reservaciones</a></li>
+				<li><a title="Horarios" href="horarios.html">Horarios</a></li>
+				<li><a title="Servicios" href="servicios.html">Servicios</a></li>
+				<li><a title="Tratamientos en servicios" href="tratamiento_servicio.html">Tratamientos en servicios</a></li>
+			</ul>
+	</nav>
+		<footer>
+			<p>DEGHA Solution | 477-333-30-70 | deghasolution@gmail.com</p>
+			<p>© 2018 All Rights Reserved.</p>
+		</footer>
+        </div>
+    </body>
+</html>

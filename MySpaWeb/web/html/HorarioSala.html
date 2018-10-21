@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Formulario Horario" />
+    <meta name="keywords" content="Horario">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <title>Horario para salas</title>
+  </head>
+  <body >
+    <header>
+        <h1><a href="MySPA.html">MySPA</a></h1>
+        <nav id="menuSuperior">
+          <ul>
+            <li><a href="Sucursal.html">Sucursales</a></li>
+            <li><a href="Cliente.html">Clientes</a></li>
+              <ul>
+                <li><a href="Cliente.html">Modificar perfil</a></li>
+                <li><a href="Reservacion.html">Mis Reservaciones</a></li>
+              </ul>
+            <li><a href="Servicio.html">Servicio</a></li>
+              <ul>
+                <li><a href="tratamientos_servicio.html">Tratamiento</a></li>
+                <li><a href="Producto.html">Productos</a></li>
+              </ul>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </nav>
+    </header>
+    <section id="sectionS">
+      <aside>
+        <p id="pMenuAside"><a href="Reservacion.html">Reservaciones</a></p>
+      </aside>
+      <article>
+        <form id="formRegistro" method="post" action="">
+          <h2 class="ing">Escoge un horario</h2>
+          <p><label>Selecciona un Horario: </label>
+          <input type="time" name="Time" id="Time" min="9:00" max="20:00"></p>
+          <p><label>Selecciona la Sucursal:</label>
+          <select>
+          </select></p>
+          <button type="button" onclick="">Consultar Salas Disponibles</button>
+        </form>
+      </article>
+
+    </section>
+      
+    <footer>
+       <p><a href="MySPA.html">MySPA HOME</a></p>
+    <img src="../images/iconFacebook.png">
+    <img src="../images/iconTwitter.png">
+    <img src="../images/iconInstagram.png">
+    <p>Derechos Reservados 2018 MySPA</p>
+    </footer>
+  </body>
+</html>

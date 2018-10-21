@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="panelRaiz" prefHeight="611.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="pnlDatos" layoutX="6.0" layoutY="7.0" prefHeight="110.0" prefWidth="572.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="141.0" text="Cve. Sucursal:" textFill="#20697c" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtId" editable="false" layoutX="156.0" layoutY="10.0" prefHeight="25.0" prefWidth="108.0" AnchorPane.leftAnchor="156.0" AnchorPane.topAnchor="10.0" />
+            <Label layoutX="268.0" layoutY="14.0" prefHeight="17.0" prefWidth="82.0" text="Latitud:" textFill="#20697c" AnchorPane.leftAnchor="268.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtLatitud" layoutX="354.0" layoutY="10.0" prefHeight="25.0" prefWidth="163.0" AnchorPane.leftAnchor="354.0" AnchorPane.topAnchor="10.0" />
+            <Label layoutX="268.0" layoutY="62.0" prefHeight="17.0" prefWidth="97.0" text="Longitud:" textFill="#20697c" AnchorPane.leftAnchor="268.0" AnchorPane.topAnchor="62.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtLongitud" layoutX="353.0" layoutY="58.0" prefHeight="25.0" prefWidth="163.0" AnchorPane.leftAnchor="353.0" AnchorPane.topAnchor="58.0" />
+            <Label layoutX="521.0" layoutY="14.0" prefHeight="17.0" prefWidth="108.0" text="Domicilio:" textFill="#20697c" AnchorPane.leftAnchor="521.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="chbActivo" layoutX="530.0" layoutY="61.0" mnemonicParsing="false" text="Activo" textFill="#20697c" AnchorPane.leftAnchor="530.0" AnchorPane.topAnchor="61.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </CheckBox>
+            <Label layoutX="14.0" layoutY="62.0" prefHeight="17.0" prefWidth="70.0" text="Nombre:" textFill="#20697c" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="62.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNombre" layoutX="108.0" layoutY="58.0" prefHeight="25.0" prefWidth="156.0" AnchorPane.leftAnchor="108.0" AnchorPane.topAnchor="58.0" />
+            <TextField fx:id="txtDomicilio" layoutX="631.0" layoutY="10.0" prefHeight="25.0" prefWidth="212.0" AnchorPane.leftAnchor="631.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pnlBotones" layoutX="14.0" layoutY="128.0" prefHeight="43.0" prefWidth="857.0" stylesheets="@../../resources/estilo1.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+         <children>
+            <Button fx:id="btnGuardar" layoutX="14.0" layoutY="1.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="144.0" text="GUARDAR" textFill="#20697c" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="1.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEliminar" layoutX="247.0" layoutY="1.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="144.0" text="ELIMINAR" textFill="#20697c" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="277.0" AnchorPane.topAnchor="1.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNuevo" layoutX="525.0" layoutY="1.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="144.0" text="NUEVO" textFill="#20697c" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="531.0" AnchorPane.topAnchor="1.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnConsultar" layoutX="720.0" layoutY="1.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="144.0" text="CONSULTAR" textFill="#20697c" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="720.0" AnchorPane.topAnchor="1.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="21.0" layoutY="6.0">
+               <image>
+                  <Image url="@/img/ic_save_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="285.0" layoutY="6.0">
+               <image>
+                  <Image url="@/img/ic_delete_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="537.0" layoutY="6.0">
+               <image>
+                  <Image url="@/img/ic_crop_square_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="727.0" layoutY="6.0">
+               <image>
+                  <Image url="@/img/ic_refresh_white_24dp.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pnlSucursal" layoutX="14.0" layoutY="177.0" prefHeight="421.0" prefWidth="857.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="176.0">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="43.0" prefWidth="829.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+               <children>
+                  <TextField fx:id="txtRef" layoutX="14.0" layoutY="9.0" prefHeight="27.0" prefWidth="706.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="7.0" />
+                  <Button fx:id="btnBuscar" layoutX="748.0" layoutY="7.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="97.0" text="BUSCAR" textFill="#20697c" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
+                     <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <TableView fx:id="tblSucursales" layoutX="23.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="61.0" />
+            <CheckBox fx:id="chbInactivo" layoutX="717.0" layoutY="-9.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="176.0" text="SOLO Sucursales Inactivas" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

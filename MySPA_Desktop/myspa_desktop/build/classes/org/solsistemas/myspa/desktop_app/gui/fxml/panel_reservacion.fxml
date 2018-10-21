@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="panelRaiz" prefHeight="611.0" prefWidth="903.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="pnlDatos" layoutX="14.0" layoutY="14.0" prefHeight="110.0" prefWidth="572.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="168.0" text="Cve. Reservación:" textFill="#20697c" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="341.0" layoutY="62.0" prefHeight="17.0" prefWidth="59.0" text="Sala:" textFill="#20697c" AnchorPane.leftAnchor="341.0" AnchorPane.topAnchor="62.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="62.0" prefHeight="17.0" prefWidth="95.0" text="Cliente:" textFill="#20697c" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="62.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="333.0" layoutY="14.0" prefHeight="17.0" prefWidth="67.0" text="Fecha:" textFill="#20697c" AnchorPane.leftAnchor="333.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtId" editable="false" layoutX="187.0" layoutY="10.0" prefHeight="25.0" prefWidth="118.0" AnchorPane.leftAnchor="187.0" AnchorPane.topAnchor="10.0" />
+            <ComboBox fx:id="cmbSala" layoutX="400.0" layoutY="58.0" prefHeight="25.0" prefWidth="168.0" promptText="Selecciona una Sala" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="58.0" />
+            <ImageView fx:id="imgvTbtnWebcamIcon" fitHeight="24.0" fitWidth="24.0" layoutX="642.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" />
+            <DatePicker fx:id="dteFecha" layoutX="400.0" layoutY="10.0" />
+            <ComboBox fx:id="cmbCliente" layoutX="112.0" layoutY="58.0" prefHeight="25.0" prefWidth="195.0" promptText="Selecciona el Cliente" />
+            <ComboBox fx:id="cmbHoraInicio" layoutX="701.0" layoutY="10.0" prefHeight="25.0" prefWidth="174.0" promptText="Hora de Inicio" />
+            <Label layoutX="616.0" layoutY="14.0" prefHeight="17.0" prefWidth="111.0" text="Horario:" />
+            <ComboBox fx:id="cmbHoraFin" layoutX="701.0" layoutY="43.0" prefHeight="25.0" prefWidth="174.0" promptText="Hora de Fin" />
+            <ComboBox fx:id="cmbEstatus" layoutX="701.0" layoutY="77.0" prefWidth="150.0" promptText="Estatus Reservación" />
+            <Button layoutX="580.0" layoutY="58.0" mnemonicParsing="false" text="Salas Disponibles" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pnlBotones" layoutX="14.0" layoutY="137.0" prefHeight="17.0" prefWidth="857.0" stylesheets="@../../resources/estilo1.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+         <children>
+            <Button fx:id="btnGuardar" layoutX="25.0" layoutY="8.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" text="GUARDAR" textFill="#20697c" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="8.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEliminar" layoutX="248.0" layoutY="6.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" text="ELIMINAR" textFill="#20697c" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="248.0" AnchorPane.topAnchor="6.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNuevo" layoutX="482.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" text="NUEVO" textFill="#20697c" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="7.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnConsultar" layoutX="672.0" layoutY="6.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="CONSULTAR" textFill="#20697c" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="672.0" AnchorPane.topAnchor="6.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="33.0" layoutY="10.0">
+               <image>
+                  <Image url="@/img/ic_save_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="258.0" layoutY="10.0">
+               <image>
+                  <Image url="@/img/ic_delete_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="490.0" layoutY="10.0">
+               <image>
+                  <Image url="@/img/ic_crop_square_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="680.0" layoutY="10.0">
+               <image>
+                  <Image url="@/img/ic_refresh_white_24dp.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pnlSala" layoutX="21.0" layoutY="186.0" prefHeight="411.0" prefWidth="857.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="186.0">
+         <children>
+            <TableView fx:id="tblReservaciones" layoutX="14.0" layoutY="55.0" prefHeight="223.0" prefWidth="543.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="61.0" />
+            <AnchorPane fx:id="pnlDatosConsulta" layoutX="12.0" layoutY="6.0" prefHeight="43.0" prefWidth="821.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+               <children>
+                  <TextField fx:id="txtFiltro" layoutY="9.0" prefHeight="27.0" prefWidth="723.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="7.0" />
+                  <Button fx:id="btnBuscar" layoutX="757.0" layoutY="7.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="104.0" text="BUSCAR" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="7.0">
+                     <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <CheckBox fx:id="chbInactivo" layoutX="689.0" layoutY="177.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="195.0" text="SOLO Reservaciones Canceladas" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reservación</title>
+		
+		<html lang "es"> 
+		<meta charset = "UTF-8"> 
+		<meta name= "description" content = "Gestión de Reservaciones"> 
+		<meta name="keywords" content = "Reservaciones, Registro, MySPA">
+		<meta name= "author" content="SolSIstemas">
+    <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+    <script src="../js/Bienvenida.js"></script>
+</head>
+<body onload="mostrarDatos()">
+   <header>
+        <h1><a href="MySPA.html">MySPA</a></h1>
+        <nav id="menuSuperior">
+          <ul>
+            <li><a href="Sucursal.html">Sucursales</a></li>
+            <li><a href="Cliente.html">Clientes</a></li>
+              <ul>
+                <li><a href="Cliente.html">Modificar perfil</a></li>
+                <li><a href="Reservacion.html">Mis Reservaciones</a></li>
+              </ul>
+            <li><a href="Servicio.html">Servicio</a></li>
+              <ul>
+                <li><a href="tratamientos_servicio.html">Tratamiento</a></li>
+                <li><a href="Producto.html">Productos</a></li>
+              </ul>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </nav>
+    </header>
+    <section id="sectionS">
+      <aside>
+        <p id="pMenuAside"><a href="catalogo_producto.html">Catálogo Productos</a></p>
+        <p id="pMenuAside"><a href="HorarioSala.html">Horarios</a></p>
+        <p id="pMenuAside"><a href="tratamientos_servicio.html">Servicios</a></p>
+        <p></p>
+      </aside>
+      <article>
+          <p id="datos"></p>
+        <form id="formRegistro">
+              <h2 class="ing">Realiza tu reservación</h2>
+              <p><label>Fecha: </label><input id="fecha" type="date"></p>
+              <p><label>Servicio: </label><select></select></p>
+              <p><label>Sala: </label><select></select></p>
+              <p><label>Horario: </label><select></select></p>
+                <button type="button">Reservar</button>             
+                <button type="button">Buscar</button> 
+                <button type="button">Eliminar</button>
+                <button type="button">Consultar</button>
+          </form>
+      </article>
+    </section>
+    <footer>
+      <p><a href="MySPA.html">MySPA HOME</a></p>
+              <img src="../images/iconFacebook.png">
+              <img src="../images/iconTwitter.png">
+              <img src="../images/iconInstagram.png">
+              <p>Derechos Reservados 2018 MySPA</p>
+    </footer>
+</body>
+</html>

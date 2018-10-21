@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="panelRaiz" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../../resources/estilo1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TitledPane animated="false" collapsible="false" layoutX="3.0" layoutY="-89.0" prefHeight="600.0" prefWidth="809.0" styleClass="background" stylesheets="@../../resources/estilo1.css" text="Menú de Clientes" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-9.0" AnchorPane.topAnchor="0.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0" styleClass="background" stylesheets="@../../resources/estilo1.css">
+                    <children>
+                        <TabPane id="tbpEmpleado" layoutX="27.6" layoutY="31.6" prefHeight="240.0" prefWidth="760.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <tabs>
+                                <Tab text="Datos Personales">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="792.0">
+                                            <children>
+                                                <GridPane layoutX="17.0" layoutY="14.0" prefHeight="187.0" prefWidth="770.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="8.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.0" minWidth="10.0" prefWidth="79.00003051757812" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="130.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Clave Persona:" textFill="#0c3d49">
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font></Label>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Nombre:" textFill="#0c3d49" GridPane.columnIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </Label>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Apellido Paterno:" textFill="#0c3d49" GridPane.columnIndex="2">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                             <font>
+                                                <Font name="Consolas Bold" size="13.0" />
+                                             </font>
+                                                        </Label>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Apellido Materno:" textFill="#0c3d49" GridPane.columnIndex="3">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                             <font>
+                                                <Font name="Consolas Bold" size="13.0" />
+                                             </font>
+                                                        </Label>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Género:" textFill="#0c3d49" GridPane.columnIndex="4">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </Label>
+                                                        <Label maxWidth="1.7976931348623157E308" text="R.F.C." textFill="#0c3d49" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font></Label>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Teléfono:" textFill="#0c3d49" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </Label>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Domicilio:" textFill="#0c3d49" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </Label>
+                                                        <TextField fx:id="txtPersonaId" editable="false" style="-fx-control-inner-background: #DDDDFF;" GridPane.rowIndex="1">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </TextField>
+                                                        <TextField fx:id="txtPersonaNombre" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </TextField>
+                                                        <TextField fx:id="txtPersonaApellidoPaterno" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </TextField>
+                                                        <TextField fx:id="txtPersonaApellidoMaterno" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </TextField>
+                                                        <TextField fx:id="txtPersonaRFC" GridPane.rowIndex="3">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </TextField>
+                                                        <TextField fx:id="txtPersonaTelefono" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </TextField>
+                                                        <TextArea fx:id="txtaPersonaDomicilio" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.rowSpan="2">
+                                                            <padding>
+                                                                <Insets bottom="2.0" />
+                                                            </padding>
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </TextArea>
+                                                        <ComboBox fx:id="cmbPersonaGenero" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                                            <items>
+                                                                <FXCollections fx:factory="observableArrayList">
+                                                                    <String fx:value="M" />
+                                                                    <String fx:value="F" />
+                                                                    <String fx:value="O" />
+                                                                </FXCollections>
+                                                            </items>
+                                                        </ComboBox>
+                                                        <AnchorPane prefHeight="23.0" prefWidth="118.0" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" right="8.0" />
+                                                            </GridPane.margin>
+                                                        </AnchorPane>
+                                                    </children>
+                                                </GridPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="Datos del Cliente">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <GridPane layoutX="14.0" layoutY="14.0" prefHeight="188.0" prefWidth="766.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="4.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Clave Cliente:" textFill="#20697c">
+                                                            <padding>
+                                                                <Insets left="4.0" />
+                                                            </padding>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </Label>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Número Único Cliente:" textFill="#20697c" GridPane.columnIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                                            <padding>
+                                                                <Insets left="4.0" />
+                                                            </padding>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </Label>
+                                                        <Label maxWidth="1.7976931348623157E308" text="E-mail:" textFill="#20697c" GridPane.columnIndex="2">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                                            <padding>
+                                                                <Insets left="4.0" />
+                                                            </padding>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </Label>
+                                                        <TextField fx:id="txtClienteId" editable="false" stylesheets="@../../resources/estilo1.css" GridPane.rowIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </TextField>
+                                                        <TextField fx:id="txtClienteNumero" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </TextField>
+                                                        <TextField fx:id="txtClienteCorreo" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </TextField>
+                                                        <CheckBox fx:id="chbClienteActivo" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Activo" textFill="#20697c" GridPane.rowIndex="2">
+                                                            <GridPane.margin>
+                                                                <Insets left="8.0" />
+                                                            </GridPane.margin>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </CheckBox>
+                                                    </children>
+                                                </GridPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="Inicio de Sesión">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <GridPane layoutX="21.0" layoutY="14.0" prefHeight="78.0" prefWidth="732.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Clave Usuario:" textFill="#20697c">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </Label>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Nombre de Usuario:" textFill="#20697c" GridPane.columnIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </Label>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Contraseña:" textFill="#20697c" GridPane.columnIndex="2">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" />
+                                                            </GridPane.margin>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </Label>
+                                                        <TextField fx:id="txtUsuarioId" editable="false" GridPane.rowIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" right="4.0" />
+                                                            </GridPane.margin>
+                                                        </TextField>
+                                                        <TextField fx:id="txtUsuarioNombre" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" right="4.0" />
+                                                            </GridPane.margin>
+                                                        </TextField>
+                                                        <PasswordField fx:id="txtpUsuarioContrasenia" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" right="4.0" />
+                                                            </GridPane.margin>
+                                                        </PasswordField>
+                                                        <Label maxWidth="1.7976931348623157E308" text="Rol:" textFill="#20697c" GridPane.columnIndex="3">
+                                                            <padding>
+                                                                <Insets left="4.0" />
+                                                            </padding>
+                                             <font>
+                                                <Font name="Consolas Bold" size="14.0" />
+                                             </font>
+                                                        </Label>
+                                                        <ComboBox fx:id="cmbUsuarioRol" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                            <GridPane.margin>
+                                                                <Insets left="4.0" right="4.0" />
+                                                            </GridPane.margin>
+                                                            <items>
+                                                                <FXCollections fx:factory="observableArrayList">
+                                                                    <String fx:value="Administrador" />
+                                                                    <String fx:value="Recepcionista" />
+                                                                    <String fx:value="Tecnico" />
+                                                                    <String fx:value="Cliente" />
+                                                                </FXCollections>
+                                                            </items>
+                                                        </ComboBox>
+                                                    </children>
+                                                </GridPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+                        <AnchorPane prefHeight="42.0" prefWidth="199.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="248.0">
+                            <children>
+                                <Button fx:id="btnGuardar" layoutX="14.0" layoutY="2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="144.0" style="-fx-background-insets: 0,0,-1,0;" text="GUARDAR" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="4.0">
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                                            <image>
+                                                <Image url="@/img/ic_save_white_24dp.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                           <font>
+                              <Font name="Consolas Bold" size="14.0" />
+                           </font>
+                                </Button>
+                                <Button fx:id="btnConsultar" layoutX="152.0" layoutY="6.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="144.0" text="CONSULTAR" AnchorPane.leftAnchor="484.0" AnchorPane.topAnchor="4.0">
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                                            <image>
+                                                <Image url="@/img/ic_refresh_white_24dp.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                           <font>
+                              <Font name="Consolas Bold" size="14.0" />
+                           </font>
+                                </Button>
+                                <Button fx:id="btnEliminar" layoutX="299.0" layoutY="3.0" mnemonicParsing="false" prefWidth="144.0" text="ELIMINAR" AnchorPane.leftAnchor="176.0" AnchorPane.topAnchor="4.0">
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                                            <image>
+                                                <Image url="@/img/ic_delete_white_24dp.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                           <font>
+                              <Font name="Consolas Bold" size="14.0" />
+                           </font>
+                                </Button>
+                                <Button fx:id="btnLimpiar" layoutX="476.0" layoutY="4.0" mnemonicParsing="false" prefWidth="144.0" text="NUEVO" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="4.0">
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                                            <image>
+                                                <Image url="@/img/ic_crop_square_white_24dp.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                           <font>
+                              <Font name="Consolas Bold" size="14.0" />
+                           </font>
+                                </Button>
+                        <CheckBox fx:id="chbInactivo" layoutX="632.0" layoutY="12.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" text="SOLO Clientes Inactivos" />
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="11.4" layoutY="317.4" prefHeight="253.0" prefWidth="783.0" stylesheets="@../../resources/estilo1.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="297.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="6.0" prefHeight="20.0" prefWidth="57.0" text="FILTRO:" textFill="#20697c" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="6.0">
+                           <font>
+                              <Font name="Consolas Bold" size="14.0" />
+                           </font>
+                                </Label>
+                                <TextField fx:id="txtFiltro" layoutX="58.0" layoutY="14.0" prefHeight="27.0" prefWidth="614.0" promptText="Ingrese ID a Buscar" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="114.0" AnchorPane.topAnchor="4.0" />
+                                <Button fx:id="btnFiltro" layoutX="726.0" layoutY="4.0" mnemonicParsing="false" text="BUSCAR" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
+                           <font>
+                              <Font name="Consolas Bold" size="13.0" />
+                           </font></Button>
+                                <TableView fx:id="tblClientes" layoutX="4.0" layoutY="39.0" prefHeight="136.0" prefWidth="200.0" stylesheets="@../../resources/estilo1.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="40.0">
+                                    <columns>                                    
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+            </content>
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </TitledPane>
+    </children>
+</AnchorPane>

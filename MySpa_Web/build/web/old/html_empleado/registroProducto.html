@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="descripcion" content="MySpa">
+            <meta name="keywords" content="myspa, spa, productos">
+            <meta name="author" content="DEGHA Solution">
+            <link rel="stylesheet" type = "text/css" href= "../css/all.css">
+            <script src="../js/guardarProductos.js"></script>
+            <title>Registro MySpa</title>
+    </head>
+    <body>
+        <nav>
+			<ul>
+				<li><a title="Página principal" href="myspa_empleado.html">Página Principal</a></li>
+				<li><a title="Productos" href="productos.html">Productos</a></li>
+                                <li><a title="Personal" href="empleados.html">Personal</a></li>
+                                <li><a title="Sucursales" href="sucursales.html">Sucursales</a></li>
+                                <li><a title="Salas" href="salas.html">Salas</a></li>
+                                <li><a title="Reservaciones" href="reservaciones.html">Reservaciones</a></li>
+                                <li><a title="Horarios" href="horarios.html">Horarios</a></li>
+                                <li><a title="Servicios" href="servicios.html">Servicios</a></li>
+                                <li><a title="Clientes" href="clientes.html">Clientes</a></li>
+                                <li><a title="Salir" href="../html/login.html">Salir</a></li>
+			</ul>
+		</nav>
+        <div id='contenedor'>
+        <header>
+			<img id="imgprincipal" src="../imgs/myspa.png">
+			<h1>Registro Productos</h1>
+		
+	</header>
+		<article>
+                    <form id="formulario" name="formulario" method="post" action="">
+                        <h2>Registro</h2>
+			<br>
+				<label for="nombre">Nombre: </label>
+				<input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                                <br>
+				<label for="marca">Marca: </label>
+				<input type="text" id="marca" name="marca" placeholder="Marca">
+				<br>
+				<label for="precio">Precio de uso: </label>
+				<input type="number" id="precio" name="precio" placeholder="Precio">
+				<br>
+				<label for="estatus">Estatus: </label>
+                                <select name="estatus" id="estatus">
+					<option value="1">Activo</option>
+					<option value="0">Inactivo</option>
+                                </select>
+                                <br>
+                                <button type="button" onclick="guardar()" class="boton">Guardar datos</button>
+                                <br>
+                    </form>
+                    <table class="costumers">
+                        <tr>
+                            <td>Producto Nuevo</td>
+                            <td>Marca</td>
+                            <td>Precio</td>
+                            <td>Estatus</td>
+                        </tr>
+                    </table>
+                    <button type="button" class="boton"><a href="productos.html">Consultar</a></button>
+                    <button type="button" class="boton"><a href="buscarProducto.html">Buscar</a></button>
+                    <button type="button" class="boton"><a href="registroProducto.html">Registrar</a></button>
+		</article>
+        <nav>
+			<br>
+			<ul>
+				<li><a title="Página principal" href="myspa.html">Página Principal</a></li>
+				<li><a title="Salas" href="salas.html">Salas</a></li>
+				<li><a title="Sucursales" href="sucursales.html">Sucursales</a></li>
+				<li><a title="Productos" href="productos.html">Productos</a></li>
+				<li><a title="Tratamientos" href="tratamientos.html">Tratamientos</a></li>
+				<li><a title="Reservaciones" href="reservaciones.html">Reservaciones</a></li>
+				<li><a title="Horarios" href="horarios.html">Horarios</a></li>
+				<li><a title="Servicios" href="servicios.html">Servicios</a></li>
+                                <li><a title="Registro" href="clientes.html">Registro</a></li>
+                                <li><a title="Personal" href="empleados.html">Personal</a></li>
+			</ul>
+	</nav>
+		<footer>
+			<p>DEGHA Solution | 477-333-30-70 | deghasolution@gmail.com</p>
+			<p>© 2018 All Rights Reserved.</p>
+		</footer>
+        </div>
+    </body>
+</html>

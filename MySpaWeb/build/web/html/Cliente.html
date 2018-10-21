@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<html lang = "es">
+	<meta charset = "UTF-8">
+	<meta name = "description" content = "Gestion de registro de clientes">
+	<meta name = "keywords" content = "Clientes, Registro, MySPA">
+	<meta name = "author" content = "SolSistemas">
+	<title>Cliente</title>
+	<script src="../js/Bienvenida.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/estilo.css">
+</head>
+<body onload="recibirNombreUsuario()">
+	<header id="saludo">
+        <h1><a href="MySPA.html">MySPA</a></h1>
+        <nav id="menuSuperior">
+          <ul>
+            <li><a href="Sucursal.html">Sucursales</a></li>
+            <li><a href="Cliente.html">Clientes</a></li>
+              <ul>
+                <li><a href="Cliente.html">Modificar perfil</a></li>
+                <li><a href="Reservacion.html">Mis Reservaciones</a></li>
+              </ul>
+            <li><a href="Servicio.html">Servicio</a></li>
+              <ul>
+                <li><a href="tratamientos_servicio.html">Tratamiento</a></li>
+                <li><a href="Producto.html">Productos</a></li>
+              </ul>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </nav>
+	  </header>
+	<section>
+		<aside>
+			<p id="pMenuAside"><a href="Reservacion.html">Reservaciones</a></p>
+			<p id="pMenuAside"><a href="HorarioSala.html">Salas</a></p>
+		</aside>
+	 	<article>
+                        <h3 class="ing"></h3>
+	 		<h2 class="ing">Ingresa tu información</h2>
+	 	  	<form id="formRegistro">
+               	<p><label>Clave: </label><input placeholder="Clave Cliente" required="true"><br></p>
+               	<p><label>Numero Unico: </label><input type="text" required="true"><br></p>
+                <p><label>Nombre: </label><input type="text" required="true"><br></p>
+                <p><label>Apellido Paterno: </label><input type="text" required="true"><br></p>
+                <p><label>Apellido Materno: </label><input type="text" required="false"><br></p>
+                <p><label>Género: </label><input type="text" required="true"><br></p>
+                <p><label>Domicilio: </label><input type="text" required="true"><br></p>
+                <p><label>Telefono: </label><input type="text" required="true"><br></p>
+                <p><label>RFC: </label><input type="text" required="false"><br></p>
+                <p><label>Nombre de Usuario:</label><input type="text" required="true"><br></p>
+                <p><label>Contraseña: </label><input type="text" required="true"><br></p>
+                <p><label>Rol: </label><input type="text" required="false"><br></p>
+                <p><label>Estatus:</label><input type="Checkbox" required="false" value="true" id="chbEstatus"><br></p>
+                <button type="button">Guardar</button>
+                <button type="button">Buscar</button>
+                <button type="button">Modificar</button>
+                <button type="button">Eliminar</button>
+                <button type="button">Consultar</button>
+                
+	 	  	</form>
+	 	</article>
+	</section>
+	<footer>
+		<p><a href="MySPA.html"> MySPA HOME</a></p>
+		<img src="../images/iconFacebook.png">
+		<img src="../images/iconTwitter.png">
+		<img src="../images/iconInstagram.png">
+		<p>Derechos Reservados 2018 MySPA</p>
+	</footer>
+</body>
+</html>
+ 	
+
+ 

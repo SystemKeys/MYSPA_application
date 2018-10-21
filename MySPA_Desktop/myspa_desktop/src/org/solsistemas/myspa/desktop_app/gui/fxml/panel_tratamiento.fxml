@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="panelRaiz" prefHeight="611.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="pnlDatos" layoutX="14.0" layoutY="14.0" prefHeight="110.0" prefWidth="572.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <children>
+            <Label layoutX="7.0" layoutY="14.0" prefHeight="17.0" prefWidth="182.0" text="Cve. Tratamiento:" textFill="#20697c" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="303.0" layoutY="15.0" prefHeight="17.0" prefWidth="199.0" text="Nombre Tratamiento :" textFill="#20697c" AnchorPane.leftAnchor="303.0" AnchorPane.topAnchor="15.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="71.0" prefHeight="17.0" prefWidth="144.0" text="Descripción :" textFill="#20697c" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="71.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtTratamientoId" editable="false" layoutX="168.0" layoutY="10.0" prefHeight="25.0" prefWidth="119.0" AnchorPane.leftAnchor="168.0" AnchorPane.topAnchor="10.0" />
+            <TextField fx:id="txtTratamientoNombre" layoutX="491.0" layoutY="10.0" prefHeight="25.0" prefWidth="182.0" AnchorPane.leftAnchor="491.0" AnchorPane.topAnchor="10.0" />
+            <CheckBox fx:id="chbActivo" layoutX="777.0" layoutY="14.0" mnemonicParsing="false" text="Activo" textFill="#20697c" AnchorPane.leftAnchor="777.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </CheckBox>
+            <TextArea fx:id="txtpTratamientoDescripcion" layoutX="155.0" layoutY="50.0" prefHeight="58.0" prefWidth="553.0" />
+            <Label layoutX="675.0" layoutY="15.0" prefHeight="17.0" prefWidth="94.0" text="Estatus:" textFill="#20697c">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pnlBotones" layoutX="14.0" layoutY="128.0" prefHeight="43.0" prefWidth="572.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+         <children>
+            <Button fx:id="btnGuardar" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="144.0" text="GUARDAR" textFill="#20697c" AnchorPane.leftAnchor="14.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEliminar" layoutX="237.0" layoutY="5.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="144.0" text="ELIMINAR" textFill="#20697c" AnchorPane.leftAnchor="237.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNuevo" layoutX="473.0" layoutY="5.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="144.0" text="NUEVO" textFill="#20697c" AnchorPane.leftAnchor="473.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnConsultar" layoutX="686.0" layoutY="5.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="144.0" text="CONSULTAR" textFill="#20697c" AnchorPane.leftAnchor="686.0">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="24.0" layoutY="10.0">
+               <image>
+                  <Image url="@/img/ic_save_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="246.0" layoutY="10.0">
+               <image>
+                  <Image url="@/img/ic_delete_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="480.0" layoutY="10.0">
+               <image>
+                  <Image url="@/img/ic_crop_square_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="692.0" layoutY="10.0">
+               <image>
+                  <Image url="@/img/ic_refresh_white_24dp.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pnlProducto" layoutX="21.0" layoutY="175.0" prefHeight="422.0" prefWidth="693.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="175.0">
+         <children>
+            <TableView fx:id="tblTratamientos" layoutX="14.0" layoutY="55.0" prefHeight="223.0" prefWidth="543.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="61.0" />
+            <AnchorPane fx:id="pnlDatosConsulta" layoutX="12.0" layoutY="6.0" prefHeight="43.0" prefWidth="821.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+               <children>
+                  <TextField fx:id="txtFiltro" layoutY="9.0" prefHeight="27.0" prefWidth="720.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="8.0" />
+                  <Button fx:id="btnBuscar" layoutX="757.0" layoutY="7.0" mnemonicParsing="false" text="BUSCAR" textFill="#20697c" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="8.0">
+                     <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <CheckBox fx:id="chbInactivo" layoutX="687.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="176.0" text="SOLO Productos Inactivos" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
