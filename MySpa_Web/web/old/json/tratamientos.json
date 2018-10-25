@@ -1,0 +1,69 @@
+{
+    "tratamientos":[
+    {
+        "id": 1,
+        "nombre": "Aromaterapia",
+        "descripcion": "Descansa y relájate en un ambiente especial, mientras inhalas esencias naturales que te ayudaran a mejorar tu estado emocional."
+    },
+    {
+        "id": 2,
+        "nombre": "Batido natural",
+        "descripcion": "La leche tiene propiedades que producen colágeno, que reafirman y hacen que la piel sea más flexible. Este tratamiento consiste en un masaje general (facial y corporal) basado en cremas y leches naturales."
+    },
+    {
+        "id": 3,
+        "nombre": "Ducha de sensaciones",
+        "descripcion": "Es un masaje energético que combina masaje corporal, facial, del cuero cabelludo, siempre al ritmo de la música, con uso de esencias de aromaterapia finalizando con hidromasaje."
+    },
+    {
+        "id": 4,
+        "nombre": "Exfoliación corporal",
+        "descripcion": "Es un tratamiento específico para la eliminación de las células muertas de la piel mediante el uso de exfoliantes y emolientes naturales."
+    },
+    {
+        "id": 5,
+        "nombre": "Exfoliación facial",
+        "descripcion": "Es un tratamiento específico para la eliminación de las células muertas de la piel facial mediante el uso de exfoliantes y emolientes naturales."
+    },
+    {
+        "id": 6,
+        "nombre": "Hidromasaje",
+        "descripcion": "El tratamientos de hidromasaje esta concebido para ofrecer la relajación y el placer del agua sobre todo el cuerpo junto con los beneficios de la cromoterapia."
+    },
+    {
+        "id": 7,
+        "nombre": "Hidroterapia",
+        "descripcion": "El tratamientos de hidroterapia esta concebido para ofrecer la relajación y el placer del agua sobre todo el cuerpo, primero se proporciona un masaje corporal, para después pasar a la tina de hidromasaje junto con los beneficios de la cromoterapia, y aromaterapia."
+    },
+    {
+        "id": 8,
+        "nombre": "Masaje con aceites esenciales",
+        "descripcion": "Disfruta de un rato inolvidable con el masaje de aceites esenciales, podrás elegir los aceites a tu gusto con los que recibirás un delicado y relajante masaje general (facial y corporal)."
+    },
+    {
+        "id": 9,
+        "nombre": "Masaje con esencias naturales",
+        "descripcion": "Disfruta de un rato inolvidable con la micro exfoliación y el masaje de esencias naturales podrás elegir los componentes a tu gusto con los que recibirás un delicado y relajante masaje general (facial y corporal)."
+    },
+    {
+        "id": 10,
+        "nombre": "Masaje Hawaiano",
+        "descripcion": "Masaje terapéutico acompañado de la aplicación de frutos naturales como base del masaje."
+    },
+    {
+        "id": 11,
+        "nombre": "Peeling corporal intenso",
+        "descripcion": "El peeling corporal es un tratamiento específico para la eliminación de las células muertas de la piel con una sesión de exfoliación, seguida por el peeling , aportando frescura, suavidad y limpieza a la piel."
+    },
+    {
+        "id": 12,
+        "nombre": "Peeling corporal suave",
+        "descripcion": "El peeling facial es un tratamiento específico para la eliminación de las células muertas de la piel aportando frescura, suavidad y limpieza a la piel."
+    },
+    {
+        "id": 13,
+        "nombre": "Especial",
+        "descripcion": "Solicita libremente la combinación de tratamientos que necesites, de manera personalizada."
+    }
+    ]
+}

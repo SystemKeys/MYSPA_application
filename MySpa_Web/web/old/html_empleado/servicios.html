@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="descripcion" content="MySpa">
+            <meta name="keywords" content="myspa, spa, reservaciones">
+            <meta name="author" content="DEGHA Solution">
+            <link rel="stylesheet" type = "text/css" href= "../css/all.css">
+            <script src="../js/guardarServicio.js"></script>
+            <title>Registro MySpa</title>
+    </head>
+    <body>
+        <nav>
+			<ul>
+				<li><a title="Página principal" href="myspa_empleado.html">Página Principal</a></li>
+				<li><a title="Productos" href="productos.html">Productos</a></li>
+                                <li><a title="Personal" href="empleados.html">Personal</a></li>
+                                <li><a title="Sucursales" href="sucursales.html">Sucursales</a></li>
+                                <li><a title="Salas" href="salas.html">Salas</a></li>
+                                <li><a title="Reservaciones" href="reservaciones.html">Reservaciones</a></li>
+                                <li><a title="Horarios" href="horarios.html">Horarios</a></li>
+                                <li><a title="Servicios" href="servicios.html">Servicios</a></li>
+                                <li><a title="Clientes" href="clientes.html">Clientes</a></li>
+                                <li><a title="Salir" href="../html/login.html">Salir</a></li>
+			</ul>
+		</nav>
+        <div id='contenedor'>
+        <header>
+			<img id="imgprincipal" src="../imgs/myspa.png">
+			<h1>Registro Servicios</h1>
+		
+	</header>
+		<article>
+                    <form id="formulario" name="formulario" method="post" action="">
+                        <h2>Registro</h2>
+                        <br>
+				<label for="fecha">Fecha y hora del servicio: </label>
+                                <input type="datetime-local" id="fecha" min="2018-08-14 09:00:00" max="2018-12-31 14:00:00" required>
+				<br>
+				<br>
+                                <label for="reservacion">Datos de la reservación: </label>
+                                <select name="reservacion" id="reservacion">
+					<option value="Cliente: César Emmanuel Pereira Luna // Sala: Aqua // Estatus: Pendiente">César Emmanuel Pereira Luna</option>
+					<option value="Cliente: Omar Ernesto Trejo Palafox // Sala: Single // Estatus: Cancelada">Omar Ernesto Trejo Palafox</option>
+                                        <option value="Cliente: Saúl Moises Hernández García // Sala: Meditation // Estatus: Atendida">Saúl Moises Hernández García</option>
+					<option value="Cliente: Blanca Erendira Tejeda Camacho // Sala: Advance // Estatus: Atendida">Blanca Erendira Tejeda Camacho</option>
+					<option value="Cliente: José María Febronio Manuel // Sala: Single // Estatus: Pendiente">José María Febronio Manuel</option>
+					<option value="Cliente: Jared Esteban Alfaro López // Sala: True Rest // Estatus: Pendiente">Jared Esteban Alfaro López</option>
+					<option value="Cliente: Diana Laura López Olivares // Sala: Balance // Estatus: Cancelada">Diana Laura López Olivares</option>
+					<option value="Cliente: Lizet Alejandra Muñoz Calderón // Sala: Harmony // Estatus: Pendiente">Lizet Alejandra Muñoz Calderón</option>
+                                </select>
+                                <br>
+				<br>
+				<label for="tratamientos">Tratamientos: </label>
+                                <select name="tratamientos" id="tratamientos">
+					<option value="Aromaterapia">Aromaterapia</option>
+					<option value="Batido natural">Batido natural</option>
+                                        <option value="Ducha de sensaciones">Ducha de sensaciones</option>
+					<option value="Exfoliación corporal">Exfoliación corporal</option>
+					<option value="Exfoliación facial">Exfoliación facial</option>
+					<option value="Hidromasaje">Hidromasaje</option>
+					<option value="Hidroterapia">Hidroterapia</option>
+					<option value="Masaje con aceites esenciales">Masaje con aceites esenciales</option>
+					<option value="Masaje con esencias naturales">Masaje con esencias naturales</option>
+					<option value="Masaje Hawaiano">Masaje Hawaiano</option>
+					<option value="Peeling corporal intenso">Peeling corporal intenso</option>
+					<option value="Peeling corporal suave">Peeling corporal suave</option>
+					<option value="Especial">Especial</option>
+                                </select>
+                                <br>
+				<br>
+				<label for="estatus">Empleado: </label>
+                                <select id="empleados"></select>
+                                <script>
+                                    var section = document.querySelector('section');
+    var requestURL = 'http://localhost:8084/MySpa/json/empleado.json';
+    var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function() {
+      var empleados = request.response;
+      showEmpleados(empleados);
+    };
+    
+    function showEmpleados(jsonObj) {
+        //se toman los miembros del squad, que se encuentran
+        //en un arreglo colocado en el atributo members del json
+        var empleados = jsonObj["empleados"];
+        for(var i = 0; i < empleados.length; i++) {
+          //se crean elementos html para hacer el vaciado de datos
+        var article = document.getElementById('empleados');
+        var myh2=document.createElement('option');
+        
+        myh2.textContent= empleados[i].persona.nombre + " " + empleados[i].persona.apellidoPaterno + " " + empleados[i].persona.apellidoMaterno;
+            
+        article.appendChild(myh2);
+      }
+    }
+                                </script>
+                                <br>
+				<br>
+                                <button type="button" onclick="guardar()" class="boton">Guardar datos</button>
+                                <br>
+                                <br>
+                    </form>
+                    <table class="costumers">
+                        <tr>
+                            <td>Fecha y hora de servicio</td>
+                            <td>Datos de reservación asociada</td>
+                            <td>Tratamiento aplicado</td>
+                            <td>Empleado que brindó el servicio</td>
+                        </tr>
+                    </table>
+                   
+		</article>
+        <nav>
+			<br>
+			<ul>
+				<li><a title="Página principal" href="myspa.html">Página Principal</a></li>
+				<li><a title="Salas" href="salas.html">Salas</a></li>
+				<li><a title="Sucursales" href="sucursales.html">Sucursales</a></li>
+				<li><a title="Productos" href="productos.html">Productos</a></li>
+				<li><a title="Tratamientos" href="tratamientos.html">Tratamientos</a></li>
+				<li><a title="Reservaciones" href="reservaciones.html">Reservaciones</a></li>
+				<li><a title="Horarios" href="horarios.html">Horarios</a></li>
+				<li><a title="Servicios" href="servicios.html">Servicios</a></li>
+                                <li><a title="Registro" href="clientes.html">Registro</a></li>
+                                <li><a title="Personal" href="empleados.html">Personal</a></li>
+			</ul>
+	</nav>
+		<footer>
+			<p>DEGHA Solution | 477-333-30-70 | deghasolution@gmail.com</p>
+			<p>© 2018 All Rights Reserved.</p>
+		</footer>
+        </div>
+    </body>
+</html>

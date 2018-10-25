@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../style/bootstrap4_general/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+         <link rel="stylesheet" type = "text/css" href= "css/nav.css">
+    </head>
+    <body>
+        <header>
+            <!--Navbar-->
+            <nav class="navbar navbar-light navbar-1 white bg-info" >
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="#">MySPA</a>
+                <!-- Collapse button -->
+                <button class="navbar-toggler dark-amber-text" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15" aria-controls="navbarSupportedContent15"
+                    aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+  
+                <!-- Contenido desplegable -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent15" >
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Reservaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Salas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sucursales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Productos</a>
+                        </li>
+                    </ul>
+                    <!-- Links -->
+                </div>
+                <!-- Collapsible content -->
+            </nav>
+<!--/.Navbar-->
+            <nav class="navbar navbar-expand navbar-dark bg-info static-top">
+                  <a class="navbar-brand mr-1" href="index.html"> Welcome MySPA!!</a>
+                  <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+                    <i class="fas fa-bars"></i>
+                  </button>
+
+                  <!-- Navbar Search -->
+                  <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar" aria-describedby="basic-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+
+                  <!-- Navbar -->
+                  <ul class="navbar-nav ml-auto ml-md-0">
+                    
+                    <li class="nav-item dropdown no-arrow mx-1">
+                      <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-envelope fa-fw"></i>
+                        <span class="badge badge-danger">7</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+                        <a class="dropdown-item" href="#">Historial</a>
+                        <a class="dropdown-item" href="#">Datos Personales</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"></a>
+                      </div>
+                    </li>
+                    <li class="nav-item dropdown no-arrow">
+                      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle fa-fw"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Soporte Tecnico</a>
+                        <a class="dropdown-item" href="#">Ayuda</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerar Sesion</a>
+                      </div>
+                    </li>
+                  </ul>
+            </nav>       
+    </header>
+        
+
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul class="sidebar navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span> </span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span> </span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span> </span></a>
+        </li>
+      </ul>
+    </div>
+
+          <!-- DataTables Example -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table text-center text-warning"></i>
+              Reservaciones</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Cod.Reservacion</th>
+                      <th>Nombre sala</th>
+                      <th>Nombre del cliente</th>
+                      <th>Fecha </th>
+                      <th>Hora inicio</th>
+                      <th>Hora fin</th>
+                      <th>Estatus</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Subtitle 2</th>
+                      <th>Subtitle 2</th>
+                      <th>Subtitle 2</th>
+                      <th>Subtitle 2</th>
+                      <th>Subtitle 2</th>
+                      <th>Subtitle 2</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    
+                    <tr>
+                      <td>R1</td>
+                      <td>Masaje</td>
+                      <td>Raul cesped</td>
+                      <td>19/05/2018</td>
+                      <td>9:00 am</td>
+                      <td>1:00 pm</td>
+                      <td>Ocupada</td>
+                    </tr>
+                    <tr>
+                      <td>R1</td>
+                      <td>Masaje</td>
+                      <td>Raul cesped</td>
+                      <td>19/05/2018</td>
+                      <td>9:00 am</td>
+                      <td>1:00 pm</td>
+                      <td>Ocupada</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>R1</td>
+                      <td>Masaje</td>
+                      <td>Raul cesped</td>
+                      <td>19/05/2018</td>
+                      <td>9:00 am</td>
+                      <td>1:00 pm</td>
+                      <td>Ocupada</td>
+                    </tr>
+                    <tr>
+                      <td>R1</td>
+                      <td>Masaje</td>
+                      <td>Raul cesped</td>
+                      <td>19/05/2018</td>
+                      <td>9:00 am</td>
+                      <td>1:00 pm</td>
+                      <td>Ocupada</td>
+                    </tr>
+                    <tr>
+                      <td>R1</td>
+                      <td>Masaje</td>
+                      <td>Raul cesped</td>
+                      <td>19/05/2018</td>
+                      <td>9:00 am</td>
+                      <td>1:00 pm</td>
+                      <td>Ocupada</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted bg-warning">Actualizado Hoy a las 11:59 PM</div>
+          </div>
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer bg-info">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © Company,System Keys <hr>
+                        Tel:477-333-30-70 || Email:SystemKeys@gmail.com </span>
+            </div>
+          </div>
+        </footer>
+
+        <script type="text/javascript" src="../style/bootstrap4_general/vendor/jquery/jquery.min.js" ></script>
+        <script type="text/javascript" src="../style/bootstrap4_general/vendor/bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>

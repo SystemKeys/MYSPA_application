@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Listado de Productos</title>
+        <link rel="stylesheet" type="text/css" href="../bootstrap/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/htmleaf-demo.css">
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/demo.css">
+	<link href="../bootstrap/dist/jquery.brickfolio.min.css" rel="stylesheet">
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			
+                        
+		</header>
+			
+			<div class="brickfolio">
+				<div class="bf-item">
+                                    <img src="../bootstrap/img//1.jpg">
+					<h4>Aceite esencial de Albahaca</h4>
+                                        <h5>Clave Producto :  1 <br>
+                                           Marca :            Healths <br>
+                                           Precio Uso :       35.0 <br>
+                                           Estatus :          1 </h5>
+				</div>
+				<div class="bf-item">
+					<img src="../bootstrap/img/2.jpg">
+					<h4>Aceite esencial de Incienso</h4>
+                                        <h5>Clave Producto :  2 <br>
+                                           Marca :            Healths <br>
+                                           Precio Uso :       35.0 <br>
+                                           Estatus :          1 </h5>
+                                </div>
+				<div class="bf-item">
+					<img src="../bootstrap/img/3.jpg">
+					<h4>Aceite esencial de Jengibre</h4>
+                                        <h5>Clave Producto :  3 <br>
+                                           Marca :            Healths <br>
+                                           Precio Uso :       35.0 <br>
+                                           Estatus :          1 </h5>
+				</div>
+				<div class="bf-item">
+					<img src="../bootstrap/img/4.jpg">
+					<h4>Aceite esencial de Lavanda</h4>
+                                         <h5>Clave Producto :  4 <br>
+                                           Marca :            Healths <br>
+                                           Precio Uso :       35.0 <br>
+                                           Estatus :          1 </h5>
+				</div>
+				<div class="bf-item">
+					<img src="../bootstrap/img/5.jpg">
+					<h4>Crema de Aloe Vera</h4>
+                                        <h5>Clave Producto :  5 <br>
+                                           Marca :            H&H <br>
+                                           Precio Uso :       30.0 <br>
+                                           Estatus :          1 </h5>
+				</div>
+				<div class="bf-item">
+					<img src="../bootstrap/img/6.jpg">
+					<h4>Crema de Citronela</h4>
+                                          <h5>Clave Producto :  6 <br>
+                                           Marca :            H&H <br>
+                                           Precio Uso :       30.0 <br>
+                                           Estatus :          1 </h5>
+				</div>
+				<div class="bf-item">
+					<img src="../bootstrap/img/7.jpg">
+					<h4>Crema de Lavanda</h4>
+                                           <h5>Clave Producto :  7 <br>
+                                           Marca :            H&H <br>
+                                           Precio Uso :       30.0 <br>
+                                           Estatus :          1 </h5>				
+                                </div>
+				<div class="bf-item">
+					<img src="../bootstrap/img/8.jpg">
+					<h4>Crema de Menta</h4>
+                                        <h5>Clave Producto :  8 <br>
+                                           Marca :            H&H <br>
+                                           Precio Uso :       30.0 <br>
+                                           Estatus :          1 </h5>	
+                                </div>
+				<div class="bf-item">
+					<img src="../bootstrap/img/2.jpg">
+					<h4>Sales con Citronela</h4>
+                                         <h5>Clave Producto :  9 <br>
+                                           Marca :            Salesymas <br>
+                                           Precio Uso :       46.0 <br>
+                                           Estatus :          1 </h5>	
+                                </div>
+				<div class="bf-item">
+					<img src="../bootstrap/img/10.jpg">
+					<h4>Sales con Incienso</h4>
+                                        <h5>Clave Producto :  10 <br>
+                                           Marca :            Salesymas <br>
+                                           Precio Uso :       46.0 <br>
+                                           Estatus :          1 </h5>	
+                                </div>
+                                <div class="bf-item">
+					<img src="../bootstrap/img/11.jpg">
+					<h4>Exfoliante de Menta</h4>
+                                        <h5>Clave Producto :  11 <br>
+                                           Marca :            Healths <br>
+                                           Precio Uso :       33.0 <br>
+                                           Estatus :          1 </h5>	
+                                </div>
+                                <div class="bf-item">
+					<img src="../bootstrap/img/12.jpg">
+					<h4>Exfoliante de Manzanillaa</h4>
+                                        <h5>Clave Producto :  12 <br>
+                                           Marca :            Healths <br>
+                                           Precio Uso :       33.0 <br>
+                                           Estatus :          1 </h5>	
+                                </div>
+			</div>
+		
+
+	
+	<script src="http://libs.useso.com/../bootstrap/js/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+	<script>window.jQuery || document.write('<script src="../bootstrap/js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script src="../bootstrap/src/js/jquery.brickfolio.js"></script>
+	<script>
+		jQuery(function($){
+			var $container = $('.brickfolio'),
+					$load_delay = $('#load_delay'),
+					$hide_errors = $('#hide_errors'),
+					getLoadTime = function(){
+						return $load_delay.is(':checked') ? $load_delay.val() : 0;
+					};
+
+			$load_delay.add($hide_errors).on('change', function(){
+				$container.brickfolio({hideErrors: $hide_errors.is(':checked'), loadTime: getLoadTime()});
+			});
+			$container.brickfolio({hideErrors: $hide_errors.is(':checked'), loadTime: getLoadTime()});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+[
+    {
+        "id": 1,
+        "numeroCiente": "AOVP43101",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 117,
+            "nombre": "Blanca Erendira",
+            "apellidoPaterno": "Tejeda",
+            "apellidoMaterno": "Camacho",
+            "genero": "F",
+            "domicilio": "Inventores #614, Col. Aurora",
+            "telefono": "",
+            "rfc": "TECB891117"
+        },
+        "usuario": {
+            "id": 117,
+            "nombreUsuario": "tecb",
+            "contrasenia": "u1250",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 2,
+        "numeroCiente": "AEDL43102",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 118,
+            "nombre": "Jared Esteban",
+            "apellidoPaterno": "Alfaro",
+            "apellidoMaterno": "López",
+            "genero": "M",
+            "domicilio": "Uranio #222, Col. Echeveste",
+            "telefono": "",
+            "rfc": "AALJ950906"
+        },
+        "usuario": {
+            "id": 118,
+            "nombreUsuario": "aalj",
+            "contrasenia": "u1251",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 3,
+        "numeroCiente": "BARJ43103",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 119,
+            "nombre": "Roberto Damian",
+            "apellidoPaterno": "Cabrera",
+            "apellidoMaterno": "Alonso",
+            "genero": "M",
+            "domicilio": "Pedro Moreno 725, Col. Centro",
+            "telefono": "",
+            "rfc": "CAAR901010"
+        },
+        "usuario": {
+            "id": 119,
+            "nombreUsuario": "caar",
+            "contrasenia": "u1252",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 4,
+        "numeroCiente": "BEMM43104",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 120,
+            "nombre": "Cristian Jesus",
+            "apellidoPaterno": "Estrada",
+            "apellidoMaterno": "Andrade",
+            "genero": "M",
+            "domicilio": "Bolivia 410, Col. Obrera",
+            "telefono": "",
+            "rfc": "EAAC961216"
+        },
+        "usuario": {
+            "id": 120,
+            "nombreUsuario": "eaac",
+            "contrasenia": "u1253",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 5,
+        "numeroCiente": "COAL43105",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 121,
+            "nombre": "José María",
+            "apellidoPaterno": "Febronio",
+            "apellidoMaterno": "Manuel",
+            "genero": "M",
+            "domicilio": "Romita 310, Col. Industrial",
+            "telefono": "",
+            "rfc": "FEMJ961231"
+        },
+        "usuario": {
+            "id": 121,
+            "nombreUsuario": "femj",
+            "contrasenia": "u1254",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 6,
+        "numeroCiente": "FEVB43106",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 122,
+            "nombre": "Saúl Moises",
+            "apellidoPaterno": "Hernández",
+            "apellidoMaterno": "García",
+            "genero": "M",
+            "domicilio": "Rio Panuco #215, Col. San Miguel",
+            "telefono": "",
+            "rfc": "HEGS941216"
+        },
+        "usuario": {
+            "id": 122,
+            "nombreUsuario": "hegs",
+            "contrasenia": "u1255",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 7,
+        "numeroCiente": "GUMJ43107",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 123,
+            "nombre": "Mario Alberto",
+            "apellidoPaterno": "Hernández",
+            "apellidoMaterno": "Negrete",
+            "genero": "M",
+            "domicilio": "Pintores #123, Col. Echeveste",
+            "telefono": "",
+            "rfc": "HENM980916"
+        },
+        "usuario": {
+            "id": 123,
+            "nombreUsuario": "henm",
+            "contrasenia": "u1256",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 8,
+        "numeroCiente": "HEPA43108",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 124,
+            "nombre": "Juan Arturo",
+            "apellidoPaterno": "López",
+            "apellidoMaterno": "Estrada",
+            "genero": "M",
+            "domicilio": "Horóscopo #125, Los Limones",
+            "telefono": "",
+            "rfc": "LOEJ990516"
+        },
+        "usuario": {
+            "id": 124,
+            "nombreUsuario": "loej",
+            "contrasenia": "u1257",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 9,
+        "numeroCiente": "JISE43109",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 125,
+            "nombre": "Diana Laura",
+            "apellidoPaterno": "López",
+            "apellidoMaterno": "Olivares",
+            "genero": "F",
+            "domicilio": "Honduras #423, Col. Industrial",
+            "telefono": "",
+            "rfc": "LOOD980517"
+        },
+        "usuario": {
+            "id": 125,
+            "nombreUsuario": "lood",
+            "contrasenia": "u1258",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 10,
+        "numeroCiente": "QURL43110",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 126,
+            "nombre": "Lizet Alejandra",
+            "apellidoPaterno": "Muñoz",
+            "apellidoMaterno": "Calderón",
+            "genero": "F",
+            "domicilio": "Yuriria 220, Col. Industrial",
+            "telefono": "",
+            "rfc": "MUCL970917"
+        },
+        "usuario": {
+            "id": 126,
+            "nombreUsuario": "mucl",
+            "contrasenia": "u1259",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 11,
+        "numeroCiente": "RARJ43111",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 127,
+            "nombre": "Manuela Noemí",
+            "apellidoPaterno": "Ornelas",
+            "apellidoMaterno": "Agripino",
+            "genero": "F",
+            "domicilio": "Materialistas # 610, Col. Echeveste",
+            "telefono": "",
+            "rfc": "OEAM990315"
+        },
+        "usuario": {
+            "id": 127,
+            "nombreUsuario": "oeam",
+            "contrasenia": "u1260",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 12,
+        "numeroCiente": "RIRM43112",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 128,
+            "nombre": "César Emmanuel",
+            "apellidoPaterno": "Pereira",
+            "apellidoMaterno": "Luna",
+            "genero": "M",
+            "domicilio": "Beethoven #126, Col. León Moderno",
+            "telefono": "",
+            "rfc": "PELC941231"
+        },
+        "usuario": {
+            "id": 128,
+            "nombreUsuario": "pelc",
+            "contrasenia": "u1261",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 13,
+        "numeroCiente": "SARM43113",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 129,
+            "nombre": "Norma Liliana",
+            "apellidoPaterno": "Rico",
+            "apellidoMaterno": "Velázquez",
+            "genero": "F",
+            "domicilio": "Avenida Central #365, Col. Fraccionamiento Guadalupe",
+            "telefono": "",
+            "rfc": "RIVN990814"
+        },
+        "usuario": {
+            "id": 129,
+            "nombreUsuario": "rivn",
+            "contrasenia": "u1262",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 14,
+        "numeroCiente": "SACJ43114",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 130,
+            "nombre": "Victor Isaac",
+            "apellidoPaterno": "Robles",
+            "apellidoMaterno": "Gallo",
+            "genero": "M",
+            "domicilio": "Antillón #116, Col. Obrera",
+            "telefono": "",
+            "rfc": "ROGV950607"
+        },
+        "usuario": {
+            "id": 130,
+            "nombreUsuario": "rogv",
+            "contrasenia": "u1263",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 15,
+        "numeroCiente": "SAGJ43115",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 131,
+            "nombre": "Diego Alejandro",
+            "apellidoPaterno": "Sabido",
+            "apellidoMaterno": "Valencia",
+            "genero": "M",
+            "domicilio": "Paseo de los Laureles #110, Col. Fraccionamiento Manatiales",
+            "telefono": "",
+            "rfc": "SAVD920705"
+        },
+        "usuario": {
+            "id": 131,
+            "nombreUsuario": "savd",
+            "contrasenia": "u1264",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 16,
+        "numeroCiente": "SAPM43116",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 132,
+            "nombre": "Emmanuel",
+            "apellidoPaterno": "Toledo",
+            "apellidoMaterno": "Castro",
+            "genero": "M",
+            "domicilio": "Calle S/N",
+            "telefono": "",
+            "rfc": "TOCE950531"
+        },
+        "usuario": {
+            "id": 132,
+            "nombreUsuario": "toce",
+            "contrasenia": "u1265",
+            "rol": "Cliente"
+        }
+    },
+    {
+        "id": 17,
+        "numeroCiente": "TECB43117",
+        "correo": "",
+        "estatus": 1,
+        "persona": {
+            "id": 133,
+            "nombre": "Omar Ernesto",
+            "apellidoPaterno": "Trejo",
+            "apellidoMaterno": "Palafox",
+            "genero": "M",
+            "domicilio": "Aurora #301, Col. Valle de León",
+            "telefono": "",
+            "rfc": "TEPO880617"
+        },
+        "usuario": {
+            "id": 133,
+            "nombreUsuario": "tepo",
+            "contrasenia": "u1266",
+            "rol": "Cliente"
+        }
+    }
+]

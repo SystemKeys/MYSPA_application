@@ -1,0 +1,409 @@
+[
+    {
+        "foto": "",
+        "puesto": "Gerente",
+        "estatus": 1,
+        "persona": {
+            "rfc": "ADMINISTRATOR",
+            "nombre": "Administrador",
+            "telefono": "",
+            "domicilio": "",
+            "id": 1,
+            "apellidoMaterno": "",
+            "apellidoPaterno": "",
+            "genero": "O"
+        },
+        "usuario": {
+            "rol": "Administrador",
+            "id": 1,
+            "contrasenia": "admin",
+            "nombreUsuario": "admin"
+        },
+        "rutaFoto": "",
+        "id": 1,
+        "numeroEmpleado": ""
+    },
+    {
+        "foto": "",
+        "puesto": "Gerente",
+        "estatus": 1,
+        "persona": {
+            "rfc": "AOVP851205",
+            "nombre": "Fátima Paola",
+            "telefono": "",
+            "domicilio": "Alhondiga # 316 Col. Heroes",
+            "id": 101,
+            "apellidoMaterno": "Villalpando",
+            "apellidoPaterno": "Alonso",
+            "genero": "F"
+        },
+        "usuario": {
+            "rol": "Administrador",
+            "id": 101,
+            "contrasenia": "u1234",
+            "nombreUsuario": "aovp"
+        },
+        "rutaFoto": "",
+        "id": 101,
+        "numeroEmpleado": "AOVP1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Gerente",
+        "estatus": 1,
+        "persona": {
+            "rfc": "AEDL950402",
+            "nombre": "Luis Carlos",
+            "telefono": "",
+            "domicilio": "Mar Egeo #510 ",
+            "id": 102,
+            "apellidoMaterno": "Diaz",
+            "apellidoPaterno": "Arredondo",
+            "genero": "M"
+        },
+        "usuario": {
+            "rol": "Administrador",
+            "id": 102,
+            "contrasenia": "u1235",
+            "nombreUsuario": "aedl"
+        },
+        "rutaFoto": "",
+        "id": 102,
+        "numeroEmpleado": "AEDL1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Gerente",
+        "estatus": 1,
+        "persona": {
+            "rfc": "BARJ961125",
+            "nombre": "Juan Christopher",
+            "telefono": "",
+            "domicilio": "Blvd. Hidalgo 1150, Col. La Florida",
+            "id": 103,
+            "apellidoMaterno": "Ramírez",
+            "apellidoPaterno": "Bazaldúa",
+            "genero": "M"
+        },
+        "usuario": {
+            "rol": "Administrador",
+            "id": 103,
+            "contrasenia": "u1236",
+            "nombreUsuario": "barj"
+        },
+        "rutaFoto": "",
+        "id": 103,
+        "numeroEmpleado": "BARJ1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Recepcionista",
+        "estatus": 1,
+        "persona": {
+            "rfc": "BEMM880229",
+            "nombre": "Miguel Angel",
+            "telefono": "",
+            "domicilio": "Castaña 103, Col. Arboledas",
+            "id": 104,
+            "apellidoMaterno": "Muñoz",
+            "apellidoPaterno": "Bernardino",
+            "genero": "M"
+        },
+        "usuario": {
+            "rol": "Recepcionista",
+            "id": 104,
+            "contrasenia": "u1237",
+            "nombreUsuario": "bemm"
+        },
+        "rutaFoto": "",
+        "id": 104,
+        "numeroEmpleado": "BEMM1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Recepcionista",
+        "estatus": 1,
+        "persona": {
+            "rfc": "COAL980214",
+            "nombre": "Lisset Anahi",
+            "telefono": "",
+            "domicilio": "Blas Galindo #420, Col. Bosques",
+            "id": 105,
+            "apellidoMaterno": "Aguiñaga",
+            "apellidoPaterno": "Conde",
+            "genero": "F"
+        },
+        "usuario": {
+            "rol": "Recepcionista",
+            "id": 105,
+            "contrasenia": "u1238",
+            "nombreUsuario": "coal"
+        },
+        "rutaFoto": "",
+        "id": 105,
+        "numeroEmpleado": "COAL1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Recepcionista",
+        "estatus": 1,
+        "persona": {
+            "rfc": "FEVB900816",
+            "nombre": "Berenice ",
+            "telefono": "",
+            "domicilio": "Rio Mayo #208, Col. Cerrito de Jerez",
+            "id": 106,
+            "apellidoMaterno": "Vázquez",
+            "apellidoPaterno": "Fernández",
+            "genero": "F"
+        },
+        "usuario": {
+            "rol": "Recepcionista",
+            "id": 106,
+            "contrasenia": "u1239",
+            "nombreUsuario": "fevb"
+        },
+        "rutaFoto": "",
+        "id": 106,
+        "numeroEmpleado": "FEVB1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Recepcionista",
+        "estatus": 1,
+        "persona": {
+            "rfc": "GUMJ820315",
+            "nombre": "José Alejandro",
+            "telefono": "",
+            "domicilio": "Campeche 615, Col. Vistahermosa",
+            "id": 107,
+            "apellidoMaterno": "Maldonado",
+            "apellidoPaterno": "Gutiérrez",
+            "genero": "M"
+        },
+        "usuario": {
+            "rol": "Recepcionista",
+            "id": 107,
+            "contrasenia": "u1240",
+            "nombreUsuario": "gumj"
+        },
+        "rutaFoto": "",
+        "id": 107,
+        "numeroEmpleado": "GUMJ1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Tecnico",
+        "estatus": 1,
+        "persona": {
+            "rfc": "HEPA860923",
+            "nombre": "Adiel ",
+            "telefono": "",
+            "domicilio": "Guanajuato #131, Col. Peñitas",
+            "id": 108,
+            "apellidoMaterno": "Palacios",
+            "apellidoPaterno": "Hernández",
+            "genero": "M"
+        },
+        "usuario": {
+            "rol": "Tecnico",
+            "id": 108,
+            "contrasenia": "u1241",
+            "nombreUsuario": "hepa"
+        },
+        "rutaFoto": "",
+        "id": 108,
+        "numeroEmpleado": "HEPA1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Tecnico",
+        "estatus": 1,
+        "persona": {
+            "rfc": "JISE981223",
+            "nombre": "Elena Guadalupe",
+            "telefono": "",
+            "domicilio": "Paseo de los Insurgentes #1400, Col. Villa Insurgentes",
+            "id": 109,
+            "apellidoMaterno": "Solis",
+            "apellidoPaterno": "Jiménez",
+            "genero": "F"
+        },
+        "usuario": {
+            "rol": "Tecnico",
+            "id": 109,
+            "contrasenia": "u1242",
+            "nombreUsuario": "jise"
+        },
+        "rutaFoto": "",
+        "id": 109,
+        "numeroEmpleado": "JISE1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Tecnico",
+        "estatus": 1,
+        "persona": {
+            "rfc": "QURL900328",
+            "nombre": "Luis Antonio",
+            "telefono": "",
+            "domicilio": "Baviera #321, Col. La Carmona",
+            "id": 110,
+            "apellidoMaterno": "Robledo",
+            "apellidoPaterno": "Quintero",
+            "genero": "M"
+        },
+        "usuario": {
+            "rol": "Tecnico",
+            "id": 110,
+            "contrasenia": "u1243",
+            "nombreUsuario": "qurl"
+        },
+        "rutaFoto": "",
+        "id": 110,
+        "numeroEmpleado": "QURL1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Tecnico",
+        "estatus": 1,
+        "persona": {
+            "rfc": "RARJ980603",
+            "nombre": "José Alonso",
+            "telefono": "",
+            "domicilio": "Pio XI #123, Col. Valle de León",
+            "id": 111,
+            "apellidoMaterno": "Rangel",
+            "apellidoPaterno": "Ramos",
+            "genero": "M"
+        },
+        "usuario": {
+            "rol": "Tecnico",
+            "id": 111,
+            "contrasenia": "u1244",
+            "nombreUsuario": "rarj"
+        },
+        "rutaFoto": "",
+        "id": 111,
+        "numeroEmpleado": "RARJ1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Tecnico",
+        "estatus": 1,
+        "persona": {
+            "rfc": "RIRM980314",
+            "nombre": "José María",
+            "telefono": "",
+            "domicilio": "Sultan #205, Col. Valle de Señora",
+            "id": 112,
+            "apellidoMaterno": "Romo",
+            "apellidoPaterno": "Rios"
+        },
+        "usuario": {
+            "rol": "Tecnico",
+            "id": 112,
+            "contrasenia": "u1245",
+            "nombreUsuario": "rirm"
+        },
+        "rutaFoto": "",
+        "id": 112,
+        "numeroEmpleado": "RIRM1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Tecnico",
+        "estatus": 1,
+        "persona": {
+            "rfc": "SARM800609",
+            "nombre": "Miguel Angel",
+            "telefono": "",
+            "domicilio": "Paseo de los Gavilanes #233, Col. San Isidro",
+            "id": 113,
+            "apellidoMaterno": "Rangel",
+            "apellidoPaterno": "Salas",
+            "genero": "M"
+        },
+        "usuario": {
+            "rol": "Tecnico",
+            "id": 113,
+            "contrasenia": "u1246",
+            "nombreUsuario": "sarm"
+        },
+        "rutaFoto": "",
+        "id": 113,
+        "numeroEmpleado": "SARM1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Tecnico",
+        "estatus": 1,
+        "persona": {
+            "rfc": "SACJ980413",
+            "nombre": "Janeth Guadalupe",
+            "telefono": "",
+            "domicilio": "Calle S/N",
+            "id": 114,
+            "apellidoMaterno": "Cabrera",
+            "apellidoPaterno": "Salazar",
+            "genero": "F"
+        },
+        "usuario": {
+            "rol": "Tecnico",
+            "id": 114,
+            "contrasenia": "u1247",
+            "nombreUsuario": "sacj"
+        },
+        "rutaFoto": "",
+        "id": 114,
+        "numeroEmpleado": "SACJ1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Tecnico",
+        "estatus": 1,
+        "persona": {
+            "rfc": "SAGJ900719",
+            "nombre": "Javier ",
+            "telefono": "",
+            "domicilio": "Prisma #121",
+            "id": 115,
+            "apellidoMaterno": "García",
+            "apellidoPaterno": "Salazar",
+            "genero": "M"
+        },
+        "usuario": {
+            "rol": "Tecnico",
+            "id": 115,
+            "contrasenia": "u1248",
+            "nombreUsuario": "sagj"
+        },
+        "rutaFoto": "",
+        "id": 115,
+        "numeroEmpleado": "SAGJ1524661310"
+    },
+    {
+        "foto": "",
+        "puesto": "Tecnico",
+        "estatus": 1,
+        "persona": {
+            "rfc": "SAPM900606",
+            "nombre": "Marco Fabian",
+            "telefono": "",
+            "domicilio": "Santander #124, Col. San Juan Bosco",
+            "id": 116,
+            "apellidoMaterno": "Perez",
+            "apellidoPaterno": "Sanchez",
+            "genero": "M"
+        },
+        "usuario": {
+            "rol": "Tecnico",
+            "id": 116,
+            "contrasenia": "u1249",
+            "nombreUsuario": "sapm"
+        },
+        "rutaFoto": "",
+        "id": 116,
+        "numeroEmpleado": "SAPM1524661310"
+    }
+]

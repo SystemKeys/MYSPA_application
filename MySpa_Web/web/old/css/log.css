@@ -1,0 +1,113 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background-color: blueviolet;
+	background-repeat: no-repeat;
+	background-size:100%;
+}
+#imgprincipal{
+	border-radius:75px;
+	padding:5px;
+	margin:30px;
+}
+article{
+	opacity:0.8;
+	background-color:grey;
+	height:250px;
+	width:35%;
+	margin-top:-1%;
+	margin-left:30%;
+	text-align:center;
+	padding:15px;
+	border-radius:50px;
+}
+label{
+	font-size:x-large;
+}
+button{
+	font-size:x-large;
+	background-color:beige;
+	height:40px;
+	width:220px;
+	border-radius:10px 50px;
+        margin:5px;
+}
+input{
+	background-color:beige;
+	height:40px;
+	font-size:large;
+	width:220px;
+}
+h1{
+	text-align:center;
+	font-size:70px;
+	font-family:GreatVibes;
+}
+@font-face{
+	font-family:GreatVibes;
+	src:url(../fuentes/GreatVibes.otf);
+}
+section{
+	margin-right:100px;
+	margin-top:5px;
+	float:right;
+	clear:both;
+}
+ul{
+    list-style:none;
+    margin:0 10px 0 10px;
+    padding:0;
+}
+ul li{
+    border-radius:5px;
+    float:left;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:16px;
+    font-weight:bold;
+    margin-right:10px;
+    text-align:center;
+    text-shadow: black;
+	font-size:large;
+}
+ul li:hover{
+    /*Degradado de fondo*/
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to( #E3E3E3));/*Chrome y Safari*/
+    background-image: -moz-linear-gradient(top center, #FFF, #E3E3E3);/*Firefox*/
+    background-image: -o-linear-gradient(top, #FFF, #E3E3E3);/*Opera*/
+    background-image: linear-gradient(top, #FFF, #E3E3E3);/*Estandar por defecto*/
+    /*Sombras*/
+    -webkit-box-shadow:  1px -1px 0px #999;/*Chrome y Safari*/
+    -moz-box-shadow:  1px -1px 0px #999;/*Firefox*/
+    -o-box-shadow:  1px -1px 0px #999;/*Opera*/
+    box-shadow:  1px -1px 0px #999;/*Estandar por defecto*/
+    border:1px solid #E3E3E3;
+}
+ul li a{
+    color:black;
+    display:block;
+    padding:10px;
+    text-decoration:none;
+    /*Transiciones*/
+    -webkit-transition: 0.4s linear all;
+    -moz-transition: 0.4s linear all;
+    -o-transition: 0.4s linear all;
+    transition: 0.4s linear all;
+}
+ul li a:hover {
+    color:#000;
+}
+button:hover{
+    /*Degradado de fondo*/
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to( #E3E3E3));/*Chrome y Safari*/
+    background-image: -moz-linear-gradient(top center, #FFF, #E3E3E3);/*Firefox*/
+    background-image: -o-linear-gradient(top, #FFF, #E3E3E3);/*Opera*/
+    background-image: linear-gradient(top, #FFF, #E3E3E3);/*Estandar por defecto*/
+    /*Sombras*/
+    -webkit-box-shadow:  1px -1px 0px #999;/*Chrome y Safari*/
+    -moz-box-shadow:  1px -1px 0px #999;/*Firefox*/
+    -o-box-shadow:  1px -1px 0px #999;/*Opera*/
+    box-shadow:  1px -1px 0px #999;/*Estandar por defecto*/
+    border:1px solid #E3E3E3;
+}
