@@ -226,3 +226,127 @@ function limpiarCampos() {
     $('#txtRutaFoto').val('');
     $('#chbSalaEstatus').prop('checked', false);
 }
+function cargarModuloSucursal(){
+    $.ajax  (   
+                {   type   :    "GET",
+                    url    :   "sucursal/catalogo.html",
+                    async  :    true
+                }
+            ).done(
+                    function(data){
+                      $('#divMainContainer').html(data); 
+                      $('#tbSucursales').find('tr').click(function(){
+                          alert('Renglon:'+$(this).index());
+                                                                    });
+                      actualizarTablaSucursal();
+                  }
+                  );
+      }
+function actualizarTablaSucursal(){
+                          $.ajax( {
+                                type   : "GET",
+                                url    : "../rssucursal/getAllSucursal",
+                                async  : true
+                              }).done(
+                                        function(sucursales)
+                                            {
+                                                var str  = '';
+                                                for (var i = 0; i < sucursales.length; i++)
+                                                    str += '<tr>' + 
+                                                                  '<td>' + sucursales[i].id + '</td>' +
+                                                                  '<td>' + sucursales[i].nombre + '</td>' +
+                                                                  '<td>' + sucursales[i].latitud + '</td>' +
+                                                                  '<td>' + sucursales[i].longitud + '</td>' +
+                                                                  '<td>' + sucursales[i].domicilio+ '<td>'
+                                                            '</tr>';
+                                                    $('#tbSucursales').html(str);
+                                            }
+                                     );
+                          }
+
+                   
+                  
+function guardarSucursal(){
+ var rutaREST=null;
+ var idSucursal=0;
+ if($('#txtSucursalId').val().length>0){
+     rutaREST='../rssucursal/updateSucursal';
+     idSucursal=$('#txtSucursalId').val();
+ }
+ else{
+     rutaREST='../rssucursal/insertSucursal';
+ }
+    $.ajax({
+                type:"POST",
+                aync:true,
+                url:rutaREST,
+                data:{
+                    id: idSucursal,
+                    nombre: $('#txtSucursalNombre').val(),
+                    latitud: $('#txtSucursalLatitud').val(),
+                    longitud: $('#txtSucursalLongitud').val(),
+                    domicilio: $('#txtSucursalDomicilio').val(),
+                    estatus:$('#chbSucursalEstatus').prop('checked')?1:0
+                }
+            }).done(function(data){
+               if(data.error!=null)
+               {
+                  swal('Error',data.error,'warning');
+                  return;
+               }
+              actualizarTablaSucursal();
+               $('#txtSucursalId').val(data.result);
+                swal('Movimiento realizado','','success');
+            });
+}
+
+
+
+function eliminarSucursal(){
+   
+   $.ajax({
+                type:"POST",
+                aync:true,
+                url: '../rssucursal/deleteSucursal',
+                data:{
+                    idSucursal: $('#txtSucursalId').val()
+                    
+                      }
+            }).done(function(data){
+               if(data.error!=null)
+               {
+                  swal('Error',data.error,'warning');
+                  return;
+               }
+              actualizarTablaSucursal();
+               $('#txtSucursalId').val(data.result);
+                swal('Movimiento realizado','','success');
+            });
+}
+
+function actualizarSucursal(){
+    $.ajax({
+                type:"POST",
+                aync:true,
+                url:'../rssucursal/updateSucursal',
+                data:{
+                    
+                    nombre: $('#txtSucursalNombre').val(),
+                    domicilio: $('#txtSucursalDomicilio').val(),
+                    latitud: $('#txtSucursalLatitud').val(),
+                    longitud: $('#txtSucursalLongitud').val(),
+                    estatus:$('#chbSucursalEstatus').prop('checked')?1:0,
+                    idSucursal: $('#txtSucursalId').val()
+                }
+            }).done(function(data){
+               if(data.error!=null)
+               {
+                  swal('Error',data.error,'warning');
+                  return;
+               }
+              actualizarTablaSucursal();
+               $('#txtSucursalId').val(data.result);
+                swal('Movimiento realizado','','success');
+            });
+}
+          
