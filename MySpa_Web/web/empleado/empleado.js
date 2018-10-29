@@ -119,7 +119,7 @@ function actualizarTablaSalas() {
                             '<td>' + salas[i].id + '</td>' +
                             '<td>' + salas[i].nombre + '</td>' +
                             '<td>' + salas[i].descripcion + '</td>' +
-                            '<td>' + salas[i].sucursal.idSucursal + '</td>' +
+                            '<td>' + salas[i].sucursal.nombre + '</td>' +
                             '</tr>';
                 $('#tbSalas').html(str);
             }
