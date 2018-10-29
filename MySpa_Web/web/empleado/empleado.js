@@ -350,3 +350,111 @@ function actualizarSucursal(){
             });
 }
           
+function cargarModuloTratamiento() {
+    $.ajax(
+            {type: "GET",
+                url: "tratamiento/catalogo.html",
+                async: true
+            }
+    ).done(
+            function (data) {
+                $('#divMainContainer').html(data);
+
+                actualizarTablaTratamiento();
+            }
+    );
+
+
+}
+
+function guardarTratamiento() {
+
+    var rutaREST = null;
+    var idTratamiento = 0;
+
+    if ($('#txtIdTratamiento').val().length > 0) {
+        rutaREST = '../rstratamiento/updateTratamiento';
+        idTratamiento = $('#txtIdTratamiento').val();
+    } else {
+        rutaREST = '../rstratamiento/insertTratamiento';
+    }
+
+    $.ajax({
+        type: "POST",
+        asyn: true,
+        url: rutaREST,
+        data: {
+            id: idTratamiento,
+            nombre: $('#txtNombreTratamiento').val(),
+            descripcion: $('#txtDescripcionTratamiento').val()
+            //estatus : $('#chbEstatusProducto').prop('checked') ? 1 : 0
+        }
+    }).done(function (data)
+    {
+        if (data.error != null) {
+            swal("Error", data.error, 'warning');
+            return;
+        }
+        actualizarTablaTratamiento();
+        $('#txtIdTratamiento').val(data.result);
+        swal('Realizado', 'Hecho', 'success');
+    }
+    );
+}
+
+function actualizarTablaTratamiento() {
+    $.ajax({
+        type: "GET",
+        url: "../rstratamiento/getAllTratamiento",
+        async: true
+    }).done(
+            function (tratamientos)
+            {
+                var str = '';
+                for (var i = 0; i < tratamientos.length; i++)
+                    str += '<tr>' +
+                            '<td>' + tratamientos[i].id + '</td>' +
+                            '<td>' + tratamientos[i].nombre + '</td>' +
+                            '<td>' + tratamientos[i].descripcion + '</td>' +
+                            '<td>' + tratamientos[i].estatus + '</td>' +
+                            '</tr>';
+                $('#tbTratamiento').html(str);
+                $('#tbTratamiento').find('tr').click(function ()
+                {
+                    alert('Renglon: ' + $(this).index());
+                }
+                );
+            }
+    );
+}
+
+
+
+function eliminarTratamiento(){
+   
+   $.ajax({
+                type:"POST",
+                aync:true,
+                url: '../rstratamiento/deleteTratamiento',
+                data:{
+                    idTratamiento: $('#txtIdTratamiento').val()
+                    
+                      }
+            }).done(function(data){
+               if(data.error!=null)
+               {
+                  swal('Error',data.error,'warning');
+                  return;
+               }
+              actualizarTablaTratamiento();
+               $('#txtIdTratamiento').val(data.result);
+                swal('Movimiento realizado','','success');
+            });
+}
+
+function limpiarCamposTratamiento() {
+    $('#txtIdTratamiento').val('');
+    $('#txtNombreTratamiento').val('');
+    $('#txtDescripcionTratamiento').val('');
+    $('#chbEstatusTratamiento').prop('checked', true);
+}
