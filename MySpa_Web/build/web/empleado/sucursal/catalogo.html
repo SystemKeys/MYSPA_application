@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<div class="row">
+    <div class="col-sm-7">
+        <div class="card border-primary">
+            <div class="card-header bg-dark text text-center text-primary ">
+                <h3>Catalogo de sucursal</h3>
+            </div>
+            <div class="card-body">
+                <table class=" table table-info"  id="dataTable" width="150%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Clave Sucursal</th>
+                            <th>Nombre </th>
+                            <th>Latitud</th>
+                            <th>Longitud</th>
+                            <th>Domicilio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbSucursales">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+     <form class="form-goup" role="form">
+
+        <div class="form-group">
+            <label for="Sucursal" class="col-sm-6 control-label">Clave Sucursal:</label>
+            <div class="col-sm-10">
+                <input type="text"  id="txtSucursalId" placeholder="Clave Sucursal" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Nombre" class="col-sm-5 control-label">Nombre :</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="txtSucursalNombre" placeholder="Nombre Sucursal">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Latitud" class="col-sm-5 control-label">Latitud :</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="txtSucursalLatitud" placeholder="Latitud 100.000">
+            </div>
+        </div>       
+        <div class="form-group">
+            <label for="Longitud" class="col-sm-5 control-label">Longitud :</label>
+            <div class="col-sm-10">
+                <input type="text"  id="txtSucursalLongitud" placeholder="Longitud 100.000">
+            </div>
+        </div> 
+         <div class="form-group">
+            <label for="Domicilio" class="col-sm-5 control-label">Domicilio :</label>
+            <div class="col-sm-10">
+                <input type="text"  id="txtSucursalDomicilio" placeholder="Calle.Ruta Col.Sarabia #000">
+            </div>
+        </div> 
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>Estatus:
+                    </label>
+                    <input id="chbSucursalEstatus" class="checkbox" type="checkbox">
+                </div>
+            </div>
+        </div>   
+        <div class="form-inline center">
+            <button class="btn btn-primary" id="btnMostrar" onclick="actualizarSucursal()">Mostrar</button>
+            <button class="btn btn-success" id="btnGuardar" onclick="guardarSucursal();">Guardar</button>
+            <button class="btn btn-warning" id="btnEliminar" onclick="eliminarSucursal()">Eliminar</button>
+            <button class="btn btn-info" id="btnNuevo" onclick=" limpiarCampos();">Nuevo</button>
+        </div>
+    </form> 
+</div>
