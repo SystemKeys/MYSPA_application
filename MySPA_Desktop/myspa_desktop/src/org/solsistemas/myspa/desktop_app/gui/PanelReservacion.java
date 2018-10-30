@@ -26,10 +26,12 @@ import javafx.util.StringConverter;
 import org.solsistemas.myspa.controller.ControllerCliente;
 import org.solsistemas.myspa.controller.ControllerReservacion;
 import org.solsistemas.myspa.controller.ControllerSala;
+import org.solsistemas.myspa.controller.ControllerSalaHorario;
 import org.solsistemas.myspa.model.Cliente;
 import org.solsistemas.myspa.model.Reservacion;
 import org.solsistemas.myspa.model.Sala;
 import org.solsistemas.myspa.desktop_app.gui.components.TableAdapterReservacion;
+import org.solsistemas.myspa.model.Horario;
 import org.solsistemas.myspa.model.Persona;
 import org.solsistemas.myspa.model.Usuario;
 
@@ -47,14 +49,15 @@ public class PanelReservacion {
     @FXML TextField txtFiltro;
     @FXML ComboBox cmbEstatus;
     @FXML DatePicker dteFecha;
-    @FXML ComboBox cmbHoraInicio;
-    @FXML ComboBox cmbHoraFin;
+    @FXML ComboBox<Horario> cmbHorario;
+   
     @FXML CheckBox chbInactivo;
     @FXML Button btnGuardar;
     @FXML Button btnEliminar;
     @FXML Button btnNuevo;
     @FXML Button btnConsultar;
     @FXML Button btnBuscar;
+    @FXML Button btnConsultarHorarios;
     
     @FXML ComboBox<Cliente> cmbCliente;
     @FXML ComboBox<Sala> cmbSala;
@@ -64,7 +67,7 @@ public class PanelReservacion {
     FXMLLoader fxmll;
     
     ControllerReservacion cr;
-     
+    ControllerSalaHorario csh;
     public PanelReservacion(Stage ventanaApp){
         window = ventanaApp;
         
@@ -75,22 +78,17 @@ public class PanelReservacion {
     public void inicializar() throws Exception{
         //Primero instanciamos el controlador de reservaciones:
         cr = new ControllerReservacion();
+        csh = new ControllerSalaHorario();
         //Después cargamos el archivo fxml:
         fxmll.load();
-         TableAdapterReservacion.adapt(tblReservaciones);
+        TableAdapterReservacion.adapt(tblReservaciones);
          //Agregamos oyentes:
         agregarOyentes();
         cambiarFormatoFecha();
         agregarOpcionesSalas();
         agregarOpcionesClientes();
          
-        ObservableList<String> estatusReservacion = FXCollections.observableArrayList("0","1","2");
-        ObservableList<String> listaHorarioInicio = FXCollections.observableArrayList("09:00","09:30","10:00","10:30",
-                                                                                      "11:00", "11:30", "12:00","12:30","13:00","13:30");
-        ObservableList<String> listaHorarioFin = FXCollections.observableArrayList("09:00","09:30","10:00","10:30",
-                                                                                   "11:00", "11:30", "12:00","12:30","13:00","13:30","14:00");
-         cmbHoraInicio.setItems(listaHorarioInicio);
-         cmbHoraFin.setItems(listaHorarioFin);
+        ObservableList<String> estatusReservacion = FXCollections.observableArrayList("0","1","2");       
          cmbEstatus.setItems(estatusReservacion);
       
     }
@@ -107,6 +105,7 @@ public class PanelReservacion {
             tblReservaciones.getSelectionModel()
                         .selectedItemProperty()
                         .addListener((obs, anterior, nueva) -> { mostrarDetallesReservacion(); });
+            btnConsultarHorarios.setOnAction(evt -> {agregarOpcionesHorario();});
     }
     
     public void cambiarFormatoFecha(){
@@ -265,19 +264,21 @@ public class PanelReservacion {
        
     private void guardarReservacion() {
         //Creamos una variable para guardar el horario selecionado
-        
+        Horario h = new Horario();
         String horarioInicio;
         String horarioFin;                 
         //Creamos un nuevo objeto de tipo Reservacion:
        Reservacion r = new Reservacion();
         
-       horarioInicio = cmbHoraInicio.getSelectionModel().getSelectedItem().toString();
-       horarioFin = cmbHoraFin.getSelectionModel().getSelectedItem().toString();
+       horarioInicio = cmbHorario.getSelectionModel().getSelectedItem().getHoraInicio();
+       horarioFin  =   cmbHorario.getSelectionModel().getSelectedItem().getHoraInicio();
+     
                  horarioInicio = horarioInicio.substring(0, 5)+":00";
-                 horarioFin = horarioFin.substring(0, 5)+":00";
+                
   
                 r.setFechaHoraInicio(dteFecha.getValue()+" "+horarioInicio);
                 r.setFechaHoraFin(dteFecha.getValue()+" "+horarioFin);
+               
         r.setSala(cmbSala.getValue());
         r.setCliente(cmbCliente.getValue());
         r.setEstatus(cmbEstatus.getSelectionModel().getSelectedIndex());
@@ -285,12 +286,13 @@ public class PanelReservacion {
   
         if (txtId.getText().trim().length() > 0)   
             r.setId(Integer.valueOf(txtId.getText()));
-           
+        //guardamos el id de horario para llenar latabla sala:horario
+        h.setId(cmbHorario.getSelectionModel().getSelectedItem().getId());
         //Una vez que llenamos todos los datos de un empleado,
         //realizamos la inserción o actualización del registro:
         try {
             if (r.getId() == 0) {
-                
+                csh.insert(r.getSala(), h);
                 cr.insert(r);
                 txtId.setText("" + r.getId());         
             }
@@ -318,10 +320,8 @@ private void limpiarCampos() {
         dteFecha.setValue(null);
         cmbSala.getSelectionModel().clearSelection();
         cmbSala.setValue(null);
-        cmbHoraInicio.getSelectionModel().clearSelection();    
-        cmbHoraInicio.setValue(null);
-        cmbHoraFin.getSelectionModel().clearSelection();  
-        cmbHoraFin.setValue(null);
+        cmbHorario.getSelectionModel().clearSelection();    
+        cmbHorario.setValue(null);      
         cmbEstatus.getSelectionModel().clearSelection();   
         cmbEstatus.getSelectionModel().selectFirst();
         

@@ -12,7 +12,7 @@ import java.util.List;
  */ 
 public class ServicioTratamiento {
     private int id;
-    //private int estatus;
+    //private int estatus;  
     private Tratamiento tratamiento;
     private List<Producto> productos;
     

@@ -38,9 +38,8 @@
             <ImageView fx:id="imgvTbtnWebcamIcon" fitHeight="24.0" fitWidth="24.0" layoutX="642.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" />
             <DatePicker fx:id="dteFecha" layoutX="400.0" layoutY="10.0" />
             <ComboBox fx:id="cmbCliente" layoutX="112.0" layoutY="58.0" prefHeight="25.0" prefWidth="195.0" promptText="Selecciona el Cliente" />
-            <ComboBox fx:id="cmbHoraInicio" layoutX="701.0" layoutY="10.0" prefHeight="25.0" prefWidth="174.0" promptText="Hora de Inicio" />
+            <ComboBox fx:id="cmbHorario" layoutX="701.0" layoutY="10.0" prefHeight="25.0" prefWidth="174.0" promptText="Hora de Inicio" />
             <Label layoutX="616.0" layoutY="14.0" prefHeight="17.0" prefWidth="111.0" text="Horario:" />
-            <ComboBox fx:id="cmbHoraFin" layoutX="701.0" layoutY="43.0" prefHeight="25.0" prefWidth="174.0" promptText="Hora de Fin" />
             <ComboBox fx:id="cmbEstatus" layoutX="701.0" layoutY="77.0" prefWidth="150.0" promptText="Estatus Reservación" />
             <Button fx:id="btnConsultarHorarios" layoutX="574.0" layoutY="58.0" mnemonicParsing="false" text="Consultar Horarios" />
          </children>

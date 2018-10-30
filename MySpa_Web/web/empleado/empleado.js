@@ -42,6 +42,18 @@ function actualizarTablaProductos(){
                                                                   '<td>' + productos[i].precioUso + '</td>' +
                                                             '</tr>';
                                                     $('#tbProductos').html(str);
+                                                    $('#tbProductos').find('tr').click(function()
+                                                          {
+                                                              //this en esta funcion es el renglon
+                                                              //seleccionado por el usuario                                                            
+                                                            
+                                                            $('#txtIdProducto').val(productos[$(this).index()].id);
+                                                            $('#txtNombreProducto').val(productos[$(this).index()].nombre);
+                                                            $('#txtMarcaProducto').val(productos[$(this).index()].marca);
+                                                            $('#txtPrecioUsoProducto').val(productos[$(this).index()].precioUso);
+                                                            $('#divModalProductoDetalle').modal();
+                                                            });                              
+                                                           
                                             }
                                      );           
 }
@@ -52,7 +64,7 @@ function guardarProducto(){
     
     if($('#txtIdProducto').val().length > 0){
         rutaREST = '../rsproducto/updateProducto';
-        idProducto = $('#txtProductoId').val();
+        idProducto = $('#txtIdProducto').val();
     }else{
         rutaREST = '../rsproducto/insertProducto';
     }
@@ -62,7 +74,7 @@ function guardarProducto(){
             asyn : true,
             url : rutaREST,
             data :{
-                    id : idProducto,
+                    idProducto : idProducto,
                     nombre : $('#txtNombreProducto').val(),
                     marca : $('#txtMarcaProducto').val(),
                     precioUso : $('#txtPrecioUsoProducto').val(),
@@ -71,17 +83,17 @@ function guardarProducto(){
             }).done(function (data)
                     {
                      if (data.error != null){
-                         swal("Error", data.error, 'warning');
+                        swal("Error", data.error, 'warning');
                          return;
                      }
                      actualizarTablaProductos();
                      $('#txtIdProducto').val(data.result);  
-                     swal('Realizado', 'Hecho', 'success');
+                       swal('Realizado', 'Hecho', 'success');
                     }                                
                     );
 }
 
-function limpiarCampos(){
+function limpiarCamposProducto(){
     $('#txtIdProducto').val('');
     $('#txtNombreProducto').val('');
     $('#txtMarcaProducto').val('');
@@ -218,7 +230,7 @@ function actualizarSala(){
     });
 } 
     
-function limpiarCampos() {
+function limpiarCamposSala() {
     $('#txtSalaId').val('');
     $('#txtSalaNombre').val('');
     $('#txtSalaDescripcion').val('');

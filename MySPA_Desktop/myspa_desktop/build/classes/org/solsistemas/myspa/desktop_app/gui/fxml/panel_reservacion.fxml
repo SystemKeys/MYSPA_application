@@ -42,7 +42,7 @@
             <Label layoutX="616.0" layoutY="14.0" prefHeight="17.0" prefWidth="111.0" text="Horario:" />
             <ComboBox fx:id="cmbHoraFin" layoutX="701.0" layoutY="43.0" prefHeight="25.0" prefWidth="174.0" promptText="Hora de Fin" />
             <ComboBox fx:id="cmbEstatus" layoutX="701.0" layoutY="77.0" prefWidth="150.0" promptText="Estatus Reservación" />
-            <Button layoutX="580.0" layoutY="58.0" mnemonicParsing="false" text="Salas Disponibles" />
+            <Button fx:id="btnConsultarHorarios" layoutX="574.0" layoutY="58.0" mnemonicParsing="false" text="Consultar Horarios" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="pnlBotones" layoutX="14.0" layoutY="137.0" prefHeight="17.0" prefWidth="857.0" stylesheets="@../../resources/estilo1.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">

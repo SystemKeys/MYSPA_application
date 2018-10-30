@@ -29,6 +29,7 @@ public class ControllerReservacion {
         String sql =  "INSERT INTO reservacion (fechaHoraInicio,fechaHoraFin,estatus, idCliente, idSala) " + 
                         "VALUES (?, ?, ?,?,?)";
         
+        
         //AquÃ­ guardaremoslos ID's que se generarÃ¡n:
         int idGenerado = -1;
         
@@ -43,6 +44,7 @@ public class ControllerReservacion {
         //devuelva el ID que se genera al realizar la inserciÃ³n del registro:
         PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         
+        
         //En este objeto guardaremos el resultado de la consulta, la cual
         //nos devolverÃ¡ los ID's que se generaron. En este caso, solo se 
         //generarÃ¡ un ID:
@@ -55,10 +57,6 @@ public class ControllerReservacion {
          pstmt.setInt(3, r.getEstatus());
          pstmt.setInt(4, r.getCliente().getId());
          pstmt.setInt(5, r.getSala().getId());
-         
-        
-        
-        
         //Ejecutamos el Stored Procedure:
          pstmt.executeUpdate();
         
@@ -71,6 +69,7 @@ public class ControllerReservacion {
             idGenerado = rs.getInt(1);
             r.setId(idGenerado);
         }
+        
        
         //Cerramos todos los objetos de conexiÃ³n con la B.D.:
         rs.close();
