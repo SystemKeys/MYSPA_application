@@ -27,9 +27,23 @@ and open the template in the editor.
                 </table>
             </div>
         </div>
-    </div>
+<div>
+             <img id="imgSalaFoto" src="" style="width: 100%;"/>
+         </div>    </div>
+   
+</div>
 
-    <form class="form-horizontal" role="form">
+
+<div class="modal modal-wide fade" id="divModalSalaDetalle" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal Content -->
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title" style="color : white;">TITULO</h4>
+                <button type="button" class="close" style="color: wheat;" data-dismiss="modal">&times;</button>                                
+            </div>
+            <div class="modal-body">
+                 <form class="form-horizontal" role="form">
 
         <div class="form-group">
             <label for="idSala" class="col-sm-6 control-label">ID Sala :</label>
@@ -80,20 +94,21 @@ and open the template in the editor.
                     <input id="chbSalaEstatus" class="checkbox" type="checkbox">
                 </div>
             </div>
-        </div>   
-        <div class="form-inline center">
-            <button class="btn btn-primary" id="btnMostrar" onclick="cargarModuloSala();">Mostrar</button>
-            <button class="btn btn-success" id="btnGuardar" onclick="guardarSala();">Guardar</button>
-            <button class="btn btn-danger" id="btnEliminar" onclick="eliminarSala();">Eliminar</button>
-            <button class="btn btn-default" id="btnActualizar" onclick="actualizarSala();">Actualizar</button>
-            <button class="btn btn-info" id="btnNuevo" onclick=" limpiarCampos();">Nuevo</button>
         </div>
+        <fieldset><center>
+                 
+            <button class="btn btn-primary" id="btnGuardar" onclick="guardarSala();">Guardar</button>
+            <button class="btn btn-primary" id="btnEliminar" onclick="eliminarSala();">Eliminar</button>
+            <button class="btn btn-primary" id="btnActualizar" onclick="actualizarSala();">Actualizar</button>
+            <button class="btn btn-primary" id="btnNuevo" onclick=" limpiarCampos();">Nuevo</button>
+            </center>
+        </fieldset>
     </form> 
-
-    <!--
-    <form>
-        <label for="exampleInputEmail1" class="text-uppercase">Nombre Producto</label>
-        <input type="text" id="txtNombreProducto" class="form-control" placeholder="">
-    </form>
-    -->
+    </div>
+            <div class="modal-footer" style="text-align: center;">
+                MYSPAS
+            </div>
+        </div>
+        
+    </div>
 </div>
