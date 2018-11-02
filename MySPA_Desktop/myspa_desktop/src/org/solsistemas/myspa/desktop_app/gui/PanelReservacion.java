@@ -24,6 +24,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import org.solsistemas.myspa.controller.ControllerCliente;
+import org.solsistemas.myspa.controller.ControllerHorario;
 import org.solsistemas.myspa.controller.ControllerReservacion;
 import org.solsistemas.myspa.controller.ControllerSala;
 import org.solsistemas.myspa.controller.ControllerSalaHorario;
@@ -57,8 +58,7 @@ public class PanelReservacion {
     @FXML Button btnNuevo;
     @FXML Button btnConsultar;
     @FXML Button btnBuscar;
-    @FXML Button btnConsultarHorarios;
-    
+    @FXML Button btnConsultarHorarios;    
     @FXML ComboBox<Cliente> cmbCliente;
     @FXML ComboBox<Sala> cmbSala;
     
@@ -90,6 +90,7 @@ public class PanelReservacion {
          
         ObservableList<String> estatusReservacion = FXCollections.observableArrayList("0","1","2");       
          cmbEstatus.setItems(estatusReservacion);
+         cmbHorario.setDisable(true);
       
     }
 
@@ -99,13 +100,12 @@ public class PanelReservacion {
             btnNuevo.setOnAction(evt -> { limpiarCampos(); });
             btnEliminar.setOnAction(evt -> { eliminarReservacion(); });
             btnBuscar.setOnAction(evt -> { buscarReservacion(); });
-
+            btnConsultarHorarios.setOnAction(evt -> {agregarHorario();});
             //Agregamos un oyente de selección a la tabla de reservaciones.
             //Este oyente se disparará cuando el usuario seleccione un renglón:
             tblReservaciones.getSelectionModel()
                         .selectedItemProperty()
-                        .addListener((obs, anterior, nueva) -> { mostrarDetallesReservacion(); });
-            btnConsultarHorarios.setOnAction(evt -> {agregarOpcionesHorario();});
+                        .addListener((obs, anterior, nueva) -> { mostrarDetallesReservacion(); });           
     }
     
     public void cambiarFormatoFecha(){
@@ -135,8 +135,26 @@ public class PanelReservacion {
              }
          });
 }
-    private void agregarOpcionesHorario(){
-   //     ControllerHorario ho = new ControllerHorario();
+    private void agregarHorario(){
+        String fecha = "";
+        int salaId = 0;
+        ControllerHorario ho = new ControllerHorario();        
+        ObservableList<Horario> listaHorarios = null;
+        List<Horario> listaHorario = null;
+        
+        try{
+            salaId = cmbSala.getSelectionModel().getSelectedItem().getId();
+            fecha = "" + dteFecha.getValue() + "%";
+            listaHorario = ho.getAllWithoutUsed(salaId, fecha);
+            listaHorarios = FXCollections.observableList(listaHorario);
+            cmbHorario.setItems(listaHorarios);
+            cmbHorario.setDisable(false);
+        }catch(Exception e){
+            e.printStackTrace();
+             mostrarMensaje( "Error al cargar datos.", 
+                            "Ocurrió el siguiente error: " + e.toString(),
+                            Alert.AlertType.ERROR);
+        }
     }
     //Agregamos las salas al comboBox
       private void agregarOpcionesSalas(){
@@ -295,14 +313,12 @@ public class PanelReservacion {
                 csh.insert(r.getSala(), h);
                 cr.insert(r);
                 txtId.setText("" + r.getId());         
+                cmbHorario.getItems().clear();
             }
-            else
-               
-                cr.update(r);
-            
-            mostrarMensaje( "Movimiento realizado.", 
+            else                                         
+                mostrarMensaje( "No se puede Modificar una reservación.", 
                             "Datos de cliente guardados correctamente.", 
-                            Alert.AlertType.CONFIRMATION);
+                            Alert.AlertType.INFORMATION);
         } 
         catch (Exception ex) {
             ex.printStackTrace();
@@ -324,7 +340,7 @@ private void limpiarCampos() {
         cmbHorario.setValue(null);      
         cmbEstatus.getSelectionModel().clearSelection();   
         cmbEstatus.getSelectionModel().selectFirst();
-        
+        cmbHorario.getItems().clear();
 
     }
     private void eliminarReservacion(){
