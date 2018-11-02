@@ -27,7 +27,7 @@ import org.solsistemas.myspa.model.Usuario;
 
 /**
  *
- * @author diegg
+ * @author Darckar
  */
 @Path("/")
 public class RESTCliente extends Application{
@@ -64,16 +64,16 @@ public class RESTCliente extends Application{
                            
                            @FormParam("correo")@DefaultValue("") String correo,
                            @FormParam("nombreUsuario")@DefaultValue("") String nombreUsuario,
-                           @FormParam("contrasenia")@DefaultValue("") String contrasenia,
-                           @FormParam("rol")@DefaultValue("") String rol
+                           @FormParam("contrasenia")@DefaultValue("") String contrasenia
                            ){
         
-        ControllerCliente cc = new ControllerCliente();        
+        ControllerCliente cc = new ControllerCliente();
+        JSONSerializer jss= new JSONSerializer();
         String out = null;
         Cliente c = new Cliente();
         Persona p = new Persona();
         Usuario u = new Usuario();
-     // precioUso = 0.5f;
+        
         try {                                 
            p.setNombre(nombre);
            p.setApellidoPaterno(apellidoPaterno);
@@ -88,13 +88,14 @@ public class RESTCliente extends Application{
            //Usuario           
            u.setNombreUsuario(nombreUsuario);
            u.setContrasenia(contrasenia);
-           u.setRol(rol);                
+           u.setRol("Cliente");                
            c.setUsuario(u);
            c.setPersona(p);
            
            cc.insert(c);
+           
             if(c.getId() > 0)
-                out = "{\"result\":" + c.getId() + "}";
+                out = jss.serialize(c);
             else
                 out = "{\"error\":\"Movimiento no realizado.\"}";
         } catch (Exception e) {
@@ -117,13 +118,13 @@ public class RESTCliente extends Application{
                            @FormParam("correo")@DefaultValue("") String correo,                           
                            @FormParam("nombreUsuario")@DefaultValue("") String nombreUsuario,
                            @FormParam("contrasenia")@DefaultValue("") String contrasenia,
-                           @FormParam("rol")@DefaultValue("") String rol,
                            @FormParam("idCliente")@DefaultValue("0") int idCliente,
                            @FormParam("idUsuario")@DefaultValue("0") int idUsuario,
                            @FormParam("idPersona")@DefaultValue("0") int idPersona)
                             {
         ControllerCliente cc= new ControllerCliente();        
         String out = null;
+        JSONSerializer jss= new JSONSerializer();
         Cliente c = new Cliente();
         Persona p = new Persona();
         Usuario u = new Usuario();      
@@ -144,14 +145,14 @@ public class RESTCliente extends Application{
            //Usuario           
            u.setNombreUsuario(nombreUsuario);
            u.setContrasenia(contrasenia);
-           u.setRol(rol);                
+           u.setRol("Cliente");                
            u.setId(idUsuario);
            c.setUsuario(u);
            c.setPersona(p);
            cc.update(c);
             
             if(c.getId() > 0)
-                out = "{\"result\":" + c.getId() + "}";
+                out = jss.serialize(c);
             else
                 out = "{\"error\":\"Movimiento no realizado.\"}";
         } catch (Exception e) {
