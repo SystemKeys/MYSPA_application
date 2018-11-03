@@ -108,12 +108,11 @@ public class ControllerReservacion {
         //Establecemos los valores de los parametros de la consulta, basados
         //en los signos de interrogacion:
         pstmt.setString(1, r.getFechaHoraInicio());
-         pstmt.setString(2, r.getFechaHoraFin());
-         pstmt.setInt(3, r.getEstatus());
+        pstmt.setString(2, r.getFechaHoraFin());
+        pstmt.setInt(3, r.getEstatus());
         pstmt.setInt(4, r.getCliente().getId());
-         pstmt.setInt(5, r.getSala().getId());
-         pstmt.setInt(6, r.getId());
-        
+        pstmt.setInt(5, r.getSala().getId());
+        pstmt.setInt(6, r.getId());        
         
         //Ejecutamos la consulta:
         pstmt.executeUpdate();
@@ -121,8 +120,6 @@ public class ControllerReservacion {
         //Cerramos todos los objetos de conexiÃ³n con la B.D.:
         pstmt.close();
         connMySQL.cerrar();
-
-    
     }
     
     /**

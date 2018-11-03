@@ -30,7 +30,7 @@ and open the template in the editor.
         </div>
     </div>
     
-     <form class="form-goup" role="form">
+     <form class="form-horizontal" role="form">
 
         <div class="form-group">
             <label for="Sucursal" class="col-sm-6 control-label">Clave Sucursal:</label>
@@ -70,12 +70,16 @@ and open the template in the editor.
                     <input id="chbSucursalEstatus" class="checkbox" type="checkbox">
                 </div>
             </div>
-        </div>   
-        <div class="form-inline center">
+        </div>
+         
+         
+         <fieldset><center>
             <button class="btn btn-primary" id="btnMostrar" onclick="actualizarSucursal()">Mostrar</button>
             <button class="btn btn-success" id="btnGuardar" onclick="guardarSucursal();">Guardar</button>
             <button class="btn btn-warning" id="btnEliminar" onclick="eliminarSucursal()">Eliminar</button>
             <button class="btn btn-info" id="btnNuevo" onclick=" limpiarCampos();">Nuevo</button>
-        </div>
+            </center>
+         </fieldset>
+        
     </form> 
 </div>

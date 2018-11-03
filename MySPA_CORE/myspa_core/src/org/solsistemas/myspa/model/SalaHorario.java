@@ -10,23 +10,23 @@ package org.solsistemas.myspa.model;
  * @author diegg
  */
 public class SalaHorario {
-    private Sala idSala;
-    private Horario idHorario;
+    private Sala sala;
+    private Horario horario;
 
-    public Sala getIdSala() {
-        return idSala;
+    public Sala getSala() {
+        return sala;
     }
 
-    public void setIdSala(Sala idSala) {
-        this.idSala = idSala;
+    public void setSala(Sala sala) {
+        this.sala = sala;
     }
 
-    public Horario getIdHorario() {
-        return idHorario;
+    public Horario getHorario() {
+        return horario;
     }
 
-    public void setIdHorario(Horario idHorario) {
-        this.idHorario = idHorario;
+    public void setHorario(Horario horario) {
+        this.horario = horario;
     }
     
     

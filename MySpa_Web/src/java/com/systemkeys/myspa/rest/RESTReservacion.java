@@ -18,7 +18,6 @@ import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.solsistemas.myspa.controller.ControllerReservacion;
-
 import org.solsistemas.myspa.model.Cliente;
 import org.solsistemas.myspa.model.Reservacion;
 import org.solsistemas.myspa.model.Sala;
@@ -49,15 +48,14 @@ public class RESTReservacion extends Application{
         }
          return Response.status(Response.Status.OK).entity(out).build();
     } 
-@POST
+    @POST
     @Path("insertReservacion")
     @Produces(MediaType.APPLICATION_JSON)
     public Response insert(@FormParam("fechaHoraInicio")@DefaultValue("") String fechaHoraInicio,
-                           @FormParam("fechaHoraFin")@DefaultValue("") String fechaHoraFin,
-                          
+                           @FormParam("fechaHoraFin")@DefaultValue("") String fechaHoraFin,                           
                            @FormParam("idCliente")@DefaultValue("0") int idCliente,
                            @FormParam("idSala")@DefaultValue("0")int idSala)
-                            {
+                           {
         
         ControllerReservacion cr = new ControllerReservacion();        
         String out = null;
@@ -85,44 +83,6 @@ public class RESTReservacion extends Application{
         }
          return Response.status(Response.Status.OK).entity(out).build();
     }    
-
-    @POST
-    @Path("updateReservacion")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response update(@FormParam("fechaHoraInicio")@DefaultValue("") String fechaHoraInicio,
-                           @FormParam("fechaHoraFin")@DefaultValue("") String fechaHoraFin,
-                           @FormParam("estatus")@DefaultValue("1") int estatus,
-                           @FormParam("idCliente")@DefaultValue("0") int idCliente,
-                           @FormParam("idSala")@DefaultValue("0")int idSala,
-                           @FormParam("idReservacion")@DefaultValue("0")int idReservacion)                           
-                            {
-        
-        ControllerReservacion cr = new ControllerReservacion();        
-        String out = null;
-        Reservacion r = new Reservacion();
-        Sala s = new Sala();
-        Cliente c = new Cliente();
-     // precioUso = 0.5f;
-        try {            
-            r.setEstatus(estatus);
-            r.setFechaHoraFin(fechaHoraFin);
-            r.setFechaHoraInicio(fechaHoraInicio);
-            r.setId(idReservacion);
-            s.setId(idSala);
-            c.setId(idCliente);            
-            r.setSala(s);
-            r.setCliente(c);
-            cr.update(r);
-            if(r.getId() > 0)
-                out = "{\"result\":" + r.getId() + "}";
-            else
-                out = "{\"error\":\"Movimiento no realizado.\"}";
-        } catch (Exception e) {
-            e.printStackTrace();
-            out = "{\"exception:\":\"" + e.toString() + "\"}";
-        }
-         return Response.status(Response.Status.OK).entity(out).build();
-    }
         
     @POST
     @Path("deleteReservacion")

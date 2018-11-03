@@ -34,6 +34,7 @@ import org.solsistemas.myspa.model.Sala;
 import org.solsistemas.myspa.desktop_app.gui.components.TableAdapterReservacion;
 import org.solsistemas.myspa.model.Horario;
 import org.solsistemas.myspa.model.Persona;
+import org.solsistemas.myspa.model.SalaHorario;
 import org.solsistemas.myspa.model.Usuario;
 
 /**
@@ -283,6 +284,7 @@ public class PanelReservacion {
     private void guardarReservacion() {
         //Creamos una variable para guardar el horario selecionado
         Horario h = new Horario();
+        SalaHorario sh = new SalaHorario();
         String horarioInicio;
         String horarioFin;                 
         //Creamos un nuevo objeto de tipo Reservacion:
@@ -291,36 +293,41 @@ public class PanelReservacion {
        horarioInicio = cmbHorario.getSelectionModel().getSelectedItem().getHoraInicio();
        horarioFin  =   cmbHorario.getSelectionModel().getSelectedItem().getHoraInicio();
      
-                 horarioInicio = horarioInicio.substring(0, 5)+":00";
-                
-  
+                 horarioInicio = horarioInicio.substring(0, 5)+":00";                  
                 r.setFechaHoraInicio(dteFecha.getValue()+" "+horarioInicio);
                 r.setFechaHoraFin(dteFecha.getValue()+" "+horarioFin);
                
         r.setSala(cmbSala.getValue());
         r.setCliente(cmbCliente.getValue());
-        r.setEstatus(cmbEstatus.getSelectionModel().getSelectedIndex());
-        
-  
+        r.setEstatus(cmbEstatus.getSelectionModel().getSelectedIndex());          
         if (txtId.getText().trim().length() > 0)   
             r.setId(Integer.valueOf(txtId.getText()));
         //guardamos el id de horario para llenar latabla sala:horario
+        
         h.setId(cmbHorario.getSelectionModel().getSelectedItem().getId());
+        sh.setHorario(h);
+        sh.setSala(r.getSala());
+        //damos formato a la fecha para actualizar el horario
+        String fecha = "" + dteFecha.getValue() + "%";
         //Una vez que llenamos todos los datos de un empleado,
         //realizamos la inserción o actualización del registro:
+        
         try {
             if (r.getId() == 0) {
-                csh.insert(r.getSala(), h);
+                csh.insert(sh);
                 cr.insert(r);
                 txtId.setText("" + r.getId());         
                 cmbHorario.getItems().clear();
             }
-            else                                         
-                mostrarMensaje( "No se puede Modificar una reservación.", 
-                            "Datos de cliente guardados correctamente.", 
-                            Alert.AlertType.INFORMATION);
-        } 
-        catch (Exception ex) {
+            else {          
+                csh.update(sh, fecha);
+                cr.update(r);
+                cmbHorario.getItems().clear();
+            }
+             mostrarMensaje( "Movimiento realizado.", 
+                            "Datos de reservación guardados correctamente.", 
+                            Alert.AlertType.CONFIRMATION);
+        }catch (Exception ex) {
             ex.printStackTrace();
             mostrarMensaje( "Error al persistir datos.", 
                             "Ocurrió el siguiente error: " + ex.toString(),

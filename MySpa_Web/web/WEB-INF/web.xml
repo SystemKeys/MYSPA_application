@@ -162,5 +162,34 @@
         <url-pattern>/rsservicio/*</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>RESTJerseySalaHorario</servlet-name>
+        <servlet-class>
+            org.glassfish.jersey.servlet.ServletContainer
+        </servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.systemkeys.myspa.rest.RESTSalaHorario</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RESTJerseySalaHorario</servlet-name>
+        <url-pattern>/rssalahorario/*</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>RESTJerseyHorario</servlet-name>
+        <servlet-class>
+            org.glassfish.jersey.servlet.ServletContainer
+        </servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.systemkeys.myspa.rest.RESTHorario</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RESTJerseyHorario</servlet-name>
+        <url-pattern>/rshorario/*</url-pattern>
+    </servlet-mapping>
     
 </web-app>
