@@ -1,6 +1,6 @@
 
 function inicializar(){
-    if(localStorage.getItem('MYSPA_CREDENCIAL') == null)
+    if(localStorage.getItem('MYSPA_CREDENCIAL') === null)
         window.location = '../index.html';
     
     var empleado = JSON.parse(localStorage.getItem('MYSPA_CREDENCIAL'));
@@ -20,9 +20,7 @@ function cargarModuloProducto(){
                      
                         actualizarTablaProductos();
                         }
-                    );
-                   
-                    
+                    );                                       
 }
 
 function actualizarTablaProductos(){
@@ -193,7 +191,7 @@ function eliminarSala(){
         async: true,
         url: "../rssala/deleteSala",
         data: {
-            id:$('#txtSalaId').val() 
+            idSala:$('#txtSalaId').val() 
 //            nombre: $('#txtSalaNombre').val(),
 //            descripcion: $('#txtSalaDescripcion').val(),
 //            foto: $('#txtFoto').val(),
@@ -313,36 +311,12 @@ function eliminarSucursal(){
                   return;
                }
               actualizarTablaSucursal();
-               $('#txtSucursalId').val(data.result);
+             
                 swal('Movimiento realizado','','success');
             });
 }
 
-function actualizarSucursal(){
-    $.ajax({
-                type:"POST",
-                aync:true,
-                url:'../rssucursal/updateSucursal',
-                data:{
-                    
-                    nombre: $('#txtSucursalNombre').val(),
-                    domicilio: $('#txtSucursalDomicilio').val(),
-                    latitud: $('#txtSucursalLatitud').val(),
-                    longitud: $('#txtSucursalLongitud').val(),
-                    estatus:$('#chbSucursalEstatus').prop('checked')?1:0,
-                    idSucursal: $('#txtSucursalId').val()
-                }
-            }).done(function(data){
-               if(data.error!=null)
-               {
-                  swal('Error',data.error,'warning');
-                  return;
-               }
-              actualizarTablaSucursal();
-               $('#txtSucursalId').val(data.result);
-                swal('Movimiento realizado','','success');
-            });
-}
+
           
 function cargarModuloTratamiento() {
     $.ajax(
@@ -378,10 +352,10 @@ function guardarTratamiento() {
         asyn: true,
         url: rutaREST,
         data: {
-            id: idTratamiento,
+            idTratamiento: idTratamiento,
             nombre: $('#txtNombreTratamiento').val(),
-            descripcion: $('#txtDescripcionTratamiento').val()
-            //estatus : $('#chbEstatusProducto').prop('checked') ? 1 : 0
+            descripcion: $('#txtDescripcionTratamiento').val(),
+            //estatus : $('#chbEstatusTratamiento').prop('checked') ? 1 : 0
         }
     }).done(function (data)
     {
@@ -415,35 +389,39 @@ function actualizarTablaTratamiento() {
                 $('#tbTratamiento').html(str);
                 $('#tbTratamiento').find('tr').click(function ()
                 {
-                    alert('Renglon: ' + $(this).index());
-                }
-                );
+                    //this en esta funcion es el renglon
+                    //seleccionado por el usuario                                                            
+
+                    $('#txtIdTratamiento').val(tratamientos[$(this).index()].id);
+                    $('#txtNombreTratamiento').val(tratamientos[$(this).index()].nombre);
+                    $('#txtDescripcionTratamiento').val(tratamientos[$(this).index()].descripcion);
+                    $('#divModalTratamientoDetalle').modal();
+                });
+
             }
     );
 }
 
 
+function eliminarTratamiento() {
 
-function eliminarTratamiento(){
-   
-   $.ajax({
-                type:"POST",
-                aync:true,
-                url: '../rstratamiento/deleteTratamiento',
-                data:{
-                    idTratamiento: $('#txtIdTratamiento').val()
-                    
-                      }
-            }).done(function(data){
-               if(data.error!=null)
-               {
-                  swal('Error',data.error,'warning');
-                  return;
-               }
-              actualizarTablaTratamiento();
-               $('#txtIdTratamiento').val(data.result);
-                swal('Movimiento realizado','','success');
-            });
+    $.ajax({
+        type: "POST",
+        aync: true,
+        url: '../rstratamiento/deleteTratamiento',
+        data: {
+            idTratamiento: $('#txtIdTratamiento').val()
+        }
+    }).done(function (data) {
+        if (data.error != null)
+        {
+            swal('Error', data.error, 'warning');
+            return;
+        }
+        actualizarTablaTratamiento();
+        $('#txtIdTratamiento').val(data.result);
+        swal('Movimiento realizado', '', 'success');
+    });
 }
 
 function limpiarCamposTratamiento() {
@@ -452,6 +430,7 @@ function limpiarCamposTratamiento() {
     $('#txtDescripcionTratamiento').val('');
     $('#chbEstatusTratamiento').prop('checked', true);
 }
+
 
 //Cliente
 function cargarModuloCliente(){

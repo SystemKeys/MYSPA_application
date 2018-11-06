@@ -79,8 +79,7 @@ public class ControllerHorario {
         rsHO.close();
         pstmtHO.close();
         
-        connMySQL.cerrar();
-        
+        connMySQL.cerrar();        
         //Devolvemos la lista dinámica con los productos generados al 
         //realizar la consulta en la Base de Datos.
         return horarios;

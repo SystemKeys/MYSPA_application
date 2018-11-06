@@ -25,8 +25,10 @@ function login() {
                             }
                             else if (data.class.toLowerCase().includes('empleado')){
                                 window.location='empleado/index.html';
+                                localStorage.setItem('MYSPA_CREDENCIAL', JSON.stringify(data));
                             }
                             else if (data.class.toLowerCase().includes('cliente')){
+                                localStorage.setItem('MYSPA_CREDENCIAL', JSON.stringify(data));
                                 window.location='cliente/index.html';
                             }
                         }
