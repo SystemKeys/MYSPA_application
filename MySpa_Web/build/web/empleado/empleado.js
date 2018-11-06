@@ -1,3 +1,10 @@
+function cargarPanel(){
+    $(document).ready(function(){
+    $("#btnProducto").click(function(){
+        $("#ModalProducto").modal();
+    });
+});
+}
 
 function inicializar(){
     if(localStorage.getItem('MYSPA_CREDENCIAL') === null)

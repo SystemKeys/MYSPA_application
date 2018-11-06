@@ -1,0 +1,186 @@
+<div class="row">
+    <div class="col-sm-8">
+        <div class="card border-primary">
+            <div class="card-header text-center text-primary">
+                <h3>Cat&aacute;logo de Productos</h3> 
+                <button type="button" class="btn btn-default btn-lg text-left" id="btnProducto" onclick="cargarPanel()">Productos</button>
+            </div>
+            
+            <div class="card-body">
+                
+                <table class=" table table-info"  id="dataTable" width="150%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>id Producto</th>
+                            <th>Nombre Producto</th>
+                            <th>Marca</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbProductos">  
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<div class="container">
+  <!--  button 
+  <button type="button" class="btn btn-default btn-lg" id="myBtn">Productos</button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="ModalProducto" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-align-center"></span> Productos</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+           <div class="form-group">
+            <label for="claveProducto" class="col-lg-6 control-label">Clave Producto :</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="txtIdProducto" readonly placeholder="Clave Producto">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Nombre" class="col-lg-5 control-label">Nombre :</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="txtNombreProducto" placeholder="Nombre">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Marca" class="col-lg-5 control-label">Marca :</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="txtMarcaProducto" placeholder="Marca">
+            </div>
+        </div>       
+        <div class="form-group">
+            <label for="precioUso" class="col-lg-5 control-label">Precio Uso :</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="txtPrecioUsoProducto" placeholder="Precio Uso">
+            </div>
+        </div> 
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <div class="checkbox">
+                    <label>
+                        <input id="chbEstatusProducto" type="checkbox"> Estatus
+                    </label>
+                </div>
+            </div>
+        </div>
+              <center>
+                <button type="button" class="btn btn-circle btn-primary"  id="btnNuevo" onclick="limpiarCamposProducto()">Nuevo</button>
+                <button type="button" class="btn btn-circle btn-primary"  id="btnGuardar" onclick="guardarProducto()">Guardar</button>                
+                <button type="button" class="btn btn-circle btn-primary" id="btnEliminar" onclick=" eliminarProducto()">Eliminar</button>
+              </center>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+</div>
+<!--
+    <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+            <label for="claveProducto" class="col-lg-6 control-label">Clave Producto :</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="txtIdProducto" readonly placeholder="Clave Producto">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Nombre" class="col-lg-5 control-label">Nombre :</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="txtNombreProducto" placeholder="Nombre">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Marca" class="col-lg-5 control-label">Marca :</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="txtMarcaProducto" placeholder="Marca">
+            </div>
+        </div>       
+        <div class="form-group">
+            <label for="precioUso" class="col-lg-5 control-label">Precio Uso :</label>
+            <div class="col-lg-10">
+                <input type="number" class="form-control" id="txtPrecioUsoProducto" placeholder="Precio Uso">
+            </div>
+        </div> 
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <div class="checkbox">
+                    <label>
+                        <input id="chbEstatusProducto" type="checkbox"> Estatus
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+ <div class="container">
+  <h2>Catalogo de Productos</h2>
+  
+ 
+  <button type="button" class="btn btn-info btn-lg" id="btnProducto">Nuevo producto</button>
+
+ 
+  <div class="modal fade" id="mdlProducto" role="dialog">
+    <div class="modal-dialog">
+    
+     
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>The <strong>shown.bs.modal</strong> event occurs when the modal is fully shown.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+</div>
+ 
+             
+    
+        
+        <fieldset><center>
+                <button type="button" class="btn btn-circle btn-primary" name="nuevo" id="btnNuevo" value="Nuevo" onclick="limpiarCampos()">Nuevo</button>
+                <button type="button" class="btn btn-circle btn-primary"  id="btnGuardar" onclick="guardarProducto()">Guardar</button>
+                <button  class="btn btn-circle btn-primary" id="btnActualizar" value="Actualizar">Actualizar</button>
+                <button  class="btn btn-circle btn-primary" id="btnEliminar" value="Eliminar">Eliminar</button></center>
+        </fieldset>
+      
+  </form> -->
+
+    <!--
+    <form>
+        <label for="exampleInputEmail1" class="text-uppercase">Nombre Producto</label>
+        <input type="text" id="txtNombreProducto" class="form-control" placeholder="">
+    </form>
+    -->
+</div>
+<style>
+  .modal-header, h4, .close {
+      background-color: #3383FF;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+  </style>
+ 
