@@ -18,9 +18,12 @@ import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.solsistemas.myspa.controller.ControllerReservacion;
+import org.solsistemas.myspa.controller.ControllerSalaHorario;
 import org.solsistemas.myspa.model.Cliente;
+import org.solsistemas.myspa.model.Horario;
 import org.solsistemas.myspa.model.Reservacion;
 import org.solsistemas.myspa.model.Sala;
+import org.solsistemas.myspa.model.SalaHorario;
 
 
 /**
@@ -47,6 +50,24 @@ public class RESTReservacion extends Application{
             out="{\"error:\":\""+e.toString()+"\"}";
         }
          return Response.status(Response.Status.OK).entity(out).build();
+    }     
+    @POST
+    @Path("getAllReservacionCliente")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllCliente(@FormParam("idCliente")@DefaultValue("0")int idCliente){
+        ControllerReservacion cr = new ControllerReservacion();        
+        List<Reservacion> reservacionesCliente = null;
+        JSONSerializer jss = new JSONSerializer();
+        String out = null;
+        
+        try {
+            reservacionesCliente = cr.getAllCliente("", idCliente);
+            out = jss.serialize(reservacionesCliente);
+        } catch (Exception e) {
+            e.printStackTrace();
+            out="{\"error:\":\""+e.toString()+"\"}";
+        }
+         return Response.status(Response.Status.OK).entity(out).build();
     } 
     @POST
     @Path("insertReservacion")
@@ -54,14 +75,18 @@ public class RESTReservacion extends Application{
     public Response insert(@FormParam("fechaHoraInicio")@DefaultValue("") String fechaHoraInicio,
                            @FormParam("fechaHoraFin")@DefaultValue("") String fechaHoraFin,                           
                            @FormParam("idCliente")@DefaultValue("0") int idCliente,
-                           @FormParam("idSala")@DefaultValue("0")int idSala)
+                           @FormParam("idSala")@DefaultValue("0")int idSala,
+                           @FormParam("idHorario")@DefaultValue("0") int idHorario)
                            {
         
         ControllerReservacion cr = new ControllerReservacion();        
+        ControllerSalaHorario csh = new ControllerSalaHorario();
+        SalaHorario sh = new SalaHorario();
         String out = null;
         Reservacion r = new Reservacion();
         Sala s = new Sala();
         Cliente c = new Cliente();
+        Horario h = new Horario();
      // precioUso = 0.5f;
         try {            
             r.setEstatus(1);
@@ -69,10 +94,13 @@ public class RESTReservacion extends Application{
             r.setFechaHoraInicio(fechaHoraInicio);
             s.setId(idSala);
             c.setId(idCliente);
-            
+            h.setId(idHorario); 
+            sh.setHorario(h);
+            sh.setSala(s);
             r.setSala(s);
             r.setCliente(c);
             cr.insert(r);
+            csh.insert(sh);
             if(r.getId() > 0)
                 out = "{\"result\":" + r.getId() + "}";
             else

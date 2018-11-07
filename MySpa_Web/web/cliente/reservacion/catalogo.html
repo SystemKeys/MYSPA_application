@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card border-primary">
+            <div class="card-header text-center text-primary">
+                <h3>Tus Reservaciones</h3> 
+                <button type="button" id="btnProducto" onclick="cargarPanelNuevoReservacion()" class="text-center btn btn-success btn-sm" style="float: right;">Agregar Nueva Reservacion</button>
+            </div>
+            <div class="card-body">
+                <table class=" table table-info"  id="dataTable" width="150%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Clave Reservacion</th>
+                            <th>Fecha Hora Inicio</th>
+                            <th>Fecha Hora Fin</th>                            
+                            <th>Nombre Sala</th>
+                            <th>Nombre Sucursal</th>
+                            <th>Estatus</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbReservaciones">                
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- dialogo modal -->
+
+<div class="modal modal-wide fade" id="divModalReservacionDetalle" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal Content -->
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title" style="color : white;">TITULO</h4>
+                <button type="button" class="close" style="color: wheat;" data-dismiss="modal">&times;</button>                                
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label for="claveReservacion" class="col-lg-6 control-label">Clave Reservación :</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="txtIdReservacion" readonly placeholder="Clave Reservacion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Fecha" class="col-lg-5 control-label">Fecha :</label>
+                        <div class="col-lg-10">
+                            <input type="date" class="form-control" id="txtFecha" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                         <label for="idhorario" class="col-lg-5 control-label">Clave Horario:</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="txtHorarioId" readonly placeholder="Clave Horario">
+                        </div>
+                        <label for="HoraInicioyFin" class="col-lg-5 control-label">Horarios Inicio:</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="txtHorarioInicio" readonly placeholder="Horario Inicio">
+                        </div>
+                        <label for="HoraInicioyFin" class="col-lg-5 control-label">Horarios Fin:</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="txtHorarioFin" readonly placeholder="Horario Fin">
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="button" class="btn btn-circle btn-primary" name="cargarHorarios" id="btnCargarHorarios" value="cargarHorarios" onclick="cargarHorariosReservacion()">Cargar Horarios</button>
+                        </div> 
+                    </div>       
+                    <div class="form-group">
+                        <label for="idCliente" class="col-lg-5 control-label">Clave Cliente :</label>
+                        <div class="col-lg-10">
+                            <input type="number" class="form-control" id="txtIdClienteReservacion" readonly placeholder="Clave Cliente">
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="button" class="btn btn-circle btn-primary" name="cargarCliente" id="btnCargarCliente" value="cargarCliente" onclick="cargarClienteReservacion()">Cargar Cliente</button>
+                        </div>  
+                    </div> 
+                    <div class="form-group">
+                        <label for="idSala" class="col-lg-5 control-label">Clave Sala :</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" id="txtIdSalaReservacion" readonly placeholder="Clave Sala">
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="button" class="btn btn-circle btn-primary" name="cargarSala" id="btnCargarSala" value="cargarSala" onclick="cargarSalaReservacion()">Cargar Sala</button>
+                        </div>                        
+                    </div> 
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input id="chbEstatusReservacion" type="checkbox"> Estatus
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <fieldset><center>
+                            <button type="button" class="btn btn-circle btn-primary" name="nuevo" id="btnNuevo" value="Nuevo" onclick="limpiarReservacion()()">Nuevo</button>
+                            <button type="button" class="btn btn-circle btn-primary" name="guardar" id="btnGuardar" onclick="guardarProducto()">Guardar</button>
+                            <button type="button" class="btn btn-circle btn-primary" name="eliminar" id="btnEliminar" value="Eliminar">Eliminar</button></center>
+                    </fieldset>
+
+                </form>
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                MYSPAS
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal modal-wide fade" id="divModalSalaReservaciones" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal Content -->
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title" style="color : white;">TITULO</h4>
+                <button type="button" class="close" style="color: wheat;" data-dismiss="modal">&times;</button>                                
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card border-primary">
+                            <div class="card-header bg-dark text text-center text-primary ">
+                                <h3>Cat&aacute;logo de salas</h3>
+                            </div>
+                            <div class="card-body">
+                                <table class=" table table-info"  id="dataTable" width="400%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id Sala</th>
+                                            <th>Nombre Sala</th>
+                                            <th>DescripciÃ³n</th>
+                                            <th>Sucursal</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbSalasReservacion">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                MYSPA
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal modal-wide fade" id="divModalHorariosReservaciones" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal Content -->
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title" style="color : white;">TITULO</h4>
+                <button type="button" class="close" style="color: wheat;" data-dismiss="modal">&times;</button>                                
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3>Catalogo de Horario</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-info">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Hora Inicio</th>
+                                    <th>Hora Fin</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbHorariosReservacion">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                MYSPA
+            </div>
+        </div>
+
+    </div>
+
+</div>

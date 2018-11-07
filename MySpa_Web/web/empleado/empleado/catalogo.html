@@ -1,0 +1,183 @@
+
+  <div class="table-responsive">
+                <div class="card border-primary">
+                    <div class="card-header text-center">
+                        <h3>Cat&aacute;logo de Empleados</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-info">
+                            <thead>
+                                <tr>
+                                    <th>Clave Empleado</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido Paterno</th>
+                                    <th>Apellido Materno</th>
+                                    <th>Genero</th>
+                                    <th>Domicilio</th>
+                                    <th>Telefono</th>
+                                    <th>RFC</th>
+                                    <th>Numero Unico</th>
+                                    <th>Puesto</th>
+                                    <th>Foto</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody id="tbEmpleados">
+                                  
+                            </tbody>
+                        </table>
+                    </div>
+                                        
+                </div>
+            </div>
+
+
+<div class="modal fade bd-example-modal-lg" id="divModalEmpleadoDetalle" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title" style="color:white;">Empleado</h4>
+                <button type="button" class="close" style="color:white;" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="row form-group">
+                        <label for="claveEmpleado" class="col-md-3 control-label">Clave Empleado:</label>
+                        <label for="claveUsuario" class="col-md-3 control-label">Clave Usuario :</label>
+                        <label for="clavePersona" class="col-md-3 control-label">Clave Persona :</label>
+                        <label for="NumeroEmpleado" class="col-md-3 control-label">Número Empleado :</label>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <input type="text" class="form-control col-md-4" id="txtIdEmpleado" readonly>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control col-md-4" id="txtIdUsuarioEmpleado" readonly="">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control col-md-4" id="txtIdPersonaEmpleado" readonly>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control col-md-10" id="txtNumeroEmpleado" readonly placeholder="">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="Nombre" class="col-md-4 control-label">Nombre :</label>
+                        <label for="ApellidoPaterno" class="col-md-4 control-label">Apellido Paterno :</label>
+                        <label for="ApellidoMaterno" class="col-md-4 control-label">Apellido Materno :</label>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <input type="text" class="col-md-10 form-control" id="txtNombreEmpleado" placeholder="">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="col-md-10 form-control" id="txtApellidoPaternoEmpleado" placeholder="">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="col-md-10 form-control" id="txtApellidoMaternoEmpleado" placeholder="">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="file" id="inputFileToLoad" placeholder="Foto" accept="image/*"/>
+                            <input type="text" id="response" placeholder="Codificado base 64"/> 
+                        </div> 
+                        
+
+                    </div> 
+                    <div class="row form-group">
+                        <label for="Genero" class="col-md-4 control-label">Género :</label>
+                        <label for="Domicilio" class="col-md-8 control-label">Domicilio :</label>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <select class="col-md-10 form-control" id="txtGeneroEmpleado">
+                                <option>Género</option>
+                                <option>F</option>
+                                <option>M</option>
+                            </select>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="col-md-10 form-control" id="txtDomicilioEmpleado" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="Telefono" class="col-md-3 control-label">Teléfono :</label>
+                        <label for="RFC" class="col-md-3 control-label">RFC :</label>
+                        <label for="Puesto" class="col-md-6 control-label">Puesto :</label>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <input type="text" class="col-md-10 form-control" id="txtTelefonoEmpleado" placeholder="">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="col-md-10 form-control" id="txtRFCEmpleado" placeholder="">
+                        </div>
+                       <div class="col-md-4">
+                            <select class="col-md-10 form-control" id="txtPuestoEmpleado">
+                                <option>Puesto</option>
+                                <option>Tecnico</option>
+                                <option>Gerente</option>
+                                <option>Recepcionista</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="NombreUsuario" class="col-md-4 control-label">Nombre Usuario :</label>
+                        <label for="Contrasenia" class="col-md-4 control-label">Contrasenia :</label>
+                        
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <input type="text" class="col-md-10 form-control" id="txtNombreUsuarioEmpleado" placeholder="">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="col-md-10 form-control" id="txtContraseniaEmpleado" placeholder="">
+                        </div>
+                        
+                    <div class="col-md-6">
+                        <!--   <input type="text" class="form-control" id="txtSalaFoto" placeholder="Foto"> -->
+                        <img id="imgEmpleadoFoto" src="" style="width: 100%"/>
+                    </div> 
+                    
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input id="chbEstatusEmpleado" type="checkbox" disabled> Estatus
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <fieldset><center>
+                            <button type="button" class="btn btn-circle btn-primary" name="nuevo" id="btnNuevo" value="Nuevo" onclick="limpiarCamposEmpleado()">Nuevo</button>
+                            <button type="button" class="btn btn-circle btn-primary"  id="btnGuardar" onclick="guardarEmpleado()">Guardar</button>
+                            
+                            <button type="button" class="btn btn-circle btn-primary" id="btnEliminar" value="Eliminar" onclick="eliminarEmpleado()">Eliminar</button></center>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                MySPA
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#inputFileToLoad').change(function () {
+            var filesSelected = document.getElementById('inputFileToLoad').files;
+            if (filesSelected.length > 0) {
+                var fileToLoad = filesSelected[0];
+                var fileReader = new FileReader();
+                fileReader.onload = function (fileLoadedEvent) {
+                    var base64value = fileLoadedEvent.target.result;
+                    console.log(base64value);
+                 var newbase64=base64value.substring(23);
+                    $('#response').val(newbase64);
+                };
+                fileReader.readAsDataURL(fileToLoad)
+            }
+        });
+    });
+</script>

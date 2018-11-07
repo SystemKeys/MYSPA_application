@@ -332,6 +332,104 @@ public class ControllerReservacion {
         //Devolvemos la lista dinÃ¡mica con objetos de tipo Empleado dentro:
         return reservacion;
     }
+    
+    public List<Reservacion> getAllCliente(String filtro, int idCliente) throws Exception
+    {
+        //La consulta SQL a ejecutar:
+        String sql = "SELECT * FROM v_reservacion WHERE idCliente = ?";
+        
+        //La lista dinÃ¡mica donde guardaremos objetos de tipo Reservacion
+        //por cada registro que devuelva la BD:
+        List<Reservacion> reservacion = new ArrayList<Reservacion>();
+        
+        Reservacion r = null;
+        //Una variable temporal para crear nuevos objetos de tipo Persona:
+        Persona p = null;
+        
+        //Una variable temporal para crear nuevos objetos de tipo Cliente:
+        Cliente c = null;
+        
+        ////Una variable temporal para crear nuevos objetos de tipo Sala:
+        Sala s = null;
+        Sucursal su = null;
+        //Con este objeto nos vamos a conectar a la Base de Datos:
+        ConexionMySQL connMySQL = new ConexionMySQL();
+        
+        //Abrimos la conexiÃ³n con la Base de Datos:
+        Connection conn = connMySQL.abrir();
+        
+        //Con este objeto ejecutaremos la consulta:
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        // Establecemos filtro de busqueda  
+         pstmt.setInt(1, idCliente);
+        //AquÃ­ guardaremos los resultados de la consulta:
+        ResultSet rs = pstmt.executeQuery();
+        
+        //Iteramos el conjunto de registros devuelto por la BD.
+        //"Si hay un siguiente registro, nos movemos":
+        while (rs.next())
+        {
+            //Creamos un nuevo objeto de tipo Persona:
+            p = new Persona();
+            
+            //Llenamos sus datos:
+            p.setApellidoMaterno(rs.getString("apellidoMaterno"));
+            p.setApellidoPaterno(rs.getString("apellidoPaterno"));
+            p.setDomicilio(rs.getString("domicilio"));
+            p.setGenero(rs.getString("genero"));
+            p.setId(rs.getInt("idPersona"));
+            p.setNombre(rs.getString("nombre"));
+            p.setRfc(rs.getString("rfc"));
+            p.setTelefono(rs.getString("telefono"));
+            
+            //Creamos un nuevo objeto de tipo Empleado:
+            c = new Cliente();
+            
+            //Establecemos sus datos personales:
+            c.setId(rs.getInt("idCliente"));
+            c.setNumeroUnico(rs.getString("numeroUnico"));           
+            c.setCorreo(rs.getString("correo"));
+            
+            
+            r = new Reservacion();
+            r.setEstatus(rs.getInt("estatus"));
+            r.setFechaHoraInicio(rs.getString("fechaHoraInicio"));
+            r.setFechaHoraFin(rs.getString("fechaHoraFin"));
+            r.setId(rs.getInt("idReservacion"));
+            
+            s = new Sala();
+            s.setEstatus(rs.getInt("estatusSala"));
+            s.setNombre(rs.getString("nombreSala"));
+            
+            s.setDescripcion(rs.getString("descripcion"));
+            s.setId(rs.getInt("idSala"));
+            
+            su = new Sucursal();
+            su.setId(rs.getInt("idSucursal"));
+            su.setNombre(rs.getString("nombreSucursal"));
+            su.setLatitud(rs.getDouble("latitud"));
+            su.setLongitud(rs.getDouble("longitud"));
+            su.setDomicilio(rs.getString("domicilioSucursal"));
+            su.setEstatus(rs.getInt("estatus"));
+            //Establecemos su persona:
+            c.setPersona(p);
+            r.setCliente(c);
+            s.setSucursal(su);
+            r.setSala(s);
+            
+           
+            //Agregamos el objeto de tipo Reservacion a la lista dinÃ¡mica:
+            reservacion.add(r);
+        }
+        
+        //Cerramos los objetos de BD:
+        rs.close();
+        pstmt.close();
+        connMySQL.cerrar();
+        
+        //Devolvemos la lista dinÃ¡mica con objetos de tipo Empleado dentro:
+        return reservacion;
+    }
 }
 
 

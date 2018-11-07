@@ -171,7 +171,7 @@ public class ControllerCliente {
     public void delete(int id) throws Exception
     {
         String sql = "UPDATE cliente SET estatus = 0 WHERE idCliente = ?";
-        
+        //delete cliente where idcliente = ?;
         
         //Con este objeto nos vamos a conectar a la Base de Datos:
         ConexionMySQL connMySQL = new ConexionMySQL();
@@ -185,7 +185,7 @@ public class ControllerCliente {
         
         //Establecemos el valor del ID de la Sucursal a dar de baja:       
         pstmt.setInt(1, id);
-        
+        //(1,id)
         //Ejecutamos la consulta:
         pstmt.executeUpdate();
         

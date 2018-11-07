@@ -127,29 +127,6 @@ public class PanelSala {
         }    
     }
     
-    private void cargarFotografiaEmpleado() {
-        File f = null; 
-        Image img = null;
-        
-        try
-        {
-            //Mostramos el díalogo para que el usuario seleccione el archivo
-            //de imagen:
-            f = fchFotografia.showOpenDialog(window);
-            
-            //Evaluamos si el usuario seleccionó una Imagen:
-            if (f != null)
-            {
-                img = new Image(f.toURI().toURL().toString());
-                imgvSala.setImage(img);
-            }
-        } 
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            mostrarMensaje("Error al cargar fotografía.", e.toString(), Alert.AlertType.ERROR);
-        }
-    }
     
     private void consultarSalas() {
         

@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
 <div class="row">
     <div class="col-sm-7">
         <div class="card border-primary">
-            <div class="card-header bg-dark text text-center text-primary ">
-                <h3>Catalogo de sucursal</h3>
+            <div class="card-header text-center text-faded">
+                <h3>Cat&aacute;logo de Sucursal</h3>
+                <button type="button" id="btnSucursal" onclick="cargarPanelNuevoSucursal()" class="text-center btn btn-success btn-sm" style="float: right;">Agregar Nueva Sucursal</button>
             </div>
             <div class="card-body">
                 <table class=" table table-info"  id="dataTable" width="150%" cellspacing="0">
@@ -29,57 +23,128 @@ and open the template in the editor.
             </div>
         </div>
     </div>
-    
-     <form class="form-horizontal" role="form">
+
+
+    <form class="form-horizontal" role="form">
 
         <div class="form-group">
-            <label for="Sucursal" class="col-sm-6 control-label">Clave Sucursal:</label>
-            <div class="col-sm-10">
-                <input type="text"  id="txtSucursalId" placeholder="Clave Sucursal" >
+            <label for="Sucursal" class="col-sm-7 control-label">Clave Sucursal:</label>
+            <div class="col-sm-15">
+                <input type="text" class="form-control" id="txtSucursalId" readonly placeholder="Clave Sucursal" >
             </div>
         </div>
         <div class="form-group">
-            <label for="Nombre" class="col-sm-5 control-label">Nombre :</label>
-            <div class="col-sm-10">
+            <label for="Nombre" class="col-sm-7 control-label">Nombre :</label>
+            <div class="col-sm-15">
                 <input type="text" class="form-control" id="txtSucursalNombre" placeholder="Nombre Sucursal">
             </div>
         </div>
         <div class="form-group">
-            <label for="Latitud" class="col-sm-5 control-label">Latitud :</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="txtSucursalLatitud" placeholder="Latitud 100.000">
+            <label for="Latitud" class="col-sm-7 control-label">Latitud :</label>
+            <div class="col-sm-15">
+                <input type="text" class="form-control" id="txtSucursalLatitud" placeholder="Latitud">
             </div>
         </div>       
         <div class="form-group">
-            <label for="Longitud" class="col-sm-5 control-label">Longitud :</label>
-            <div class="col-sm-10">
-                <input type="text"  id="txtSucursalLongitud" placeholder="Longitud 100.000">
-            </div>
-        </div> 
-         <div class="form-group">
-            <label for="Domicilio" class="col-sm-5 control-label">Domicilio :</label>
-            <div class="col-sm-10">
-                <input type="text"  id="txtSucursalDomicilio" placeholder="Calle.Ruta Col.Sarabia #000">
+            <label for="Longitud" class="col-sm-7 control-label">Longitud :</label>
+            <div class="col-sm-15">
+                <input type="text" class="form-control" id="txtSucursalLongitud" placeholder="Longitud">
             </div>
         </div> 
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
+            <label for="Domicilio" class="col-sm-7 control-label">Domicilio :</label>
+            <div class="col-sm-15">
+                <input type="text" class="form-control" id="txtSucursalDomicilio" placeholder="Domicilio">
+            </div>
+        </div> 
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-15">
                 <div class="checkbox">
                     <label>Estatus:
                     </label>
-                    <input id="chbSucursalEstatus" class="checkbox" type="checkbox">
+                    <input id="chbSucursalEstatus" class="checkbox" disabled type="checkbox">
                 </div>
             </div>
         </div>
-         
-         
-         <fieldset><center>
-            <button class="btn btn-primary" id="btnMostrar" onclick="actualizarSucursal()">Mostrar</button>
-            <button class="btn btn-success" id="btnGuardar" onclick="guardarSucursal();">Guardar</button>
-            <button class="btn btn-warning" id="btnEliminar" onclick="eliminarSucursal()">Eliminar</button>
-            <button class="btn btn-info" id="btnNuevo" onclick=" limpiarCampos();">Nuevo</button>
+
+
+        <fieldset><center>
+                <button class="btn btn-primary" id="btnGuardar" onclick="guardarSucursal();">Guardar</button>
+                <button class="btn btn-primary" id="btnEliminar" onclick="eliminarSucursal()">Eliminar</button>
+                <button class="btn btn-primary" id="btnNuevo" onclick=" limpiarCamposSucursal();">Nuevo</button>
             </center>
-         </fieldset>
-        
+        </fieldset>
     </form> 
+    </div>
+  <div id="mapa"> </div>
+
+<div class="modal fade" id="ModalSucursal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+     <div class="modal-dialog">
+        <!-- Modal Content -->
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title" style="color : white;">Nueva Sucursal</h4>
+                <button type="button" class="close" style="color: wheat;" data-dismiss="modal">&times;</button>                                
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+            <label for="Sucursal" class="col-sm-7 control-label">Clave Sucursal:</label>
+            <div class="col-sm-15">
+                <input type="text" class="form-control" id="txtSucursalId" readonly placeholder="Clave Sucursal" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Nombre" class="col-sm-7 control-label">Nombre :</label>
+            <div class="col-sm-15">
+                <input type="text" class="form-control" id="txtSucursalNombreN" placeholder="Nombre Sucursal">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Latitud" class="col-sm-7 control-label">Latitud :</label>
+            <div class="col-sm-15">
+                <input type="text" class="form-control" id="txtSucursalLatitudN" placeholder="Latitud">
+            </div>
+        </div>       
+        <div class="form-group">
+            <label for="Longitud" class="col-sm-7 control-label">Longitud :</label>
+            <div class="col-sm-15">
+                <input type="text" class="form-control" id="txtSucursalLongitudN" placeholder="Longitud">
+            </div>
+        </div> 
+        <div class="form-group">
+            <label for="Domicilio" class="col-sm-7 control-label">Domicilio :</label>
+            <div class="col-sm-15">
+                <input type="text" class="form-control" id="txtSucursalDomicilioN" placeholder="Domicilio">
+            </div>
+        </div> 
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-15">
+                <div class="checkbox">
+                    <label>Estatus:
+                    </label>
+                    <input id="chbSucursalEstatusN" class="checkbox" disabled type="checkbox">
+                </div>
+            </div>
+        </div>
+
+
+        <fieldset><center>
+                <button class="btn btn-primary" id="btnGuardarN" onclick="guardarSucursal();">Guardar</button>               
+                <button class="btn btn-primary" id="btnNuevoN" onclick=" limpiarCamposSucursal();">Nuevo</button>
+            </center>
+        </fieldset>
+    </form> 
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                MYSPA
+            </div>
+        </div>
+        
+    </div>
+    
 </div>
