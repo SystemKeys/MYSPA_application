@@ -74,7 +74,7 @@ public class RESTReservacion extends Application{
     @Produces(MediaType.APPLICATION_JSON)
     public Response insert(@FormParam("fechaHoraInicio")@DefaultValue("") String fechaHoraInicio,
                            @FormParam("fechaHoraFin")@DefaultValue("") String fechaHoraFin,                           
-                           @FormParam("idCliente")@DefaultValue("0") int idCliente,
+                           @FormParam("idCliente")@DefaultValue("2") int idCliente,
                            @FormParam("idSala")@DefaultValue("0")int idSala,
                            @FormParam("idHorario")@DefaultValue("0") int idHorario)
                            {
@@ -99,8 +99,9 @@ public class RESTReservacion extends Application{
             sh.setSala(s);
             r.setSala(s);
             r.setCliente(c);
+            csh.insert(sh);  
             cr.insert(r);
-            csh.insert(sh);
+               
             if(r.getId() > 0)
                 out = "{\"result\":" + r.getId() + "}";
             else

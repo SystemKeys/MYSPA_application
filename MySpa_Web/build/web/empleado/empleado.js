@@ -924,3 +924,242 @@ function limpiarCamposEmpleado() {
     $('#txtNumeroEmpleado').val('');
     $('#chbEstatusEmpleado').prop('checked', false);
 }
+
+function cargarModuloReservacion() {
+    $.ajax(
+            {type: "GET",
+                url: "reservaciones/catalogo.html",
+                async: true
+            }
+    ).done(
+            function (data) {
+                $('#divMainContainer').html(data);
+
+                actualizarTablaReservacion();
+            }
+    );
+
+
+}
+
+function actualizarTablaReservacion() {
+    $.ajax({
+        type: "GET",
+        url: "../rsreservacion/getAllReservacion",
+        async: true
+    }).done(
+            function (reservaciones)
+            {
+                var str = '';
+                for (var i = 0; i < reservaciones.length; i++)
+                    str += '<tr>' +
+                            '<td>' + reservaciones[i].id + '</td>' +
+                            '<td>' + reservaciones[i].fechaHoraInicio + '</td>' +
+                            '<td>' + reservaciones[i].fechaHoraFin + '</td>' +
+                            '<td>' + reservaciones[i].cliente.id + '</td>' +
+                            '<td>' + reservaciones[i].sala.nombre + '</td>' +
+                            '<td>' + reservaciones[i].estatus + '</td>' +
+                            '</tr>';
+                $('#tbReservacion').html(str);
+                $('#tbReservacion').find('tr').click(function ()
+                {
+                    //this en esta funcion es el renglon
+                    //seleccionado por el usuario                                                            
+
+                    $('#txtIdReservacion').val(reservaciones[$(this).index()].id);
+                    var fechaHoraInicio = reservaciones[$(this).index()].fechaHoraInicio;
+                    var fechaHoraFin = reservaciones[$(this).index()].fechaHoraFin;
+                    var fecha = fechaHoraInicio.split(' ');
+                    var newfecha = fecha[0].split('/');
+                    var horaFin = fechaHoraFin.split(' ');
+                    $('#txtFecha').val(newfecha[2]+'-'+newfecha[1]+'-'+newfecha[0]);
+                    $('#txtHorarioInicio').val(fecha[1]);
+                    $('#txtHorarioFin').val(horaFin[1]);
+                    $('#txtIdClienteReservacion').val(reservaciones[$(this).index()].cliente.id);
+                    $('#txtIdSalaReservacion').val(reservaciones[$(this).index()].sala.id);
+                    $('#chbEstatusReservacion').val(reservaciones[$(this).index()].estatus);
+                   
+                });
+
+            }
+    );
+}
+
+function cargarSalaReservacion() {
+
+    $(document).ready(function () {
+        $('#btnCargarSala').click(function () {
+            $('#divModalSalaReservaciones').modal();
+            $.ajax({
+                type: "GET",
+                url: "../rssala/getAllSala",
+                async: true
+            }).done(
+                    function (salas)
+                    {
+                        var str = '';
+                        for (var i = 0; i < salas.length; i++)
+                            str += '<tr>' +
+                                    '<td>' + salas[i].id + '</td>' +
+                                    '<td>' + salas[i].nombre + '</td>' +
+                                    '<td>' + salas[i].descripcion + '</td>' +
+                                    '<td>' + salas[i].sucursal.nombre + '</td>' +
+                                    '</tr>';
+                        $('#tbSalasReservacion').html(str);
+                        $('#tbSalasReservacion').find('tr').click(function ()
+                        {
+                            $('#txtIdSalaReservacion').val(salas[$(this).index()].id);
+                        if($('#txtIdSalaReservacion').val.length > 0){
+                                swal('Horario Selecionado, Ya puede cerrar esta ventana', '', 'success');
+                             }else{
+                                swal('No se selecciono el Horario', '', 'warning');
+                   }
+                        });
+                    }
+            );
+        });
+    });
+}
+function cargarHorariosReservacion() {
+    
+    $(document).ready(function () {
+        $('#btnCargarHorarios').click(function () {
+            $('#divModalHorariosReservaciones').modal();
+            $.ajax({
+                type: "POST",
+                url: "../rshorario/getAllHorarioWithoutUsed",
+                async: true,
+                data: {
+                    idSala: $('#txtIdSalaReservacioo').val(),
+                    fecha: $('#txtFecha').val()
+                }               
+            }).done(
+                    function (horarios)
+                    {
+                        var str = '';
+                        for (var i = 0; i < horarios.length; i++)
+                            str += '<tr>' +
+                                    '<td>' + horarios[i].id + '</td>' +
+                                    '<td>' + horarios[i].horaInicio + '</td>' +
+                                    '<td>' + horarios[i].horaFin + '</td>' +
+                                    '</tr>';
+                        $('#tbHorariosReservacion').html(str);
+                        $('#tbHorariosReservacion').find('tr').click(function ()
+                        {
+                            $('#txtHorarioInicio').val(horarios[$(this).index()].horaInicio);
+                            $('#txtHorarioFin').val(horarios[$(this).index()].horaFin);
+                            $('#txtIdHorarioReservacion').val(horarios[$(this).index()].id);
+                            if($('#txtIdHorarioReservacion').val.length > 0){
+                                swal('Horario Selecionado, Ya puede cerrar esta ventana', '', 'success');
+                             }else{
+                                swal('No se selecciono el Horario', '', 'warning');
+                   }
+                        });
+                    }
+            );
+        });
+    });
+}
+
+function cargarClienteReservacion() {
+
+    $(document).ready(function () {
+        $('#btnCargarCliente').click(function () {
+            $('#divModalClienteReservaciones').modal();
+            $.ajax({
+                type: "GET",
+                url: "../rscliente/getAllCliente",
+                async: true
+            }).done(
+                    function (clientes)
+                    {
+                        var str = '';
+                        for (var i = 0; i < clientes.length; i++)
+                            str += '<tr>' +
+                                    '<td>' + clientes[i].id + '</td>' +
+                                    '<td>' + clientes[i].persona.nombre +
+                                    ' ' + clientes[i].persona.apellidoPaterno +
+                                    ' ' + clientes[i].persona.apellidoMaterno + '</td>' +
+                                    '<td>' + clientes[i].persona.genero + '</td>' +
+                                    '<td>' + clientes[i].persona.domicilio + '</td>' +
+                                    '<td>' + clientes[i].persona.telefono + '</td>' +
+                                    '<td>' + clientes[i].persona.rfc + '</td>' +
+                                    '<td>' + clientes[i].numeroUnico + '</td>' +
+                                    '<td>' + clientes[i].correo + '</td>' +
+                                    '</tr>';
+                        $('#tbClientesReservacion').html(str);
+                        $('#tbClientesReservacion').find('tr').click(function ()
+                        {
+                            $('#txtIdClienteReservacion').val(clientes[$(this).index()].id);
+                        if($('#txtIdClienteReservacion').val.length > 0){
+                                swal('Horario Selecionado, Ya puede cerrar esta ventana', '', 'success');
+                             }else{
+                                swal('No se selecciono el Horario', '', 'warning');
+                   }
+                        }
+                        );
+                    }
+            );
+        });
+    });
+}
+
+function guardarReservacion(){
+    
+    $.ajax({
+        type: "POST",
+        asyn: true,
+        url: '../rsreservacion/insertReservacion',
+        data: {
+            fechaHoraInicio: $('#txtFecha').val()+' '+$('#txtHorarioInicio').val(), 
+            fechaHoraFin: $('#txtFecha').val()+' '+$('#txtHorarioFin').val(),
+            idCliente: $('#txtIdClienteReservacion').val(),
+            idSala: $('#txtIdSalaReservacion').val(),
+            idHorario: $('#txtIdHorarioReservacion').val()
+        }
+    }).done(function (data)
+    {
+        if (data.error != null) {
+            swal("Error", data.error, 'warning');
+            return;
+        }
+        actualizarTablaReservacion();
+        $('#txtIdReservacion').val(data.result);
+        swal('Realizado', 'Hecho', 'success');
+    }
+    );
+}
+function eliminarReservacion(){
+    
+    $.ajax({
+        type: "POST",
+        asyn: true,
+        url: '../rsreservacion/deleteReservacion',
+        data: {
+            idReservacion: $('#txtIdReservacion').val()
+//            fechaHoraInicio: $('#txtFecha').val()+' '+$('#txtHorarioInicio').val(), 
+//            fechaHoraFin: $('#txtFecha').val()+' '+$('#txtHorarioFin').val(),
+//            idCliente: $('#txtIdClienteReservacion').val(),
+//            idSala: $('#txtIdSalaReservacion').val()
+        }
+    }).done(function (data)
+    {
+        if (data.error != null) {
+            swal("Error", data.error, 'warning');
+            return;
+        }
+        actualizarTablaReservacion();
+        $('#txtIdReservacion').val(data.result);
+        swal('Realizado', 'Hecho', 'success');
+    }
+    );
+}
+
+function limpiarReservacion() {
+    $('#txtIdReservacion').val('');
+    $('#txtHorarioInicio').val('');
+    $('#txtHorarioFin').val('');
+    $('#txtIdClienteReservacion').val('');
+    $('#txtIdSalaReservacion').val('');
+    $('#txtFecha').val('');
+}

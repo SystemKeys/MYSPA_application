@@ -45,7 +45,7 @@ function actualizarTablaReservacion() {
                             
                             '</tr>';
                 $('#tbReservaciones').html(str);
-                $('#tbReservaciones').find('tr').click(function ()
+              $('#tbReservaciones').find('tr').click(function ()
                 {
                     //this en esta funcion es el renglon
                     //seleccionado por el usuario                                                            
@@ -56,7 +56,7 @@ function actualizarTablaReservacion() {
                     $('#txtIdClienteReservacion').val(reservaciones[$(this).index()].cliente.id);
                     $('#cmbSala').val(reservaciones[$(this).index()].sala.nombre);
                     $('#chbEstatusReservacion').val(reservaciones[$(this).index()].estatus);
-                    $('#divModalReservacionDetalle').modal();
+                //    $('#divModalReservacionDetalle').modal();
                 });
 
             }
@@ -141,24 +141,18 @@ function cargarHorariosReservacion() {
 }
 
 function guardarReservacion(){    
-    var rutaREST = null;
+    
     var idReservacion = 0;
     var nombre = "";
     var cliente = JSON.parse(localStorage.getItem('MYSPA_CREDENCIAL'));
-    var fechaInicio = $('#txtFecha').val() + ' ' + $('#txtHoraInicio').val();
-    var fechaFin = $('#txtFecha').val() + ' ' + $('#txtHoraFin').val();
-    if ($('#txtIdReservacion').val().length > 0) {
-        rutaREST = '../rsreservacion/updateReservacion';
-        idReservacion = $('#txtIdReservacion').val();
-    } else {
-        rutaREST = '../rsreservacion/insertReservacion';
-    }    
+    var fechaInicio = $('#txtFecha').val() + ' ' + $('#txtHorarioInicio').val();
+    var fechaFin = $('#txtFecha').val() + ' ' + $('#txtHorarioFin').val();
         $.ajax({
             type: "POST",
             asyn: true,
-            url: rutaREST,
+            url: '../rsreservacion/insertReservacion',
             data: {
-                idReservacion: idReservacion,            
+                            
                 fechaHoraInicio: fechaInicio,
                 fechaHoraFin: fechaFin,
                 idCliente: cliente.id,
@@ -179,7 +173,33 @@ function guardarReservacion(){
     );
             } 
 
+function limpiarReservacion(){
+    $('#txtIdReservacion').val('');
+                    $('#txtFechaHoraInicio').val('');
+                    $('#txtFechaHoraFin').val('');
+                    //$('#txtIdClienteReservacion').val('');
+                    $('#cmbSala').val('');
+                    $('#chbEstatusReservacion').val('');    
+}    
+function cancelarReservacion(){
     
-    
+    $.ajax({
+        type: "POST",
+        async: true,
+        url: "../rsreservacion/deleteReservacion",
+        data: {
+            idReservacion: $('#txtIdReservacion').val()
+        }
+    }).done(function (data) {
+        if (data.error != null)
+        {
+            swal('Error', data.error, 'warning');
+            return;
+        }
+        actualizarTablaReservacion();
+        swal('Movimiento realizado', '', 'success');
+    });
+
+}
 
 
