@@ -796,8 +796,8 @@ function actualizarTablaEmpleados() {
                             '<td>' + empleados[i].persona.rfc + '</td>' +
                             '<td>' + empleados[i].numeroEmpleado + '</td>' +
                             '<td>' + empleados[i].puesto + '</td>' +
-                            '<td>' + empleados[i].rol + '</td>' +
-                            '<td>' + empleados[i].foto + '</td>' +
+                            
+                           
                             '</tr>';
                 $('#tbEmpleados').html(str);
                 $('#tbEmpleados').find('tr').click(function ()
@@ -832,7 +832,7 @@ function guardarEmpleado() {
     var idUsuario = 0;
 
     if ($('#txtIdEmpleado').val().length > 0) {
-        rutaREST = '../rsempleado/updateEmpleado';
+        rutaREST = '../rsem pleado/updateEmpleado';
         idEmpleado = $('#txtIdEmpleado').val();
         idUsuario = $('#txtIdUsuarioEmpleado').val();
         idPersona = $('#txtIdPersonaEmpleado').val();
@@ -954,9 +954,11 @@ function actualizarTablaReservacion() {
                 for (var i = 0; i < reservaciones.length; i++)
                     str += '<tr>' +
                             '<td>' + reservaciones[i].id + '</td>' +
+                            '<td>' + reservaciones[i].cliente.id + '</td>' +
+                            '<td>' + reservaciones[i].cliente.numeroUnico + '</td>' +
                             '<td>' + reservaciones[i].fechaHoraInicio + '</td>' +
                             '<td>' + reservaciones[i].fechaHoraFin + '</td>' +
-                            '<td>' + reservaciones[i].cliente.id + '</td>' +
+                            
                             '<td>' + reservaciones[i].sala.nombre + '</td>' +
                             '<td>' + reservaciones[i].estatus + '</td>' +
                             '</tr>';
@@ -978,6 +980,7 @@ function actualizarTablaReservacion() {
                     $('#txtIdClienteReservacion').val(reservaciones[$(this).index()].cliente.id);
                     $('#txtIdSalaReservacion').val(reservaciones[$(this).index()].sala.id);
                     $('#chbEstatusReservacion').val(reservaciones[$(this).index()].estatus);
+                    $('#txtNumeroUnicoCliente').val(reservaciones[$(this).index()].cliente.numeroUnico);
                    
                 });
 
@@ -1030,7 +1033,7 @@ function cargarHorariosReservacion() {
                 url: "../rshorario/getAllHorarioWithoutUsed",
                 async: true,
                 data: {
-                    idSala: $('#txtIdSalaReservacioo').val(),
+                    idSala: $('#txtIdSalaReservacion').val(),
                     fecha: $('#txtFecha').val()
                 }               
             }).done(
@@ -1091,7 +1094,8 @@ function cargarClienteReservacion() {
                         $('#tbClientesReservacion').find('tr').click(function ()
                         {
                             $('#txtIdClienteReservacion').val(clientes[$(this).index()].id);
-                        if($('#txtIdClienteReservacion').val.length > 0){
+                            $('#txtNumeroUnicoCliente').val(clientes[$(this).index()].numeroUnico);
+                          if($('#txtIdClienteReservacion').val.length > 0){
                                 swal('Horario Selecionado, Ya puede cerrar esta ventana', '', 'success');
                              }else{
                                 swal('No se selecciono el Horario', '', 'warning');

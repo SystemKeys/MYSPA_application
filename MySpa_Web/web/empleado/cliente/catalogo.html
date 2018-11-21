@@ -1,32 +1,43 @@
-      <div class="table-responsive">
-                <div class="card border-primary">
-                    <div class="card-header text-center">
-                        <h3>Cat&aacute;logo de Clientes</h3>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-info">
-                            <thead>
-                                <tr>
-                                    <th>Clave Cliente</th>
-                                    <th>Nombre</th><!--
-                                    <th>Apellido Paterno</th>
-                                    <th>Apellido Materno</th>-->
-                                    <th>Genero</th>
-                                    <th>Domicilio</th>
-                                    <th>Teléfono</th>
-                                    <th>RFC</th>
-                                    <th>Número Único</th>
-                                    <th>Correo</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbClientes">
+<div class="table-responsive">
+    <div class="card border-primary">
+        <div class="card-header text-center">
+            <h3>Cat&aacute;logo de Clientes</h3>
+        </div>
+        <div class="card-body">
+            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            <br>
+            <table class="table table-info">
+                <thead>
+                    <tr>
+                        <th>Clave Cliente</th>
+                        <th>Nombre</th><!--
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>-->
+                        <th>Genero</th>
+                        <th>Domicilio</th>
+                        <th>Teléfono</th>
+                        <th>RFC</th>
+                        <th>Número Único</th>
+                        <th>Correo</th>
+                    </tr>
+                </thead>
+                <tbody id="tbClientes">
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tbClientes tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 
 <div class="modal fade bd-example-modal-lg" id="divModalClienteDetalle" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -108,7 +119,7 @@
                     <div class="row form-group">
                         <label for="NombreUsuario" class="col-md-4 control-label">Nombre Usuario :</label>
                         <label for="Contrasenia" class="col-md-4 control-label">Contrasenia :</label>
-                        
+
                     </div>
                     <div class="row form-group">
                         <div class="col-md-4">

@@ -1,37 +1,48 @@
 
-  <div class="table-responsive">
-                <div class="card border-primary">
-                    <div class="card-header text-center">
-                        <h3>Cat&aacute;logo de Empleados</h3>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-info">
-                            <thead>
-                                <tr>
-                                    <th>Clave Empleado</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido Paterno</th>
-                                    <th>Apellido Materno</th>
-                                    <th>Genero</th>
-                                    <th>Domicilio</th>
-                                    <th>Telefono</th>
-                                    <th>RFC</th>
-                                    <th>Numero Unico</th>
-                                    <th>Puesto</th>
-                                    <th>Foto</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody id="tbEmpleados">
-                                  
-                            </tbody>
-                        </table>
-                    </div>
-                                        
-                </div>
-            </div>
+<div class="table-responsive">
+    <div class="card border-primary">
+        <div class="card-header text-center">
+            <h3>Cat&aacute;logo de Empleados</h3>
+        </div>
+        <div class="card-body">
+            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            <br>
+            <table class="table table-info">
+                <thead>
+                    <tr>
+                        <th>Clave Empleado</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Genero</th>
+                        <th>Domicilio</th>
+                        <th>Telefono</th>
+                        <th>RFC</th>
+                        <th>Numero Unico</th>
+                        <th>Puesto</th>
+                        
 
+                    </tr>
+                </thead>
+                <tbody id="tbEmpleados">
 
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tbEmpleados tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 <div class="modal fade bd-example-modal-lg" id="divModalEmpleadoDetalle" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -80,7 +91,7 @@
                             <input type="file" id="inputFileToLoad" placeholder="Foto" accept="image/*"/>
                             <input type="text" id="response" placeholder="Codificado base 64"/> 
                         </div> 
-                        
+
 
                     </div> 
                     <div class="row form-group">
@@ -111,7 +122,7 @@
                         <div class="col-md-3">
                             <input type="text" class="col-md-10 form-control" id="txtRFCEmpleado" placeholder="">
                         </div>
-                       <div class="col-md-4">
+                        <div class="col-md-4">
                             <select class="col-md-10 form-control" id="txtPuestoEmpleado">
                                 <option>Puesto</option>
                                 <option>Tecnico</option>
@@ -123,7 +134,7 @@
                     <div class="row form-group">
                         <label for="NombreUsuario" class="col-md-4 control-label">Nombre Usuario :</label>
                         <label for="Contrasenia" class="col-md-4 control-label">Contrasenia :</label>
-                        
+
                     </div>
                     <div class="row form-group">
                         <div class="col-md-4">
@@ -132,29 +143,29 @@
                         <div class="col-md-4">
                             <input type="text" class="col-md-10 form-control" id="txtContraseniaEmpleado" placeholder="">
                         </div>
-                        
-                    <div class="col-md-6">
-                        <!--   <input type="text" class="form-control" id="txtSalaFoto" placeholder="Foto"> -->
-                        <img id="imgEmpleadoFoto" src="" style="width: 100%"/>
-                    </div> 
-                    
-                    <div class="form-group">
-                        <div class="col-lg-offset-2 col-lg-10">
-                            <div class="checkbox">
-                                <label>
-                                    <input id="chbEstatusEmpleado" type="checkbox" disabled> Estatus
-                                </label>
+
+                        <div class="col-md-6">
+                            <!--   <input type="text" class="form-control" id="txtSalaFoto" placeholder="Foto"> -->
+                            <img id="imgEmpleadoFoto" src="" style="width: 100%"/>
+                        </div> 
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="chbEstatusEmpleado" type="checkbox" disabled> Estatus
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
-                    <fieldset><center>
-                            <button type="button" class="btn btn-circle btn-primary" name="nuevo" id="btnNuevo" value="Nuevo" onclick="limpiarCamposEmpleado()">Nuevo</button>
-                            <button type="button" class="btn btn-circle btn-primary"  id="btnGuardar" onclick="guardarEmpleado()">Guardar</button>
-                            
-                            <button type="button" class="btn btn-circle btn-primary" id="btnEliminar" value="Eliminar" onclick="eliminarEmpleado()">Eliminar</button></center>
-                    </fieldset>
+                        <fieldset><center>
+                                <button type="button" class="btn btn-circle btn-primary" name="nuevo" id="btnNuevo" value="Nuevo" onclick="limpiarCamposEmpleado()">Nuevo</button>
+                                <button type="button" class="btn btn-circle btn-primary"  id="btnGuardar" onclick="guardarEmpleado()">Guardar</button>
+
+                                <button type="button" class="btn btn-circle btn-primary" id="btnEliminar" value="Eliminar" onclick="eliminarEmpleado()">Eliminar</button></center>
+                        </fieldset>
                 </form>
             </div>
             <div class="modal-footer" style="text-align: center;">
@@ -173,7 +184,7 @@
                 fileReader.onload = function (fileLoadedEvent) {
                     var base64value = fileLoadedEvent.target.result;
                     console.log(base64value);
-                 var newbase64=base64value.substring(23);
+                    var newbase64 = base64value.substring(23);
                     $('#response').val(newbase64);
                 };
                 fileReader.readAsDataURL(fileToLoad)

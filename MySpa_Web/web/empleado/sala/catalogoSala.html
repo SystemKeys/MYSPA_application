@@ -4,9 +4,11 @@
         <div class="card border-primary">
             <div class="card-header text text-center ">
                 <h3>Cat&aacute;logo de Salas</h3>
-               
+
             </div>
             <div class="card-body">
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <br>
                 <table class=" table table-info"  id="dataTable" width="150%" cellspacing="0">
                     <thead>
                         <tr>
@@ -28,7 +30,16 @@
     </div>  
 
 </div>
-
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tbSalas tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 <div class="modal modal-wide fade" id="divModalSalaDetalle" role="dialog">
     <div class="modal-dialog">
         <!-- Modal Content -->
@@ -65,7 +76,7 @@
                     </div> 
 
                     <input type="file" id="inputFileToLoad" class="form-control" placeholder="Foto" accept="image/*"/><br><br>
-                    
+
                     <input type="text" class="form-control" id="response" readonly placeholder="Codificado base 64"/> 
 
                     <div class="form-group">
@@ -84,10 +95,10 @@
                         </div>
                     </div>   
                     <fieldset><center>
-                        <button type="button" class="btn btn-primary" id="btnGuardar" onclick="guardarSala();">Guardar</button>
-                        <button type="button" class="btn btn-primary" id="btnEliminar" onclick="eliminarSala();">Eliminar</button>
-                        <button type="button" class="btn btn-primary" id="btnNuevo" onclick=" limpiarCamposSala();">Nuevo</button>
-                   </center>
+                            <button type="button" class="btn btn-primary" id="btnGuardar" onclick="guardarSala();">Guardar</button>
+                            <button type="button" class="btn btn-primary" id="btnEliminar" onclick="eliminarSala();">Eliminar</button>
+                            <button type="button" class="btn btn-primary" id="btnNuevo" onclick=" limpiarCamposSala();">Nuevo</button>
+                        </center>
                 </form>         
             </div>
 
@@ -100,100 +111,100 @@
 
 <div class="modal fade" id="ModalSala" role="dialog">
     <div class="modal-dialog">
-    
-      <!-- Modal content-->
-     <div class="modal-dialog">
-        <!-- Modal Content -->
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h4 class="modal-title" style="color : white;">Salas</h4>
-                <button type="button" class="close" style="color: wheat;" data-dismiss="modal">&times;</button>                                
-            </div>
-            <div class="modal-body">
+
+        <!-- Modal content-->
+        <div class="modal-dialog">
+            <!-- Modal Content -->
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title" style="color : white;">Salas</h4>
+                    <button type="button" class="close" style="color: wheat;" data-dismiss="modal">&times;</button>                                
+                </div>
+                <div class="modal-body">
                     <form class="form-horizontal" role="form">
 
-                    <div class="form-group">
-                        <label for="idSala" class="col-sm-6 control-label">Clave Sala :</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txtSalaId" placeholder="ID Sala" readonly>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="NombreSala" class="col-sm-6 control-label">Nombre :</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txtSalaNombre" placeholder="Nombre">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="DescripcionSala" class="col-sm-5 control-label">Descripci&oacute;n :</label>
-                        <div class="col-sm-12">
-                            <textarea class="form-control" id="txtSalaDescripcion"> </textarea>
-
-                        </div>
-                    </div> 
-                    <div class="form-group">
-                        <!--   <input type="text" class="form-control" id="txtSalaFoto" placeholder="Foto"> -->
-                        <img id="imgSalaFoto" src="" style="width: 100%"/>
-                    </div> 
-
-                    <input type="file" id="inputFileToLoad" class="form-control" placeholder="Foto" accept="image/*"/><br><br>
-                    
-                    <input type="text" class="form-control" id="response" readonly placeholder="Codificado base 64"/> 
-
-                    <div class="form-group">
-                        <label for="SalaSucursal"><br>Sucursal:</label>
-                        <button  type="button" id="radioSucursal" class="btn btn-success" name="radioSucursal" onclick="cargarModal();">Seleccionar Sucursal</button> <br><br>
-                        <input type="text" readonly id="idSucursal" class="form-control" placeholder="Id Sucursal"> 
-                        <input type="text" readonly id="SucursalNombre" class="form-control" placeholder="Nombre Sucursal"> <br>
-
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-12 col-sm-12">
-                            <div class="checkbox">
-                                <label>Estatus:</label>
-                                <input id="chbSalaEstatus" class="checkbox" disabled type="checkbox"><br><br>
+                        <div class="form-group">
+                            <label for="idSala" class="col-sm-6 control-label">Clave Sala :</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="txtSalaId" placeholder="ID Sala" readonly>
                             </div>
                         </div>
-                    </div>   
-                    <fieldset><center>
-                        <button type="button" class="btn btn-primary" id="btnGuardar" onclick="guardarSala();">Guardar</button>
-                        <button type="button" class="btn btn-primary" id="btnEliminar" onclick="eliminarSala();">Eliminar</button>
-                        <button type="button" class="btn btn-primary" id="btnNuevo" onclick=" limpiarCamposSala();">Nuevo</button>
-                   </center>
-                </form>        
+                        <div class="form-group">
+                            <label for="NombreSala" class="col-sm-6 control-label">Nombre :</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="txtSalaNombre" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="DescripcionSala" class="col-sm-5 control-label">Descripci&oacute;n :</label>
+                            <div class="col-sm-12">
+                                <textarea class="form-control" id="txtSalaDescripcion"> </textarea>
+
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <!--   <input type="text" class="form-control" id="txtSalaFoto" placeholder="Foto"> -->
+                            <img id="imgSalaFoto" src="" style="width: 100%"/>
+                        </div> 
+
+                        <input type="file" id="inputFileToLoad" class="form-control" placeholder="Foto" accept="image/*"/><br><br>
+
+                        <input type="text" class="form-control" id="response" readonly placeholder="Codificado base 64"/> 
+
+                        <div class="form-group">
+                            <label for="SalaSucursal"><br>Sucursal:</label>
+                            <button  type="button" id="radioSucursal" class="btn btn-success" name="radioSucursal" onclick="cargarModal();">Seleccionar Sucursal</button> <br><br>
+                            <input type="text" readonly id="idSucursal" class="form-control" placeholder="Id Sucursal"> 
+                            <input type="text" readonly id="SucursalNombre" class="form-control" placeholder="Nombre Sucursal"> <br>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-12 col-sm-12">
+                                <div class="checkbox">
+                                    <label>Estatus:</label>
+                                    <input id="chbSalaEstatus" class="checkbox" disabled type="checkbox"><br><br>
+                                </div>
+                            </div>
+                        </div>   
+                        <fieldset><center>
+                                <button type="button" class="btn btn-primary" id="btnGuardar" onclick="guardarSala();">Guardar</button>
+                                <button type="button" class="btn btn-primary" id="btnEliminar" onclick="eliminarSala();">Eliminar</button>
+                                <button type="button" class="btn btn-primary" id="btnNuevo" onclick=" limpiarCamposSala();">Nuevo</button>
+                            </center>
+                    </form>        
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    MYSPA
+                </div>
             </div>
-            <div class="modal-footer" style="text-align: center;">
-                MYSPA
-            </div>
+
         </div>
-        
+
     </div>
-    
-</div>
 
 
-                
-                
-                
-                
-                <script>
-                    $(document).ready(function () {
-                        $('#inputFileToLoad').change(function () {
-                            var filesSelected = document.getElementById('inputFileToLoad').files;
-                            if (filesSelected.length > 0) {
-                                var fileToLoad = filesSelected[0];
-                                var fileReader = new FileReader();
-                                fileReader.onload = function (fileLoadedEvent) {
-                                    var base64value = fileLoadedEvent.target.result;
-                                    console.log(base64value);
-                                    var newbase64 = base64value.substring(23);
-                                    $('#response').val(newbase64);
-                                };
-                                fileReader.readAsDataURL(fileToLoad)
-                            }
-                        });
-                    });
-                </script>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('#inputFileToLoad').change(function () {
+                var filesSelected = document.getElementById('inputFileToLoad').files;
+                if (filesSelected.length > 0) {
+                    var fileToLoad = filesSelected[0];
+                    var fileReader = new FileReader();
+                    fileReader.onload = function (fileLoadedEvent) {
+                        var base64value = fileLoadedEvent.target.result;
+                        console.log(base64value);
+                        var newbase64 = base64value.substring(23);
+                        $('#response').val(newbase64);
+                    };
+                    fileReader.readAsDataURL(fileToLoad)
+                }
+            });
+        });
+    </script>
 
 
 

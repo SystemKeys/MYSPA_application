@@ -6,13 +6,16 @@
                 <h3>Cat&aacute;logo de Reservaciones</h3>                
             </div>
             <div class="card-body">
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <br>
                 <table class=" table table-info"  id="dataTable" width="150%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Clave Reservación</th>
-                            <th>Inicio</th>
-                            <th>Fin</th>
                             <th>Clave Cliente</th>
+                            <th>Número Único Cliente</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>                            
                             <th>Clave Sala</th>
                             <th>Estatus</th>
                         </tr>
@@ -24,6 +27,17 @@
         </div>
 
     </div>
+    
+    <script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tbReservacion tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+    </script>
 
     <!--
     <form>
@@ -42,6 +56,7 @@
                             <input type="text" class="form-control" id="txtIdReservacion" readonly placeholder="Clave Reservacion">
                         </div>
                     </div>
+                   
                     <div class="form-group">
                         <label for="Fecha" class="col-lg-5 control-label">Fecha :</label>
                         <div class="col-lg-10">
@@ -69,9 +84,11 @@
                         <label for="idCliente" class="col-lg-5 control-label">Clave Cliente :</label>
                         <div class="col-lg-10">
                             <input type="number" class="form-control" id="txtIdClienteReservacion" readonly placeholder="Clave Cliente">
+                        <label for="numeroUnico" class="col-lg-6 control-label">Numero Unico :</label>
+                            <input type="text" class="form-control" id="txtNumeroUnicoCliente"  placeholder="Numero Unico">
                         </div>
                         <div class="col-lg-4">
-                            <button type="button" class="btn btn-circle btn-primary" name="cargarCliente" id="btnCargarCliente" value="cargarCliente" onclick="cargarClienteReservacion()">Cargar Cliente</button>
+                            <button type="button" class="btn btn-circle btn-primary" name="cargarCliente" id="btnCargarCliente" value="cargarCliente" onclick="cargarClienteReservacion()">Cargar Clientes</button>
                         </div>  
                     </div> 
                     <div class="form-group">
@@ -225,7 +242,7 @@
 
             </div>
             <div class="modal-footer" style="text-align: center;">
-                MYSPAS
+                MYSPA
             </div>
         </div>
 
