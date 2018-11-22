@@ -1,34 +1,5 @@
-function cargarPanel() {
-    $(document).ready(function () {
-        $("#btnProducto").click(function () {
-            $("#ModalProducto").modal();
-        });
-    });
-}
 
-function cargarPanelNuevoSala() {
-    $(document).ready(function () {
-        $("#btnSala").click(function () {
-            $("#ModalSala").modal();
-        });
-    });
-}
 
-function cargarPanelNuevoSucursal() {
-    $(document).ready(function () {
-        $("#btnSucursal").click(function () {
-            $("#ModalSucursal").modal();
-        });
-    });
-}
-
-function cargarPanelNuevoTratamiento() {
-    $(document).ready(function () {
-        $("#btnTratamiento").click(function () {
-            $("#ModalTratamiento").modal();
-        });
-    });
-}
 
 
 function inicializar() {
@@ -177,9 +148,7 @@ function cargarModuloSala() {
     );
 }
 function cargarModal() {
-    $(document).ready(function () {
-        $("#radioSucursal").click(function () {
-            $("#modalSucursal").modal();
+   
             $.ajax({
                 type: "GET",
                 url: "../rssucursal/getAllSucursal",
@@ -193,24 +162,22 @@ function cargarModal() {
                                     '<td>' + sucursal[i].nombre + '</td>' +
                                     '<td>' + sucursal[i].domicilio+ '</td>' +
                                     '</tr>';
-                            $('#tbSucursales').html(str);
-                            $('#tbSucursales').find('tr').click(function (){
+                            $('#tbSalasSucursal').html(str);
+                            $('#tbSalasSucursal').find('tr').click(function (){
                     //this en esta funcion es el renglon
                     //seleccionado por el usuario                                                            
                     $('#idSucursal').val(sucursal[$(this).index()].id);
                     $('#SucursalNombre').val(sucursal[$(this).index()].nombre);
                     if($('#SucursalNombre').val.length > 0){
-                        swal('Sucursal Selecionada, Ya puede cerrar esta ventana', '', 'success');
+                        swal('Sucursal Selecionada', '', 'success');
+                         $("#modalSucursalSala").modal('hide');
                      }else{
                        swal('No se selecciono la Sucursal', '', 'warning');
                    }
                 });              
                         }
                     }
-            );
-        });            
-    });
-    
+            );     
 }
 
 function actualizarTablaSalas() {
@@ -306,6 +273,32 @@ function limpiarCamposSala() {
 }
 
 //MODULO SUCURSAL
+
+function colocarMapa(){
+            //generar una variable con las coordenadas
+            var latitud = Number($('#txtSucursalLatitud').val());
+            var longitud = Number($('#txtSucursalLongitud').val());
+            var posicion={lat:latitud,lng:longitud};
+            //generar la variable con la informacion del mapa
+            var objetoMapa= new google.maps.Map(
+                            document.getElementById("mapa"), //donde se va a colocar
+                            {
+                                    center: posicion, // la latitud y longitud del mapa
+                                    scrollwheel:true, //para funcion del raton como zoom
+                                    mapTypeId:google.maps.MapTypeId.ROADMAP,
+                                    zoom:15
+                            }// como sera colocado el mapa y su funcionalidad
+                    );
+            var objMarcador=new google.maps.Marker(
+            {
+                            map:objetoMapa,//el mapa en donde quieres el marcador
+                            position:posicion,// latitud y longitud de la ubicacion
+                            title:$('#txtSucursalNombre').val()//informacion extra
+                            //icon:"../images/i1.png"//cambio de iconos
+            }		
+                    );
+    }
+    
 function cargarModuloSucursal() {
     $.ajax({
         type: "GET",
@@ -343,7 +336,7 @@ function actualizarTablaSucursal() {
                         $('#txtSucursalDomicilio').val(sucursales[$(this).index()].domicilio)
                         $('#txtSucursalLatitud').val(sucursales[$(this).index()].latitud)
                         $('#txtSucursalLongitud').val(sucursales[$(this).index()].longitud)
-                      
+                         colocarMapa();
                     });
                 }
             }
@@ -988,11 +981,7 @@ function actualizarTablaReservacion() {
     );
 }
 
-function cargarSalaReservacion() {
-
-    $(document).ready(function () {
-        $('#btnCargarSala').click(function () {
-            $('#divModalSalaReservaciones').modal();
+function cargarSalaReservacion() {                    
             $.ajax({
                 type: "GET",
                 url: "../rssala/getAllSala",
@@ -1019,15 +1008,10 @@ function cargarSalaReservacion() {
                    }
                         });
                     }
-            );
-        });
-    });
+            );     
 }
 function cargarHorariosReservacion() {
     
-    $(document).ready(function () {
-        $('#btnCargarHorarios').click(function () {
-            $('#divModalHorariosReservaciones').modal();
             $.ajax({
                 type: "POST",
                 url: "../rshorario/getAllHorarioWithoutUsed",
@@ -1059,16 +1043,11 @@ function cargarHorariosReservacion() {
                    }
                         });
                     }
-            );
-        });
-    });
+            );     
 }
 
 function cargarClienteReservacion() {
-
-    $(document).ready(function () {
-        $('#btnCargarCliente').click(function () {
-            $('#divModalClienteReservaciones').modal();
+   
             $.ajax({
                 type: "GET",
                 url: "../rscliente/getAllCliente",
@@ -1103,9 +1082,7 @@ function cargarClienteReservacion() {
                         }
                         );
                     }
-            );
-        });
-    });
+            );          
 }
 
 function guardarReservacion(){

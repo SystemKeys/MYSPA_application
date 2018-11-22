@@ -77,7 +77,7 @@
                             <input type="number" class="form-control" id="txtIdHorarioReservacion" readonly placeholder="Clave Horario">
                         </div>
                         <div class="col-lg-4">
-                            <button type="button" class="btn btn-circle btn-primary" name="cargarHorarios" id="btnCargarHorarios" value="cargarHorarios" onclick="cargarHorariosReservacion()">Cargar Horarios</button>
+                            <button type="button" class="btn btn-circle btn-primary" name="cargarHorarios" id="btnCargarHorarios" value="cargarHorarios" onclick="cargarHorariosReservacion()" data-toggle="modal" data-target="#divModalHorariosReservaciones">Cargar Horarios</button>
                         </div> 
                     </div>       
                     <div class="form-group">
@@ -88,7 +88,7 @@
                             <input type="text" class="form-control" id="txtNumeroUnicoCliente"  placeholder="Numero Unico">
                         </div>
                         <div class="col-lg-4">
-                            <button type="button" class="btn btn-circle btn-primary" name="cargarCliente" id="btnCargarCliente" value="cargarCliente" onclick="cargarClienteReservacion()">Cargar Clientes</button>
+                            <button type="button" class="btn btn-circle btn-primary" name="cargarCliente" id="btnCargarCliente" value="cargarCliente" onclick="cargarClienteReservacion()" data-toggle="modal" data-target="#divModalClienteReservaciones">Cargar Clientes</button>
                         </div>  
                     </div> 
                     <div class="form-group">
@@ -97,7 +97,7 @@
                             <input type="text" class="form-control" id="txtIdSalaReservacion" readonly placeholder="Clave Sala">
                         </div>
                         <div class="col-lg-4">
-                            <button type="button" class="btn btn-circle btn-primary" name="cargarSala" id="btnCargarSala" value="cargarSala" onclick="cargarSalaReservacion()">Cargar Sala</button>
+                            <button type="button" class="btn btn-circle btn-primary"  id="btnCargarSala" onclick="cargarSalaReservacion()" data-toggle="modal" data-target="#divModalSalaReservaciones"> Cargar Sala</button>
                         </div>                        
                     </div> 
                     <div class="form-group">
@@ -155,7 +155,7 @@
                 </div>
             </div>
             <div class="modal-footer" style="text-align: center;">
-                MYSPAS
+                MYSPA
             </div>
         </div>
 

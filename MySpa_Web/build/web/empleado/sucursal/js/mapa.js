@@ -18,7 +18,7 @@ function mostrarPosicion(posicion) {
 	var miPosicion = new google.maps.LatLng(latitud, longitud);
 
 	// Se comprueba si el mapa se ha cargado ya 
-	if (mapa == null) {
+	if (mapa === null) {
 		// Crea el mapa y lo pone en el elemento del DOM con ID mapa
 		var configuracion = {center: miPosicion, zoom: 18, mapTypeId: google.maps.MapTypeId.HYBRID};
 		mapa = new google.maps.Map(document.getElementById("mapa"), configuracion);
