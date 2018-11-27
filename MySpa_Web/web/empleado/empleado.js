@@ -1,7 +1,4 @@
 
-
-
-
 function inicializar() {
     if (localStorage.getItem('MYSPA_CREDENCIAL') === null)
         window.location = '../index.html';
@@ -70,31 +67,31 @@ function guardarProducto() {
     } else {
         rutaREST = '../rsproducto/insertProducto';
     }
-    if($('#txtNombreProducto').val().length > 0){
+    if ($('#txtNombreProducto').val().length > 0) {
         $.ajax({
             type: "POST",
             asyn: true,
             url: rutaREST,
             data: {
-                idProducto: idProducto,            
+                idProducto: idProducto,
                 nombre: $('#txtNombreProducto').val(),
                 marca: $('#txtMarcaProducto').val(),
                 precioUso: $('#txtPrecioUsoProducto').val(),
-            //estatus : $('#chbEstatusProducto').prop('checked') ? 1 : 0
+                //estatus : $('#chbEstatusProducto').prop('checked') ? 1 : 0
                 estatus: 1
             }
         }).done(function (data)
         {
-        if (data.error != null) {
-            swal("Error", data.error, 'warning');
-            return;
+            if (data.error != null) {
+                swal("Error", data.error, 'warning');
+                return;
+            }
+            actualizarTablaProductos();
+            $('#txtIdProducto').val(data.result);
+            swal('Realizado', 'Hecho', 'success');
         }
-        actualizarTablaProductos();
-        $('#txtIdProducto').val(data.result);
-        swal('Realizado', 'Hecho', 'success');
-    }
-    );
-            } else {
+        );
+    } else {
         $.ajax({
             type: "POST",
             asyn: true,
@@ -120,7 +117,7 @@ function guardarProducto() {
         );
     }
 
-   
+
 }
 
 function limpiarCamposProducto() {
@@ -140,44 +137,43 @@ function cargarModuloSala() {
     ).done(
             function (data) {
                 $('#divMainContainer').html(data);
-                $('#tbSalas').find('tr').click(function () {
-                    alert('Renglon:' + $(this).index());
+                $('#tbSalas').find('tr').click(function () {               
                 });
                 actualizarTablaSalas();
             }
     );
 }
 function cargarModal() {
-   
-            $.ajax({
-                type: "GET",
-                url: "../rssucursal/getAllSucursal",
-                async: true
-            }).done(
-                    function (sucursal) {
-                        var str = '';
-                        for (var i = 0; i < sucursal.length; i++) {
-                            str += '<tr>' +
-                                    '<td>' + sucursal[i].id + '</td>' +
-                                    '<td>' + sucursal[i].nombre + '</td>' +
-                                    '<td>' + sucursal[i].domicilio+ '</td>' +
-                                    '</tr>';
-                            $('#tbSalasSucursal').html(str);
-                            $('#tbSalasSucursal').find('tr').click(function (){
-                    //this en esta funcion es el renglon
-                    //seleccionado por el usuario                                                            
-                    $('#idSucursal').val(sucursal[$(this).index()].id);
-                    $('#SucursalNombre').val(sucursal[$(this).index()].nombre);
-                    if($('#SucursalNombre').val.length > 0){
-                        swal('Sucursal Selecionada', '', 'success');
-                         $("#modalSucursalSala").modal('hide');
-                     }else{
-                       swal('No se selecciono la Sucursal', '', 'warning');
-                   }
-                });              
+
+    $.ajax({
+        type: "GET",
+        url: "../rssucursal/getAllSucursal",
+        async: true
+    }).done(
+            function (sucursal) {
+                var str = '';
+                for (var i = 0; i < sucursal.length; i++) {
+                    str += '<tr>' +
+                            '<td>' + sucursal[i].id + '</td>' +
+                            '<td>' + sucursal[i].nombre + '</td>' +
+                            '<td>' + sucursal[i].domicilio + '</td>' +
+                            '</tr>';
+                    $('#tbSalasSucursal').html(str);
+                    $('#tbSalasSucursal').find('tr').click(function () {
+                        //this en esta funcion es el renglon
+                        //seleccionado por el usuario                                                            
+                        $('#idSucursal').val(sucursal[$(this).index()].id);
+                        $('#SucursalNombre').val(sucursal[$(this).index()].nombre);
+                        if ($('#SucursalNombre').val.length > 0) {
+                            swal('Sucursal Selecionada', '', 'success');
+                            $("#modalSucursalSala").modal('hide');
+                        } else {
+                            swal('No se selecciono la Sucursal', '', 'warning');
                         }
-                    }
-            );     
+                    });
+                }
+            }
+    );
 }
 
 function actualizarTablaSalas() {
@@ -274,31 +270,31 @@ function limpiarCamposSala() {
 
 //MODULO SUCURSAL
 
-function colocarMapa(){
-            //generar una variable con las coordenadas
-            var latitud = Number($('#txtSucursalLatitud').val());
-            var longitud = Number($('#txtSucursalLongitud').val());
-            var posicion={lat:latitud,lng:longitud};
-            //generar la variable con la informacion del mapa
-            var objetoMapa= new google.maps.Map(
-                            document.getElementById("mapa"), //donde se va a colocar
-                            {
-                                    center: posicion, // la latitud y longitud del mapa
-                                    scrollwheel:true, //para funcion del raton como zoom
-                                    mapTypeId:google.maps.MapTypeId.ROADMAP,
-                                    zoom:15
-                            }// como sera colocado el mapa y su funcionalidad
-                    );
-            var objMarcador=new google.maps.Marker(
+function colocarMapa() {
+    //generar una variable con las coordenadas
+    var latitud = Number($('#txtSucursalLatitud').val());
+    var longitud = Number($('#txtSucursalLongitud').val());
+    var posicion = {lat: latitud, lng: longitud};
+    //generar la variable con la informacion del mapa
+    var objetoMapa = new google.maps.Map(
+            document.getElementById("mapa"), //donde se va a colocar
             {
-                            map:objetoMapa,//el mapa en donde quieres el marcador
-                            position:posicion,// latitud y longitud de la ubicacion
-                            title:$('#txtSucursalNombre').val()//informacion extra
-                            //icon:"../images/i1.png"//cambio de iconos
-            }		
-                    );
-    }
-    
+                center: posicion, // la latitud y longitud del mapa
+                scrollwheel: true, //para funcion del raton como zoom
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoom: 15
+            }// como sera colocado el mapa y su funcionalidad
+    );
+    var objMarcador = new google.maps.Marker(
+            {
+                map: objetoMapa, //el mapa en donde quieres el marcador
+                position: posicion, // latitud y longitud de la ubicacion
+                title: $('#txtSucursalNombre').val()//informacion extra
+                        //icon:"../images/i1.png"//cambio de iconos
+            }
+    );
+}
+
 function cargarModuloSucursal() {
     $.ajax({
         type: "GET",
@@ -336,7 +332,7 @@ function actualizarTablaSucursal() {
                         $('#txtSucursalDomicilio').val(sucursales[$(this).index()].domicilio)
                         $('#txtSucursalLatitud').val(sucursales[$(this).index()].latitud)
                         $('#txtSucursalLongitud').val(sucursales[$(this).index()].longitud)
-                         colocarMapa();
+                        colocarMapa();
                     });
                 }
             }
@@ -353,56 +349,56 @@ function guardarSucursal() {
     } else {
         rutaREST = '../rssucursal/insertSucursal';
     }
-    if($('#txtSucursalNombre').val().length > 0){
-    $.ajax(
-            {
-                type: "POST",
-                async: true,
-                url: rutaREST,
-                data: {
-                    idSucursal: idSucursal,
-                    nombre: $('#txtSucursalNombre').val(),
-                    domicilio: $('#txtSucursalDomicilio').val(),
-                    latitud: $('#txtSucursalLatitud').val(),
-                    longitud: $('#txtSucursalLongitud').val()
-                            //estatus: $('chbProductoEstatus').prop('checked') ? 1 : 0
-                }
-            }).done(function (data)
-    {
-        if (data.error != null)
-        {
-            swal('Error', data.error, 'warning');
-            return;
-        }
-        actualizarTablaSucursal();
-        $('#txtSucursalId').val(data.result);
-        swal('Movimiento realizado', '', 'success');
-    });
-    }else{
+    if ($('#txtSucursalNombre').val().length > 0) {
         $.ajax(
-            {
-                type: "POST",
-                async: true,
-                url: rutaREST,
-                data: {
-                    idSucursal: idSucursal,
-                    nombre: $('#txtSucursalNombreN').val(),
-                    domicilio: $('#txtSucursalDomicilioN').val(),
-                    latitud: $('#txtSucursalLatitudN').val(),
-                    longitud: $('#txtSucursalLongitudN').val()
-                            //estatus: $('chbProductoEstatus').prop('checked') ? 1 : 0
-                }
-            }).done(function (data)
-    {
-        if (data.error != null)
+                {
+                    type: "POST",
+                    async: true,
+                    url: rutaREST,
+                    data: {
+                        idSucursal: idSucursal,
+                        nombre: $('#txtSucursalNombre').val(),
+                        domicilio: $('#txtSucursalDomicilio').val(),
+                        latitud: $('#txtSucursalLatitud').val(),
+                        longitud: $('#txtSucursalLongitud').val()
+                                //estatus: $('chbProductoEstatus').prop('checked') ? 1 : 0
+                    }
+                }).done(function (data)
         {
-            swal('Error', data.error, 'warning');
-            return;
-        }
-        actualizarTablaSucursal();
-        $('#txtSucursalId').val(data.result);
-        swal('Movimiento realizado', '', 'success');
-    });
+            if (data.error != null)
+            {
+                swal('Error', data.error, 'warning');
+                return;
+            }
+            actualizarTablaSucursal();
+            $('#txtSucursalId').val(data.result);
+            swal('Movimiento realizado', '', 'success');
+        });
+    } else {
+        $.ajax(
+                {
+                    type: "POST",
+                    async: true,
+                    url: rutaREST,
+                    data: {
+                        idSucursal: idSucursal,
+                        nombre: $('#txtSucursalNombreN').val(),
+                        domicilio: $('#txtSucursalDomicilioN').val(),
+                        latitud: $('#txtSucursalLatitudN').val(),
+                        longitud: $('#txtSucursalLongitudN').val()
+                                //estatus: $('chbProductoEstatus').prop('checked') ? 1 : 0
+                    }
+                }).done(function (data)
+        {
+            if (data.error != null)
+            {
+                swal('Error', data.error, 'warning');
+                return;
+            }
+            actualizarTablaSucursal();
+            $('#txtSucursalId').val(data.result);
+            swal('Movimiento realizado', '', 'success');
+        });
     }
 }
 
@@ -468,51 +464,51 @@ function guardarTratamiento() {
     } else {
         rutaREST = '../rstratamiento/insertTratamiento';
     }
-    if($('#txtNombreTratamiento').val().length > 0){
-      $.ajax({
-        type: "POST",
-        asyn: true,
-        url: rutaREST,
-        data: {
-            idTratamiento: idTratamiento,
-            nombre: $('#txtNombreTratamiento').val(),
-            descripcion: $('#txtDescripcionTratamiento').val(),
-            //estatus : $('#chbEstatusTratamiento').prop('checked') ? 1 : 0
+    if ($('#txtNombreTratamiento').val().length > 0) {
+        $.ajax({
+            type: "POST",
+            asyn: true,
+            url: rutaREST,
+            data: {
+                idTratamiento: idTratamiento,
+                nombre: $('#txtNombreTratamiento').val(),
+                descripcion: $('#txtDescripcionTratamiento').val(),
+                //estatus : $('#chbEstatusTratamiento').prop('checked') ? 1 : 0
+            }
+        }).done(function (data)
+        {
+            if (data.error != null) {
+                swal("Error", data.error, 'warning');
+                return;
+            }
+            actualizarTablaTratamiento();
+            $('#txtIdTratamiento').val(data.result);
+            swal('Realizado', 'Hecho', 'success');
         }
-    }).done(function (data)
-    {
-        if (data.error != null) {
-            swal("Error", data.error, 'warning');
-            return;
+        );
+    } else {
+        $.ajax({
+            type: "POST",
+            asyn: true,
+            url: rutaREST,
+            data: {
+                idTratamiento: idTratamiento,
+                nombre: $('#txtNombreTratamientoN').val(),
+                descripcion: $('#txtDescripcionTratamientoN').val(),
+                //estatus : $('#chbEstatusTratamiento').prop('checked') ? 1 : 0
+            }
+        }).done(function (data)
+        {
+            if (data.error != null) {
+                swal("Error", data.error, 'warning');
+                return;
+            }
+            actualizarTablaTratamiento();
+            $('#txtIdTratamiento').val(data.result);
+            swal('Realizado', 'Hecho', 'success');
         }
-        actualizarTablaTratamiento();
-        $('#txtIdTratamiento').val(data.result);
-        swal('Realizado', 'Hecho', 'success');
+        );
     }
-    );  
-}else{
-    $.ajax({
-        type: "POST",
-        asyn: true,
-        url: rutaREST,
-        data: {
-            idTratamiento: idTratamiento,
-            nombre: $('#txtNombreTratamientoN').val(),
-            descripcion: $('#txtDescripcionTratamientoN').val(),
-            //estatus : $('#chbEstatusTratamiento').prop('checked') ? 1 : 0
-        }
-    }).done(function (data)
-    {
-        if (data.error != null) {
-            swal("Error", data.error, 'warning');
-            return;
-        }
-        actualizarTablaTratamiento();
-        $('#txtIdTratamiento').val(data.result);
-        swal('Realizado', 'Hecho', 'success');
-    }
-    );
-}
 }
 
 function actualizarTablaTratamiento() {
@@ -744,7 +740,7 @@ function limpiarCamposCliente() {
     $('#txtNumeroUnicoCliente').val('');
     $('#chbEstatusProducto').prop('checked', false);
 }
-    
+
 //MODULO EMPLEADO
 
 function cargarModuloEmpleado() {
@@ -789,8 +785,6 @@ function actualizarTablaEmpleados() {
                             '<td>' + empleados[i].persona.rfc + '</td>' +
                             '<td>' + empleados[i].numeroEmpleado + '</td>' +
                             '<td>' + empleados[i].puesto + '</td>' +
-                            
-                           
                             '</tr>';
                 $('#tbEmpleados').html(str);
                 $('#tbEmpleados').find('tr').click(function ()
@@ -918,6 +912,25 @@ function limpiarCamposEmpleado() {
     $('#chbEstatusEmpleado').prop('checked', false);
 }
 
+
+function buscarClientePorNumeroUnicoReservacion(numeroUnico) {
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: "../rsreservacion/findClienteByNumeroUnico",
+        data: {numeroUnico: numeroUnico},
+        asyn: true
+    }).done(
+            function (cliente) {
+                if (cliente.id != null) {
+                    $('#txtIdClienteReservacion').val(cliente.id);
+                    $('#txtNombreCliente').val(cliente.persona.nombre + " " + cliente.persona.apellidoPaterno);
+                } else {
+                    swal('No se encontró el cliente', '', 'warning');
+                }
+            }
+    );
+}
 function cargarModuloReservacion() {
     $.ajax(
             {type: "GET",
@@ -929,10 +942,23 @@ function cargarModuloReservacion() {
                 $('#divMainContainer').html(data);
 
                 actualizarTablaReservacion();
-            }
-    );
 
 
+                $("#txtNumeroUnicoCliente").on("keypress", function (evt) {
+                    var code = evt.keyCode;
+                    if (code == '13') {
+
+                        buscarClientePorNumeroUnicoReservacion($('#txtNumeroUnicoCliente').val());
+                    }
+                });
+                //filtroo para las reservaciones               
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#tbReservacion tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
 }
 
 function actualizarTablaReservacion() {
@@ -951,7 +977,6 @@ function actualizarTablaReservacion() {
                             '<td>' + reservaciones[i].cliente.numeroUnico + '</td>' +
                             '<td>' + reservaciones[i].fechaHoraInicio + '</td>' +
                             '<td>' + reservaciones[i].fechaHoraFin + '</td>' +
-                            
                             '<td>' + reservaciones[i].sala.nombre + '</td>' +
                             '<td>' + reservaciones[i].estatus + '</td>' +
                             '</tr>';
@@ -967,133 +992,135 @@ function actualizarTablaReservacion() {
                     var fecha = fechaHoraInicio.split(' ');
                     var newfecha = fecha[0].split('/');
                     var horaFin = fechaHoraFin.split(' ');
-                    $('#txtFecha').val(newfecha[2]+'-'+newfecha[1]+'-'+newfecha[0]);
+                    $('#txtFecha').val(newfecha[2] + '-' + newfecha[1] + '-' + newfecha[0]);
                     $('#txtHorarioInicio').val(fecha[1]);
                     $('#txtHorarioFin').val(horaFin[1]);
                     $('#txtIdClienteReservacion').val(reservaciones[$(this).index()].cliente.id);
                     $('#txtIdSalaReservacion').val(reservaciones[$(this).index()].sala.id);
                     $('#chbEstatusReservacion').val(reservaciones[$(this).index()].estatus);
                     $('#txtNumeroUnicoCliente').val(reservaciones[$(this).index()].cliente.numeroUnico);
-                   
                 });
 
             }
     );
 }
 
-function cargarSalaReservacion() {                    
-            $.ajax({
-                type: "GET",
-                url: "../rssala/getAllSala",
-                async: true
-            }).done(
-                    function (salas)
-                    {
-                        var str = '';
-                        for (var i = 0; i < salas.length; i++)
-                            str += '<tr>' +
-                                    '<td>' + salas[i].id + '</td>' +
-                                    '<td>' + salas[i].nombre + '</td>' +
-                                    '<td>' + salas[i].descripcion + '</td>' +
-                                    '<td>' + salas[i].sucursal.nombre + '</td>' +
-                                    '</tr>';
-                        $('#tbSalasReservacion').html(str);
-                        $('#tbSalasReservacion').find('tr').click(function ()
-                        {
-                            $('#txtIdSalaReservacion').val(salas[$(this).index()].id);
-                        if($('#txtIdSalaReservacion').val.length > 0){
-                                swal('Horario Selecionado, Ya puede cerrar esta ventana', '', 'success');
-                             }else{
-                                swal('No se selecciono el Horario', '', 'warning');
-                   }
-                        });
+function cargarSalaReservacion() {
+    $.ajax({
+        type: "GET",
+        url: "../rssala/getAllSala",
+        async: true
+    }).done(
+            function (salas)
+            {
+                var str = '';
+                for (var i = 0; i < salas.length; i++)
+                    str += '<tr>' +
+                            '<td>' + salas[i].id + '</td>' +
+                            '<td>' + salas[i].nombre + '</td>' +
+                            '<td>' + salas[i].descripcion + '</td>' +
+                            '<td>' + salas[i].sucursal.nombre + '</td>' +
+                            '</tr>';
+                $('#tbSalasReservacion').html(str);
+                $('#tbSalasReservacion').find('tr').click(function ()
+                {
+                    $('#txtIdSalaReservacion').val(salas[$(this).index()].id);
+                    if ($('#txtIdSalaReservacion').val.length > 0) {
+                        swal('Sala Seleccionada', '', 'success');
+                           $("#divModalSalaReservaciones").modal('hide');
+                    } else {
+                        swal('No se selecciono la sala', '', 'warning');
                     }
-            );     
+                });
+            }
+    );
 }
 function cargarHorariosReservacion() {
-    
-            $.ajax({
-                type: "POST",
-                url: "../rshorario/getAllHorarioWithoutUsed",
-                async: true,
-                data: {
-                    idSala: $('#txtIdSalaReservacion').val(),
-                    fecha: $('#txtFecha').val()
-                }               
-            }).done(
-                    function (horarios)
-                    {
-                        var str = '';
-                        for (var i = 0; i < horarios.length; i++)
-                            str += '<tr>' +
-                                    '<td>' + horarios[i].id + '</td>' +
-                                    '<td>' + horarios[i].horaInicio + '</td>' +
-                                    '<td>' + horarios[i].horaFin + '</td>' +
-                                    '</tr>';
-                        $('#tbHorariosReservacion').html(str);
-                        $('#tbHorariosReservacion').find('tr').click(function ()
-                        {
-                            $('#txtHorarioInicio').val(horarios[$(this).index()].horaInicio);
-                            $('#txtHorarioFin').val(horarios[$(this).index()].horaFin);
-                            $('#txtIdHorarioReservacion').val(horarios[$(this).index()].id);
-                            if($('#txtIdHorarioReservacion').val.length > 0){
-                                swal('Horario Selecionado, Ya puede cerrar esta ventana', '', 'success');
-                             }else{
-                                swal('No se selecciono el Horario', '', 'warning');
-                   }
-                        });
+
+    $.ajax({
+        type: "POST",
+        url: "../rshorario/getAllHorarioWithoutUsed",
+        async: true,
+        data: {
+            idSala: $('#txtIdSalaReservacion').val(),
+            fecha: $('#txtFecha').val()
+        }
+    }).done(
+            function (horarios)
+            {
+                var str = '';
+                for (var i = 0; i < horarios.length; i++)
+                    str += '<tr>' +
+                            '<td>' + horarios[i].id + '</td>' +
+                            '<td>' + horarios[i].horaInicio + '</td>' +
+                            '<td>' + horarios[i].horaFin + '</td>' +
+                            '</tr>';
+                $('#tbHorariosReservacion').html(str);
+                $('#tbHorariosReservacion').find('tr').click(function ()
+                {
+                    $('#txtHorarioInicio').val(horarios[$(this).index()].horaInicio);
+                    $('#txtHorarioFin').val(horarios[$(this).index()].horaFin);
+                    $('#txtIdHorarioReservacion').val(horarios[$(this).index()].id);
+                    if ($('#txtIdHorarioReservacion').val.length > 0) {
+                        swal('Horario Selecionado', '', 'success');
+                       $("#divModalHorarioReservaciones").modal('hide');
+                    } else {
+                        swal('No se selecciono el Horario', '', 'warning');
                     }
-            );     
+                });
+            }
+    );
 }
 
 function cargarClienteReservacion() {
-   
-            $.ajax({
-                type: "GET",
-                url: "../rscliente/getAllCliente",
-                async: true
-            }).done(
-                    function (clientes)
-                    {
-                        var str = '';
-                        for (var i = 0; i < clientes.length; i++)
-                            str += '<tr>' +
-                                    '<td>' + clientes[i].id + '</td>' +
-                                    '<td>' + clientes[i].persona.nombre +
-                                    ' ' + clientes[i].persona.apellidoPaterno +
-                                    ' ' + clientes[i].persona.apellidoMaterno + '</td>' +
-                                    '<td>' + clientes[i].persona.genero + '</td>' +
-                                    '<td>' + clientes[i].persona.domicilio + '</td>' +
-                                    '<td>' + clientes[i].persona.telefono + '</td>' +
-                                    '<td>' + clientes[i].persona.rfc + '</td>' +
-                                    '<td>' + clientes[i].numeroUnico + '</td>' +
-                                    '<td>' + clientes[i].correo + '</td>' +
-                                    '</tr>';
-                        $('#tbClientesReservacion').html(str);
-                        $('#tbClientesReservacion').find('tr').click(function ()
-                        {
-                            $('#txtIdClienteReservacion').val(clientes[$(this).index()].id);
-                            $('#txtNumeroUnicoCliente').val(clientes[$(this).index()].numeroUnico);
-                          if($('#txtIdClienteReservacion').val.length > 0){
-                                swal('Horario Selecionado, Ya puede cerrar esta ventana', '', 'success');
-                             }else{
-                                swal('No se selecciono el Horario', '', 'warning');
-                   }
-                        }
-                        );
+    $.ajax({
+        type: "GET",
+        url: "../rscliente/getAllCliente",
+        async: true
+    }).done(
+            function (clientes)
+            {
+                var str = '';
+                for (var i = 0; i < clientes.length; i++)
+                    str += '<tr>' +
+                            '<td>' + clientes[i].id + '</td>' +
+                            '<td>' + clientes[i].persona.nombre +
+                            ' ' + clientes[i].persona.apellidoPaterno +
+                            ' ' + clientes[i].persona.apellidoMaterno + '</td>' +
+                            '<td>' + clientes[i].persona.genero + '</td>' +
+                            '<td>' + clientes[i].persona.domicilio + '</td>' +
+                            '<td>' + clientes[i].persona.telefono + '</td>' +
+                            '<td>' + clientes[i].persona.rfc + '</td>' +
+                            '<td>' + clientes[i].numeroUnico + '</td>' +
+                            '<td>' + clientes[i].correo + '</td>' +
+                            '</tr>';
+                $('#tbClientesReservacion').html(str);
+                $('#tbClientesReservacion').find('tr').click(function ()
+                {
+                    $('#txtIdClienteReservacion').val(clientes[$(this).index()].id);
+                    $('#txtNumeroUnicoCliente').val(clientes[$(this).index()].numeroUnico);
+                    $('#txtNombreCliente').val(clientes[$(this).index()].persona.nombre);
+                    if ($('#txtIdClienteReservacion').val.length > 0) {
+                        swal('Cliente Seleccionado', '', 'success');
+                        $("#divModalClienteReservaciones").modal('hide');
+                    } else {
+                        swal('No se selecciono el Cliente', '', 'warning');
                     }
-            );          
+                }
+                );
+            }
+    );
 }
 
-function guardarReservacion(){
-    
+function guardarReservacion() {
+
     $.ajax({
         type: "POST",
         asyn: true,
         url: '../rsreservacion/insertReservacion',
         data: {
-            fechaHoraInicio: $('#txtFecha').val()+' '+$('#txtHorarioInicio').val(), 
-            fechaHoraFin: $('#txtFecha').val()+' '+$('#txtHorarioFin').val(),
+            fechaHoraInicio: $('#txtFecha').val() + ' ' + $('#txtHorarioInicio').val(),
+            fechaHoraFin: $('#txtFecha').val() + ' ' + $('#txtHorarioFin').val(),
             idCliente: $('#txtIdClienteReservacion').val(),
             idSala: $('#txtIdSalaReservacion').val(),
             idHorario: $('#txtIdHorarioReservacion').val()
@@ -1110,8 +1137,8 @@ function guardarReservacion(){
     }
     );
 }
-function eliminarReservacion(){
-    
+function eliminarReservacion() {
+
     $.ajax({
         type: "POST",
         asyn: true,
@@ -1144,3 +1171,200 @@ function limpiarReservacion() {
     $('#txtIdSalaReservacion').val('');
     $('#txtFecha').val('');
 }
+
+function actualizarTablaReservacion() {
+    $.ajax({
+        type: "GET",
+        url: "../rsreservacion/getAllReservacion",
+        async: true
+    }).done(
+            function (reservaciones)
+            {
+                var str = '';
+                for (var i = 0; i < reservaciones.length; i++)
+                    str += '<tr>' +
+                            '<td>' + reservaciones[i].id + '</td>' +
+                            '<td>' + reservaciones[i].cliente.id + '</td>' +
+                            '<td>' + reservaciones[i].cliente.numeroUnico + '</td>' +
+                            '<td>' + reservaciones[i].fechaHoraInicio + '</td>' +
+                            '<td>' + reservaciones[i].fechaHoraFin + '</td>' +
+                            '<td>' + reservaciones[i].sala.nombre + '</td>' +
+                            '<td>' + reservaciones[i].estatus + '</td>' +
+                            '</tr>';
+                $('#tbReservacion').html(str);
+                $('#tbReservacion').find('tr').click(function ()
+                {
+                    //this en esta funcion es el renglon
+                    //seleccionado por el usuario                                                            
+
+                    $('#txtIdReservacion').val(reservaciones[$(this).index()].id);
+                    var fechaHoraInicio = reservaciones[$(this).index()].fechaHoraInicio;
+                    var fechaHoraFin = reservaciones[$(this).index()].fechaHoraFin;
+                    var fecha = fechaHoraInicio.split(' ');
+                    var newfecha = fecha[0].split('/');
+                    var horaFin = fechaHoraFin.split(' ');
+                    $('#txtFecha').val(newfecha[2] + '-' + newfecha[1] + '-' + newfecha[0]);
+                    $('#txtHorarioInicio').val(fecha[1]);
+                    $('#txtHorarioFin').val(horaFin[1]);
+                    $('#txtIdClienteReservacion').val(reservaciones[$(this).index()].cliente.id);
+                    $('#txtIdSalaReservacion').val(reservaciones[$(this).index()].sala.id);
+                    $('#chbEstatusReservacion').val(reservaciones[$(this).index()].estatus);
+                    $('#txtNumeroUnicoCliente').val(reservaciones[$(this).index()].cliente.numeroUnico);
+                });
+
+            }
+
+    );
+}
+
+function cargarModuloServicio() {
+    $.ajax(
+            {type: "GET",
+                url: "servicio/catalogo.html",
+                async: true
+            }
+    ).done(
+            function (data) {
+                $('#divMainContainer').html(data);
+            }
+    );
+}
+
+function cargarReservacionServicio() {
+    $.ajax({
+        type: "GET",
+        url: "../rsreservacion/getAllReservacion",
+        async: true
+    }).done(
+            function (reservaciones)
+            {
+                var str = '';
+                for (var i = 0; i < reservaciones.length; i++)
+                    str += '<tr>' +
+                            '<td>' + reservaciones[i].id + '</td>' +                          
+                            '<td>' + reservaciones[i].cliente.persona.nombre + '</td>' +
+                            '<td>' + reservaciones[i].fechaHoraInicio + '</td>' +
+                            '<td>' + reservaciones[i].fechaHoraFin + '</td>' +
+                            '<td>' + reservaciones[i].sala.nombre + '</td>' +                          
+                            '</tr>';
+                $('#tbReservacionesServicio').html(str);
+                $('#tbReservacionesServicio').find('tr').click(function ()
+                {                   
+                    $('#txtIdReservacionServicio').val(reservaciones[$(this).index()].id);
+                   if ($('#txtIdReservacionServicio').val.length > 0) {
+                        swal('Reservación Seleccionada', '', 'success');
+                        $("#divModalReservacionServicio").modal('hide');
+                    } else {
+                        swal('No se selecciono la Reservación', '', 'warning');
+                    }
+                });
+            }
+    );
+}
+
+function cargarEmpleadoServicio() {
+    $.ajax({
+        type: "GET",
+        url: "../rsempleado/getAllEmpleado",
+        async: true
+    }).done(
+            function (empleados)
+            {
+                var str = '';
+                for (var i = 0; i < empleados.length; i++)
+                    str += '<tr>' +
+                            '<td>' + empleados[i].id + '</td>' +                          
+                            '<td>' + empleados[i].persona.nombre + " " + empleados[i].persona.apellidoPaterno + '</td>' +                                                 
+                            '</tr>';
+                $('#tbEmpleadosServicio').html(str);
+                $('#tbEmpleadosServicio').find('tr').click(function ()
+                {                   
+                    $('#txtIdEmpleadoServicio').val(empleados[$(this).index()].id);
+                   if ($('#txtIdEmpleadoServicio').val.length > 0) {
+                        swal('Empleado Seleccionada', '', 'success');
+                        $("#divModalEmpleadoServicio").modal('hide');
+                    } else {
+                        swal('No se selecciono la Reservación', '', 'warning');
+                    }
+                });
+            }
+    );
+}
+
+
+function selectTratamiento(){
+    $('#divModalTratamientosServicio').modal();
+    actualizarTablaTratamientoServicio();
+}
+function selectProducto(){
+    $('#divModalProductosServicio').modal();
+    actualizarTablaProductosServicio();
+}
+function abrirModalPS(){
+    $('#divModalProductosSelected').modal();
+}
+
+var str2 = '';
+var str3 = '';
+function actualizarTablaTratamientoServicio() {
+    $.ajax({
+        type: "GET",
+        url: "../rstratamiento/getAllTratamiento",
+        async: true
+    }).done(
+            function (tratamientos)
+            {
+                var str1 = '';
+                
+                for (var i = 0; i < tratamientos.length; i++)
+                    str1 += '<tr>' +
+                            '<td>' + tratamientos[i].nombre + '</td>' +
+                            '<td>' + tratamientos[i].descripcion + '</td>' +
+                            '</tr>';
+                $('#tblTratamientosServicio').html(str1);
+                $('#tblTratamientosServicio').find('tr').click(function ()
+                {
+                    str2 += '<tr>' +
+                            '<td>' + tratamientos[$(this).index()].nombre + '</td>' +
+                            '<td> <button class="btn btn-outline-success my-2 my-sm-0" name="agregar" value="Agragar" onclick="abrirModalPS()">Ver productos</button> </td>' + 
+                            '</tr>';  
+                    $('#tblTratamientosSelected').html(str2);
+                    $('#divModalTratamientosServicio').modal('hide');
+                });
+                
+            }
+    );
+}
+function actualizarTablaProductosServicio() {
+    $.ajax({
+        type: "GET",
+        url: "../rsproducto/getAllProducto",
+        async: true
+    }).done(
+            function (productos)
+            {
+                var str1 = '';
+                for (var i = 0; i < productos.length; i++)
+                    str1 += '<tr>' +
+                            '<td>' + productos[i].nombre + '</td>' +
+                            '<td>' + productos[i].marca + '</td>' +
+                            '<td>' + productos[i].precioUso + '</td>' +
+                            '</tr>';
+                $('#tblProductosServicio').html(str1);
+                $('#tblProductosServicio').find('tr').click(function ()
+                {
+                    str3 += '<tr>' +
+                            '<td>' + productos[$(this).index()].nombre + '</td>' +
+                            '<td>' + productos[$(this).index()].marca + '</td>' +
+                            '<td>' + productos[$(this).index()].precioUso + '</td>' +
+                            '</tr>';
+                    $('#tblProductosSeleccionados').html(str3);
+                    
+                    $('#divModalProductosServicio').modal('hide');
+                    $('#divModalProductosSelected').modal();
+                });
+            }
+    );
+}
+
+

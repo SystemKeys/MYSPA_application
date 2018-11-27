@@ -11,34 +11,42 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style/bootstrap4_general/vendor/bootstrap/css/bootstrap.min.css">                
         <link rel="stylesheet" href="css/all.css">
-        
+         <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+         <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
         <link href="style/sweet_alert2/sweetalert2.min.css" rel="stylesheet">
-        
+         <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="style/bootstrap4_app_white/vendor/bootstrap/css/bootstrap.min.css" type="text/css"/>
+
         <script type="text/javascript" src="myspa_main.js"></script>
     </head>
-    <body style=" background-color:#9DEBF0">
+    <body style=" background-color:#1565C0">
         
        <section class="login-block">
             <div class="container">
             <div class="row">
             <div class="col-md-4 login-sec">
                 <h2 class="text-center">Login Now</h2>
-            <div class="login-form">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" class="text-uppercase">Username</label>
-                        <input id="txtUsername" type="text" class="form-control" placeholder="">
+            <div class="login-sec-form">
+                    <div class="input-group">
+              
+                        <input id="txtUsername" class="input--style-1" type="text" placeholder="USERNAME">
     
                     </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1" class="text-uppercase">Password</label>
-                <input id="txtPassword" type="password" class="form-control" placeholder="">
+            <div class="input-group">
+               
+                <input id="txtPassword" type="password" class="input--style-1" placeholder="PASSWORD">
+                
             </div>
-            <div class="form-check">
+            <div class="input--style-1">
+                 <button class="btn btn-outline-secondary" onclick="login()">Submit</button><br><br>
                 <label class="form-check-label">
-                <input type="checkbox" class="form-check-input">
-                <small>Remember Me</small>
+                <input type="checkbox" class="form-check-input"><small>Remember Me</small>
                 </label>
-                <button class="btn btn-login float-right" onclick="login()">Submit</button>
+               
             </div>
   
             </div>

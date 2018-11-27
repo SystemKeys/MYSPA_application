@@ -179,5 +179,29 @@ public class RESTCliente extends Application{
         
         return Response.status(Response.Status.OK).entity(out).build();
     }
+    @GET
+    @Path("findClienteByNumeroUnico")
+    @Produces(MediaType.APPLICATION_JSON)
     
+     public Response findClienteByNumeroUnico(@QueryParam("numeroUnico") @DefaultValue("0") String numeroUnico){
+       
+     String out= null;
+     ControllerCliente cc= new ControllerCliente();
+     Cliente c = null;
+     JSONSerializer jss= new JSONSerializer();
+     
+        try {
+            jss.exclude("class", "cliente.class","cliente.persona");
+            c= cc.findByNumeroUnico(numeroUnico);
+            
+            if (c!= null) {
+                out =jss.serialize(c);
+            }else
+               out = "{\"result:\":\"Cliente no encontrado.\"}";
+        } catch (Exception e) {
+             e.printStackTrace();
+             out = "{\"exception:\":\"" + e.toString() + "\"}";
+        }
+        return Response.status(Response.Status.OK).entity(out).build();
+     }
 }

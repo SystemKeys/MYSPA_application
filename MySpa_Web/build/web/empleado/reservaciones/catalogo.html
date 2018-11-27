@@ -27,18 +27,6 @@
         </div>
 
     </div>
-    
-    <script>
-    $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#tbReservacion tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-    </script>
-
     <!--
     <form>
         <label for="exampleInputEmail1" class="text-uppercase">Nombre Producto</label>
@@ -48,76 +36,78 @@
 </div>
 
 <!-- dialogo modal -->
-                <form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form">
 
-                    <div class="form-group">
-                        <label for="claveReservacion" class="col-lg-6 control-label">Clave Reservacion :</label>
-                        <div class="col-lg-10">
-                            <input type="text" class="form-control" id="txtIdReservacion" readonly placeholder="Clave Reservacion">
-                        </div>
-                    </div>
-                   
-                    <div class="form-group">
-                        <label for="Fecha" class="col-lg-5 control-label">Fecha :</label>
-                        <div class="col-lg-10">
-                            <input type="date" class="form-control" id="txtFecha" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="HoraInicioyFin" class="col-lg-5 control-label">Horarios Inicio:</label>
-                        <div class="col-lg-10">
-                            <input type="text" class="form-control" id="txtHorarioInicio" readonly placeholder="Horario Inicio">
-                        </div>
-                        <label for="HoraInicioyFin" class="col-lg-5 control-label">Horarios Fin:</label>
-                        <div class="col-lg-10">
-                            <input type="text" class="form-control" id="txtHorarioFin" readonly placeholder="Horario Fin">
-                        </div>
-                        <label for="idHorario" class="col-lg-5 control-label">Clave Horario :</label>
-                        <div class="col-lg-10">
-                            <input type="number" class="form-control" id="txtIdHorarioReservacion" readonly placeholder="Clave Horario">
-                        </div>
-                        <div class="col-lg-4">
-                            <button type="button" class="btn btn-circle btn-primary" name="cargarHorarios" id="btnCargarHorarios" value="cargarHorarios" onclick="cargarHorariosReservacion()" data-toggle="modal" data-target="#divModalHorariosReservaciones">Cargar Horarios</button>
-                        </div> 
-                    </div>       
-                    <div class="form-group">
-                        <label for="idCliente" class="col-lg-5 control-label">Clave Cliente :</label>
-                        <div class="col-lg-10">
-                            <input type="number" class="form-control" id="txtIdClienteReservacion" readonly placeholder="Clave Cliente">
-                        <label for="numeroUnico" class="col-lg-6 control-label">Numero Unico :</label>
-                            <input type="text" class="form-control" id="txtNumeroUnicoCliente"  placeholder="Numero Unico">
-                        </div>
-                        <div class="col-lg-4">
-                            <button type="button" class="btn btn-circle btn-primary" name="cargarCliente" id="btnCargarCliente" value="cargarCliente" onclick="cargarClienteReservacion()" data-toggle="modal" data-target="#divModalClienteReservaciones">Cargar Clientes</button>
-                        </div>  
-                    </div> 
-                    <div class="form-group">
-                        <label for="idSala" class="col-lg-5 control-label">Clave Sala :</label>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control" id="txtIdSalaReservacion" readonly placeholder="Clave Sala">
-                        </div>
-                        <div class="col-lg-4">
-                            <button type="button" class="btn btn-circle btn-primary"  id="btnCargarSala" onclick="cargarSalaReservacion()" data-toggle="modal" data-target="#divModalSalaReservaciones"> Cargar Sala</button>
-                        </div>                        
-                    </div> 
-                    <div class="form-group">
-                        <div class="col-lg-offset-2 col-lg-10">
-                            <div class="checkbox">
-                                <label>
-                                    <input id="chbEstatusReservacion" type="checkbox"> Estatus
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+    <div class="form-group">
+        <label for="claveReservacion" class="col-lg-6 control-label">Clave Reservacion :</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="txtIdReservacion" readonly placeholder="Clave Reservacion">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Fecha" class="col-lg-5 control-label">Fecha :</label>
+        <div class="col-lg-10">
+            <input type="date" class="form-control" id="txtFecha" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="HoraInicioyFin" class="col-lg-5 control-label">Horarios Inicio:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="txtHorarioInicio" readonly placeholder="Horario Inicio">
+        </div>
+        <label for="HoraInicioyFin" class="col-lg-5 control-label">Horarios Fin:</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="txtHorarioFin" readonly placeholder="Horario Fin">
+        </div>
+        <label for="idHorario" class="col-lg-5 control-label">Clave Horario :</label>
+        <div class="col-lg-10">
+            <input type="number" class="form-control" id="txtIdHorarioReservacion" readonly placeholder="Clave Horario">
+        </div>
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-circle btn-primary" name="cargarHorarios" id="btnCargarHorarios" value="cargarHorarios" onclick="cargarHorariosReservacion()" data-toggle="modal" data-target="#divModalHorariosReservaciones">Cargar Horarios</button>
+        </div> 
+    </div>       
+    <div class="form-group">
+        <label for="idCliente" class="col-lg-5 control-label">Clave Cliente :</label>
+        <div class="col-lg-10">
+            <input type="number" class="form-control" id="txtIdClienteReservacion" readonly placeholder="Clave Cliente">
+            <label for="numeroUnico" class="col-lg-6 control-label">Numero Unico :</label>
+            <input type="text" class="form-control" id="txtNumeroUnicoCliente"  placeholder="Numero Unico">
+            <label class="col-lg-6 control-label">Nombre Cliente :</label>
+            <input type="text" class="form-control" id="txtNombreCliente"  placeholder="Nombre">
+        </div>
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-circle btn-primary" name="cargarCliente" id="btnCargarCliente" value="cargarCliente" onclick="cargarClienteReservacion()" data-toggle="modal" data-target="#divModalClienteReservaciones">Cargar Clientes</button>
+        </div>  
+    </div> 
+    <div class="form-group">
+        <label for="idSala" class="col-lg-5 control-label">Clave Sala :</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" id="txtIdSalaReservacion" readonly placeholder="Clave Sala">
+        </div>
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-circle btn-primary"  id="btnCargarSala" onclick="cargarSalaReservacion()" data-toggle="modal" data-target="#divModalSalaReservaciones"> Cargar Sala</button>
+        </div>                        
+    </div> 
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <div class="checkbox">
+                <label>
+                    <input id="chbEstatusReservacion" type="checkbox"> Estatus
+                </label>
+            </div>
+        </div>
+    </div>
 
 
-                    <fieldset><center>
-                            <button type="button" class="btn btn-circle btn-primary" name="nuevo" id="btnNuevo" value="Nuevo" onclick="limpiarReservacion()">Nuevo</button>
-                            <button type="button" class="btn btn-circle btn-primary" name="guardar" id="btnGuardar" onclick="guardarReservacion()">Guardar</button>
-                            <button type="button" class="btn btn-circle btn-primary" name="eliminar" id="btnEliminar" value="Eliminar" onclick="eliminarReservacion()">Eliminar</button></center>
-                    </fieldset>
+    <fieldset><center>
+            <button type="button" class="btn btn-circle btn-primary" name="nuevo" id="btnNuevo" value="Nuevo" onclick="limpiarReservacion()">Nuevo</button>
+            <button type="button" class="btn btn-circle btn-primary" name="guardar" id="btnGuardar" onclick="guardarReservacion()">Guardar</button>
+            <button type="button" class="btn btn-circle btn-primary" name="eliminar" id="btnEliminar" value="Eliminar" onclick="eliminarReservacion()">Eliminar</button></center>
+    </fieldset>
 
-                </form>
+</form>
 
 
 <div class="modal modal-wide fade" id="divModalSalaReservaciones" role="dialog">
@@ -172,37 +162,37 @@
             </div>
             <div class="modal-body">
                 <div class="table-responsive">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3>Catalogo de clientes</h3>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-info">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th><!--
-                                    <th>Apellido Paterno</th>
-                                    <th>Apellido Materno</th>-->
-                                    <th>genero</th>
-                                    <th>domicilio</th>
-                                    <th>telefono</th>
-                                    <th>rfc</th>
-                                    <th>numeroUnico</th>
-                                    <th>correo</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbClientesReservacion">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3>Catalogo de clientes</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-info">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th><!--
+                                        <th>Apellido Paterno</th>
+                                        <th>Apellido Materno</th>-->
+                                        <th>genero</th>
+                                        <th>domicilio</th>
+                                        <th>telefono</th>
+                                        <th>rfc</th>
+                                        <th>numeroUnico</th>
+                                        <th>correo</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbClientesReservacion">
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
 
             </div>
             <div class="modal-footer" style="text-align: center;">
-                MYSPAS
+                MYSPA
             </div>
         </div>
 
@@ -219,26 +209,26 @@
             </div>
             <div class="modal-body">
                 <div class="table-responsive">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3>Catalogo de Horario</h3>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-info">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Hora Inicio</th>
-                                    <th>Hora Fin</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbHorariosReservacion">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3>Catalogo de Horario</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-info">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Hora Inicio</th>
+                                        <th>Hora Fin</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbHorariosReservacion">
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
 
             </div>
             <div class="modal-footer" style="text-align: center;">

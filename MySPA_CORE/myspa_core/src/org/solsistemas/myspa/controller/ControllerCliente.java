@@ -384,4 +384,90 @@ public class ControllerCliente {
         return clientes;
     }
     
+    
+    public Cliente findByNumeroUnico(String numeroUnico) throws Exception
+    {
+        //La consulta SQL a ejecutar:
+        String sql = "SELECT * FROM v_clientes WHERE  numeroUnico = ?";
+        
+        //La lista dinámica donde guardaremos objetos de tipo Empleado
+        //por cada registro que devuelva la BD:        
+        
+        //Una variable temporal para crear nuevos objetos de tipo Persona:
+        Persona p = null;
+        
+        //Una variable temporal para crear nuevos objetos de tipo Usuario:
+        Usuario u = null;
+        
+        //Una variable temporal para crear nuevos objetos de tipo Empleado:
+        Cliente c = null;
+        
+        //Con este objeto nos vamos a conectar a la Base de Datos:
+        ConexionMySQL connMySQL = new ConexionMySQL();
+        
+        //Abrimos la conexión con la Base de Datos:
+        Connection conn = connMySQL.abrir();
+        
+        //Con este objeto ejecutaremos la consulta:
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        
+        ResultSet rs = null;
+        // Establecemos filtro de busqueda  
+         pstmt.setString(1, numeroUnico);
+        
+        //Aquí guardaremos los resultados de la consulta:
+        rs = pstmt.executeQuery();
+        
+        
+        //Iteramos el conjunto de registros devuelto por la BD.
+        //"Si hay un siguiente registro, nos movemos":
+        while (rs.next())
+        {
+            //Creamos un nuevo objeto de tipo Persona:
+            p = new Persona();
+            
+            //Llenamos sus datos:
+            p.setApellidoMaterno(rs.getString("apellidoMaterno"));
+            p.setApellidoPaterno(rs.getString("apellidoPaterno"));
+            p.setDomicilio(rs.getString("domicilio"));
+            p.setGenero(rs.getString("genero"));
+            p.setId(rs.getInt("idPersona"));
+            p.setNombre(rs.getString("nombre"));
+            p.setRfc(rs.getString("rfc"));
+            p.setTelefono(rs.getString("telefono"));
+            
+            //Creamos un nuevo objeto de tipo Usuario:
+            u = new Usuario();
+            u.setContrasenia(rs.getString("contrasenia"));
+            u.setId(rs.getInt("idUsuario"));
+            u.setNombreUsuario(rs.getString("nombreUsuario"));
+            u.setRol(rs.getString("rol"));
+            
+            //Creamos un nuevo objeto de tipo Empleado:
+            c = new Cliente();
+            
+            //Establecemos sus datos personales:
+            
+            c.setId(rs.getInt("idCliente"));
+            c.setNumeroUnico(rs.getString("numeroUnico"));           
+            c.setEstatus(rs.getInt("estatus"));
+            c.setCorreo(rs.getString("correo"));
+            
+            //Establecemos su persona:
+            c.setPersona(p);
+            
+            //Establecemos su Usuario:
+            c.setUsuario(u);
+            
+            //Agregamos el objeto de tipo Empleado a la lista dinámica:                   
+        }
+        //Cerramos los objetos de BD:
+        rs.close();
+        pstmt.close();
+        connMySQL.cerrar();
+        
+        //Devolvemos la lista dinámica con objetos de tipo Empleado dentro:
+        return c;
+    }
+    
 }
