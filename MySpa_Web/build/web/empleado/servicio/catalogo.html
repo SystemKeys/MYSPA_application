@@ -8,75 +8,101 @@
 </nav>
 -->
 <!-- Aqui se agrega el formulario para agregar nuevos servicios -->
+
+<div class="col-sm-12">    
+
+    <form class="form-inline " role="form">
+        <div class="form-group mx-sm-3 input-group">
+            <label class="mx-sm-3">Clave Servicio:</label>                    
+            <input type="text" class="form-control" id="txtIdServicio" readonly placeholder="Clave Servicio">                                       
+        </div>
+
+        <div class="form-group mx-sm-3">
+            <label class="mx-sm-3">Fecha:</label>                    
+            <input type="date" class="form-control" id="txtFechaServicio" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">                   
+        </div>
+    </form>
+    <br>
+    <form class="form-inline" role="form">
+        <div class="form-group mx-sm-1">
+            <label class="mx-sm-1">Clave Reservación:</label>                  
+            <input type="text" class="form-control" id="txtIdReservacionServicio" readonly placeholder="Clave de Reservación">            
+            <button type="button" class="btn btn-circle btn-primary mx-sm-3" id="btnCargarReservacionServicio" onclick="cargarReservacionServicio()" data-toggle="modal" data-target="#divModalReservacionServicio">Buscar Reservaciones</button>                                 
+        </div>
+    </form>
+    <br>
+    <form class="form-inline" role="form">
+        <div class="form-group mx-sm-1">
+            <label class="mx-sm-1">Clave Empleado:</label>                                
+            <input type="text" class="form-control" id="txtIdEmpleadoServicio" readonly placeholder="Clave de Empleado">
+            <button type="button" class="btn btn-circle btn-primary mx-sm-3" id="btnCargarEmpleadoServicio" onclick="cargarEmpleadoServicio()" data-toggle="modal" data-target="#divModalEmpleadoServicio">Buscar Empleados</button> 
+        </div>
+    </form>        
+
+    <br>
+    <!--
+    <form class="form-inline " role="form">
+        <div class="form-group mx-sm-3">
+            <fieldset><center>
+                    <button type="button" class="btn btn-circle btn-primary" name="nuevo" id="btnNuevo" value="Nuevo" onclick="limpiarServicio()">Nuevo</button>
+                    <button type="button" class="btn btn-circle btn-primary" name="guardar" id="btnGuardar" onclick="guardarServicio()">Guardar</button>
+                    <button type="button" class="btn btn-circle btn-primary" name="eliminar" id="btnEliminar" value="Eliminar" onclick="eliminarServicio()">Eliminar</button></center>
+            </fieldset>
+        </div>      
+    </form>
+    -->
+</div>
+
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">    
+        <div id="divTratamiento" class="col-sm-12">
+            <div class="card border-primary">
+                <div class="card-header text-center text-primary">
+                    <h3>Tratamientos a Aplicar<button type="button" id="btnProducto" onclick="cargarTratamientoServicio()" class="text-center btn btn-success btn-sm" style="float: right;">Agregar</button> </h3>                                          
+                </div>
+                <div class="card-body">            
+                    <table class=" table table-info" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Clave Tratamiento</th>
+                                <th>Nombre Tratamiento</th>
+                                <th>Subtotal</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbTratamientosServicio">  
 
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label >Clave Servicio:</label>
-                    <div >
-                        <input type="text" class="form-control" id="txtIdServicio" readonly placeholder="Clave Servicio">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label">Fecha:</label>
-                    <div>
-                        <input type="date" class="form-control" id="txtFechaServicio" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class=" control-label">Clave Reservación:</label>
-                    <div >
-                        <input type="text" class="form-control" id="txtIdReservacionServicio" readonly placeholder="Clave de Reservación">
-                        <button type="button" class="btn btn-circle btn-primary" id="btnCargarClienteServicio" onclick="cargarReservacionServicio()" data-toggle="modal" data-target="#divModalReservacionServicio">Buscar Reservaciones</button>
-                    </div>
-                </div>
-                <div  class="form-group">
-                    <label class=" control-label">Clave Empleado:</label>
-                    <div >
-                        <input type="text" class="form-control" id="txtIdEmpleadoServicio" readonly placeholder="Clave de Empleado">
-                        <button type="button" class="btn btn-circle btn-primary" id="btnCargarEmpleadoServicio" onclick="cargarEmpleadoServicio()" data-toggle="modal" data-target="#divModalEmpleadoServicio">Buscar Empleados</button>
-                    </div>
-                </div>
-                <div class="form-group">                        
-                    <div >
-                        <button type="button" class="btn btn-circle btn-primary" id="btnAgregarTratamientos">Agregar Tratamientos</button>
-                    </div>
-                </div>
-
-                <fieldset><center>
-                        <button type="button" class="btn btn-circle btn-primary" name="nuevo" id="btnNuevo" value="Nuevo" onclick="limpiarServicio()">Nuevo</button>
-                        <button type="button" class="btn btn-circle btn-primary" name="guardar" id="btnGuardar" onclick="guardarServicio()">Guardar</button>
-                        <button type="button" class="btn btn-circle btn-primary" name="eliminar" id="btnEliminar" value="Eliminar" onclick="eliminarServicio()">Eliminar</button></center>
-                </fieldset>
-            </form>
-        </div>
-            <div class="col-sm-5 ">
-                <div class="card border-primary">
-                    <div class="card-header text-center text-primary">
-                        <h3>Agregar Tratamientos</h3>                             
-                        <form class="form-inline">
-                            <button type = "button" class="btn btn-outline-success my-2 my-sm-0" name="agregar" id="btnAgregarTratamientoS" value="Agragar" onclick="selectTratamiento()">+</button>
-                        </form>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="card-body">
-                <table class=" table table-info table-responsive"  id="dataTable" cellspacing="0">
-                    <thead>
-
-                    </thead>
-                    <tbody id="tbTratamientosAgregados">                
-                    </tbody>
-                </table>
-            </div>
+        
+        <div id="divProductosTratamientos" class="col-sm-4" style="display: none" >
             
-        </div>
-    </div>
+            <div class="card border-primary">
+                <div class="card-header text-center text-primary">
+                    <h3>Detalle de Tratamiento<button type="button" id="btnProducto" onclick="cargarProductoServicio()" class="text-center btn btn-success btn-sm" style="float: right;">Agregar Producto</button> </h3>                                          
+                </div>
+                <div class="card-body">            
+                    <table class=" table table-info"   cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Clave Tratamiento</th>
+                                <th>Nombre Tratamiento</th>
+                                <th>Subtotal</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbProductosServicio">  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>        
+    </div>    
+</div>
+
 
 <!-- Modal Reservación-->
 <div class="modal modal-wide fade" id="divModalReservacionServicio" role="dialog">
@@ -179,3 +205,28 @@
     </div>
 </div>
 -->
+<!-- Tabla Tratamientos
+
+        <div class="col-sm-6">
+            <div class="card-body">
+                <table class=" table table-info table-responsive"  id="dataTable" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Clave Reservación</th>
+                            <th>Clave Cliente</th>
+                            <th>Número Único Cliente</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>                            
+                            <th>Clave Sala</th>
+                            <th>Estatus</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbTratamientosAgregados">                
+                        
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+
+>

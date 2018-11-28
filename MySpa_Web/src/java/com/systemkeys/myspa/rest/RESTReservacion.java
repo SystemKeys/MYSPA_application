@@ -77,8 +77,7 @@ public class RESTReservacion extends Application{
                            @FormParam("idCliente")@DefaultValue("2") int idCliente,
                            @FormParam("idSala")@DefaultValue("0")int idSala,
                            @FormParam("idHorario")@DefaultValue("0") int idHorario)
-                           {
-        
+                           {        
         ControllerReservacion cr = new ControllerReservacion();        
         ControllerSalaHorario csh = new ControllerSalaHorario();
         SalaHorario sh = new SalaHorario();
@@ -100,8 +99,7 @@ public class RESTReservacion extends Application{
             r.setSala(s);
             r.setCliente(c);
             csh.insert(sh);  
-            cr.insert(r);
-               
+            cr.insert(r);               
             if(r.getId() > 0)
                 out = "{\"result\":" + r.getId() + "}";
             else

@@ -38,9 +38,12 @@ public class RESTHorario extends Application{
         JSONSerializer jss = new JSONSerializer();
         String out = null;
         
-        try {
-            fecha = fecha + "%";
-            horarios = ch.getAllWithoutUsed(idSala,fecha);
+        try {    
+            //solo se cambia esta línea, ch : es el objeto del controlador de horario
+            // se sigue necesitando solo el idSala y la fecha, la fecha puedes enviarla como la tengas
+            // en el metodo de HorariosDisponibles estableces el como convertir la fecha
+            //DATE_FORMAT(R.fechaHoraInicio, '%Y-%m-%d %H:%i:%s') <-- A eso me refiero
+            horarios = ch.getHorariosDisponibles(idSala,fecha);
             out = jss.serialize(horarios);
         } catch (Exception e) {
             e.printStackTrace();

@@ -40,6 +40,7 @@ function actualizarTablaProductos() {
                             '<td>' + productos[i].precioUso + '</td>' +
                             '</tr>';
                 $('#tbProductos').html(str);
+               
                 $('#tbProductos').find('tr').click(function ()
                 {
                     //this en esta funcion es el renglon
@@ -1036,7 +1037,7 @@ function cargarSalaReservacion() {
     );
 }
 function cargarHorariosReservacion() {
-
+alert($('#txtFecha').val());
     $.ajax({
         type: "POST",
         url: "../rshorario/getAllHorarioWithoutUsed",
@@ -1291,6 +1292,13 @@ function cargarEmpleadoServicio() {
     );
 }
 
+function productoSetVisible(valor){
+    if(valor){
+        
+    }else{
+        
+    }
+}
 
 function selectTratamiento(){
     $('#divModalTratamientosServicio').modal();
