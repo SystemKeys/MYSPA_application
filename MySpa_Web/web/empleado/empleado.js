@@ -1421,7 +1421,15 @@ function mostrarProductosServicio(){
                 $('#tbProductosServicio').html(strProductoServicio);                           
             }
 }
+//
+//@dieggh
+//dieggh avance de servicio
 
+//El problema ahora es ir generando arrays y JSON para alimentar tablas de la vista,
+// para que cada tratamiento tenga sus propios productos se debe de guardar un JSON con el idTratamiento 
+// y  los productos que tiene y luego se toma el JSON creado y se llena la tabla de detalles productos
+//  por si se quiere seguir agregando productos al tratamiento, solo funciona con 1 tratamiento a la vez, 
+//  aun esta en proceso todo lo demás
 function guardarProductosTratamiento() {
     var id;
     var nombre;
