@@ -41,27 +41,18 @@
 
     <br>
     <!--
-    <form class="form-inline " role="form">
-        <div class="form-group mx-sm-3">
-            <fieldset><center>
-                    <button type="button" class="btn btn-circle btn-primary" name="nuevo" id="btnNuevo" value="Nuevo" onclick="limpiarServicio()">Nuevo</button>
-                    <button type="button" class="btn btn-circle btn-primary" name="guardar" id="btnGuardar" onclick="guardarServicio()">Guardar</button>
-                    <button type="button" class="btn btn-circle btn-primary" name="eliminar" id="btnEliminar" value="Eliminar" onclick="eliminarServicio()">Eliminar</button></center>
-            </fieldset>
-        </div>      
-    </form>
     -->
 </div>
 
 <div class="container">
     <div class="row">
-        <div id="divTratamiento" class="col-sm-12">
+        <div id="divTratamiento" class="col-sm-8">
             <div class="card border-primary">
                 <div class="card-header text-center text-primary">
-                    <h3>Tratamientos a Aplicar<button type="button" id="btnProducto" onclick="cargarTratamientoServicio()" class="text-center btn btn-success btn-sm" style="float: right;">Agregar</button> </h3>                                          
+                    <h3>Tratamientos a Aplicar<button type="button" id="btnDesplegarTratamiento" onclick="actualizarTablaTratamientoServicio()" class="text-center btn btn-success btn-sm" data-toggle="modal" data-target="#divModalTratamientosServicio" style="float: right;">Agregar</button> </h3>                                          
                 </div>
                 <div class="card-body">            
-                    <table class=" table table-info" cellspacing="0">
+                    <table class=" table table-info table-responsive" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Clave Tratamiento</th>
@@ -77,31 +68,51 @@
                 </div>
             </div>
         </div>
-        
         <div id="divProductosTratamientos" class="col-sm-4" style="display: none" >
-            
             <div class="card border-primary">
                 <div class="card-header text-center text-primary">
-                    <h3>Detalle de Tratamiento<button type="button" id="btnProducto" onclick="cargarProductoServicio()" class="text-center btn btn-success btn-sm" style="float: right;">Agregar Producto</button> </h3>                                          
+                    <h3>Detalle de Tratamiento<button type="button" id="btnProducto" class="text-center btn btn-success btn-sm" onclick="actualizarTablaProductosServicio()" data-toggle="modal" data-target="#divModalProductosServicio" style="float: right;">Agregar Producto</button> </h3>                                          
                 </div>
                 <div class="card-body">            
                     <table class=" table table-info"   cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Clave Tratamiento</th>
-                                <th>Nombre Tratamiento</th>
-                                <th>Subtotal</th>
-                                <th></th>
+                                <th>Clave Producto</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>                                
                             </tr>
                         </thead>
                         <tbody id="tbProductosServicio">  
                         </tbody>
                     </table>
                 </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" id="btnGuardarProductos" class="text-center btn btn-success btn-sm" onclick="realizarAccionesGuardar()" style="float: right;">Guardar</button>
+                </div>
             </div>
-        </div>        
+        </div>
+        <!-- -->
+        <div id="divTotalServicio" class="col-sm-4">
+            <div class="card border-primary">
+                <div class="card-header text-center text-primary">
+                    <h3>Total<label id="lblTotalServicio" style="float: right;"></label> </h3>                                          
+                </div>
+            <div class="card-body">
+            <form class="form-inline " role="form">
+                <div class="form-group mx-sm-3">                    
+                    <fieldset><center>
+                            <button type="button" class="btn btn-circle btn-primary" name="nuevo" id="btnNuevo" value="Nuevo" onclick="limpiarServicio()">Nuevo</button>
+                            <button type="button" class="btn btn-circle btn-primary" name="guardar" id="btnGuardar" onclick="guardarServicio()">Guardar</button>
+                            <button type="button" class="btn btn-circle btn-primary" name="eliminar" id="btnEliminar" value="Eliminar" onclick="eliminarServicio()">Eliminar</button></center>
+                    </fieldset>
+                </div>      
+            </form>
+            </div>
+        </div>
     </div>    
 </div>
+</div>
+
 
 
 <!-- Modal Reservación-->
@@ -187,6 +198,90 @@
     </div>
 </div>
 
+<!--Modal de seleccion de tratamientos-->
+<div class="modal fade bd-example-modal-lg" id="divModalTratamientosServicio" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title" style="color:white;">Agregar Tratamientos</h4>
+                <button type="button" class="close" style="color:white;" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card border-primary">
+                            <div class="card-header text-center">
+                                <h3>Tratamientos</h3> 
+                            </div>
+                            <div class="card-body">
+                                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                                <br>
+                                <table class=" table table-info"  id="dataTable" width="150%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Clave Tratamiento</th>
+                                            <th>Nombre</th>
+                                            <th>Descripción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblTratamientosServicio">                
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Modal de seleccion de productos-->
+<div class="modal fade bd-example-modal-lg" id="divModalProductosServicio" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title" style="color:white;">Productos</h4>
+                <button type="button" class="close" style="color:white;" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card border-primary">
+                            <div class="card-header text-center">
+                                <h3>Cat&aacute;logo de Productos</h3> 
+
+                            </div>
+                            <div class="card-body">
+                                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                                <br>
+                                <table class=" table table-info"  id="dataTable" width="150%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre Producto</th>
+                                            <th>Marca</th>
+                                            <th>Precio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblProductosServicio">                
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                MySPA
+                <button type="button" class="close" style="color:white;" data-dismiss="modal">&times;</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!--  
 <div class="table-responsive">
     <div class="card border-primary">

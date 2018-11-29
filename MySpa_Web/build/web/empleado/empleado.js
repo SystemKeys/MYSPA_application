@@ -1,4 +1,15 @@
 
+var tratamientoId = 0;
+var tratamientos = new Array();
+var productos = new Array();
+var JSONTratamientoString;
+var JSONTratamiento = new Object();
+
+var prueba = new Object();
+prueba.id = 0;
+prueba.producto = productos;
+var pruebaString = JSON.stringify(prueba);
+
 function inicializar() {
     if (localStorage.getItem('MYSPA_CREDENCIAL') === null)
         window.location = '../index.html';
@@ -32,6 +43,7 @@ function actualizarTablaProductos() {
             function (productos)
             {
                 var str = '';
+                
                 for (var i = 0; i < productos.length; i++)
                     str += '<tr>' +
                             '<td>' + productos[i].id + '</td>' +
@@ -305,7 +317,7 @@ function cargarModuloSucursal() {
             function (data) {
                 $('#divMainContainer').html(data);
                 actualizarTablaSucursal();
-                mostrarMapa();
+                
             }
     );
 }
@@ -401,6 +413,7 @@ function guardarSucursal() {
             swal('Movimiento realizado', '', 'success');
         });
     }
+    mostrarMapa();
 }
 
 function eliminarSucursal() {
@@ -1292,28 +1305,29 @@ function cargarEmpleadoServicio() {
     );
 }
 
-function productoSetVisible(valor){
+function productoSetVisible(idTratamiento ,valor){
+    
     if(valor){
+        $('#divTratamiento').removeClass('col-sm-8');
+        $('#divTratamiento').addClass('col-sm-4');        
+        $('#divProductosTratamientos').show();        
+        if(tratamientoId != 0){
+        mostrarProductosServicio();
+        }
+        tratamientoId = idTratamiento;
         
     }else{
+        $('#divTratamiento').removeClass('col-sm-4');
+        $('#divTratamiento').addClass('col-sm-8');  
+        $('#divProductosTratamientos').hide();
         
     }
 }
 
-function selectTratamiento(){
-    $('#divModalTratamientosServicio').modal();
-    actualizarTablaTratamientoServicio();
-}
-function selectProducto(){
-    $('#divModalProductosServicio').modal();
-    actualizarTablaProductosServicio();
-}
-function abrirModalPS(){
-    $('#divModalProductosSelected').modal();
-}
 
 var str2 = '';
 var str3 = '';
+var strProductoServicio = '';
 function actualizarTablaTratamientoServicio() {
     $.ajax({
         type: "GET",
@@ -1322,27 +1336,30 @@ function actualizarTablaTratamientoServicio() {
     }).done(
             function (tratamientos)
             {
-                var str1 = '';
-                
+                var str1 = '';                
                 for (var i = 0; i < tratamientos.length; i++)
                     str1 += '<tr>' +
+                            '<td>' + tratamientos[i].id + '</td>' +
                             '<td>' + tratamientos[i].nombre + '</td>' +
                             '<td>' + tratamientos[i].descripcion + '</td>' +
                             '</tr>';
                 $('#tblTratamientosServicio').html(str1);
                 $('#tblTratamientosServicio').find('tr').click(function ()
                 {
+                    
                     str2 += '<tr>' +
+                            '<td>' + tratamientos[$(this).index()].id  + '</td>' +
                             '<td>' + tratamientos[$(this).index()].nombre + '</td>' +
-                            '<td> <button class="btn btn-outline-success my-2 my-sm-0" name="agregar" value="Agragar" onclick="abrirModalPS()">Ver productos</button> </td>' + 
-                            '</tr>';  
-                    $('#tblTratamientosSelected').html(str2);
+                            '<td>' + + '</td>' +
+                            '<td> <button class="btn btn-outline-success" onclick="productoSetVisible( '+ tratamientos[$(this).index()].id + ' , ' + true  +')">Detalles</button></td>' + 
+                            '</tr>';                       
+                    $('#tbTratamientosServicio').html(str2);
                     $('#divModalTratamientosServicio').modal('hide');
-                });
-                
+                });                
             }
     );
 }
+
 function actualizarTablaProductosServicio() {
     $.ajax({
         type: "GET",
@@ -1351,6 +1368,10 @@ function actualizarTablaProductosServicio() {
     }).done(
             function (productos)
             {
+                $("#tbProductosServicio").empty();
+            //    var aux = strProductoServicio;
+             //   strProductoServicio = '';
+               // var str3 = '';
                 var str1 = '';
                 for (var i = 0; i < productos.length; i++)
                     str1 += '<tr>' +
@@ -1362,17 +1383,89 @@ function actualizarTablaProductosServicio() {
                 $('#tblProductosServicio').find('tr').click(function ()
                 {
                     str3 += '<tr>' +
+                            '<td>' + productos[$(this).index()].id + '</td>' +
                             '<td>' + productos[$(this).index()].nombre + '</td>' +
-                            '<td>' + productos[$(this).index()].marca + '</td>' +
                             '<td>' + productos[$(this).index()].precioUso + '</td>' +
                             '</tr>';
-                    $('#tblProductosSeleccionados').html(str3);
-                    
-                    $('#divModalProductosServicio').modal('hide');
-                    $('#divModalProductosSelected').modal();
+                      
+                    $('#tbProductosServicio').html(strProductoServicio + str3);                    
+                    $('#divModalProductosServicio').modal('hide');                    
                 });
             }
     );
 }
 
+//Esta función mostrará solo los productos que se han elegido para el tratamiento seleccionado
+function mostrarProductosServicio(){
+                $("#tbProductosServicio").empty();
+               //vaciamos la variable global que guarda los datos de la tabla de productos
+                str3 = '';
+               //alert(prueba.producto[0].id);    
+               //
+               //JSONTratamiento.tratamiento = tratamientos;
+               //  alert(prueba);
+               //JSONTRATAMIENTO es un objeto de tipo JSON que guarda los trtamientos con sus productos (falta que soporte o de tener mas de 1 tratamiento je)
+                alert(JSONTratamiento.tratamiento[0].id);
+                alert(JSONTratamiento.tratamiento[0].productos[0].id);
+                //alert(JSONTratamientoString.tratamiento[0].productos.id);
+                for (var i = 0; i < JSONTratamiento.length; i++)  
+                    alert("entre");
+                    if(JSONTratamiento.tratamiento[0].id === 1){
+                       //variable  GLOBAL que guarda los datos de productos para cada tratamiento
+                    strProductoServicio += '<tr>' +
+                            '<td>' + JSONTratamiento.tratamiento[i].productos[i].id + '</td>' +
+                            '<td>' + JSONTratamiento.tratamiento[i].productos[i].nombre + '</td>' +
+                            '<td>' + JSONTratamiento.tratamiento[i].productos[i].precio + '</td>' +
+                            '</tr>';
+                    
+                $('#tbProductosServicio').html(strProductoServicio);                           
+            }
+}
+
+function guardarProductosTratamiento() {
+    var id;
+    var nombre;
+    var precio;
+    $(function () {
+        $("#tbProductosServicio tr").each(function (index) {
+            $(this).children("td").each(function (index2) {
+                switch (index2) {
+                    case 0:
+                        id = parseInt($(this).text());
+                        break;
+                    case 1:
+                        nombre = $(this).text();
+                        break;
+                    case 2:
+                        precio = parseFloat($(this).text());
+                        break;
+                }
+            });
+            //se crea un objeto de productos y luego se agrega a un array de productos
+            var producto = new Object();
+            producto.id = id;
+            producto.nombre = nombre;
+            producto.precio = precio;
+            productos.push(producto);
+
+        });
+        // los mismo que arriba pero en es objeto de tratamiento con un ID y un array de productos
+        var tratamiento = new Object();
+        tratamiento.id = tratamientoId;
+        tratamiento.productos = productos;        
+        tratamientos.push(tratamiento);      
+        // JSONTratamiento variable global, solo tiene una propiedad la cual es un array de tratamientos
+        // y el array de tratamientos por cada tratamiento tiene un array de productos 
+        JSONTratamiento.tratamiento = tratamientos;                
+        //probamos que se genere bien, aun tiene problemas ya que el array de tratamientos debe de crearse en una function aparte y aun
+        // no he empezado a hacerlo
+        JSONTratamientoString = JSON.stringify(JSONTratamiento);        
+        alert(JSONTratamientoString);
+    });
+}
+
+function realizarAccionesGuardar(){    
+    guardarProductosTratamiento();
+    productoSetVisible(false, 0); 
+}
 
