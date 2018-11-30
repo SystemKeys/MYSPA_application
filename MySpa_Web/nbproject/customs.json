@@ -1,5 +1,11 @@
 {
-    "elements": {},
+    "elements": {
+        "ul": {
+            "attributes": {
+                "class": {}
+            }
+        }
+    },
     "attributes": {
         "..": {
             "context": "button"

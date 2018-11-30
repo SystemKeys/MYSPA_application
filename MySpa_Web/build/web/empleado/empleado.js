@@ -4,7 +4,7 @@ var tratamientos = new Array();
 var productos = new Array();
 var JSONTratamientoString;
 var JSONTratamiento = new Object();
-
+var JSONFINAL;
 var prueba = new Object();
 prueba.id = 0;
 prueba.producto = productos;
@@ -28,7 +28,14 @@ function cargarModuloProducto() {
     ).done(
             function (data) {
                 $('#divMainContainer').html(data);
-
+                $(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tbProductos tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
                 actualizarTablaProductos();
             }
     );
@@ -152,6 +159,15 @@ function cargarModuloSala() {
                 $('#divMainContainer').html(data);
                 $('#tbSalas').find('tr').click(function () {               
                 });
+                
+                $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tbSalas tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
                 actualizarTablaSalas();
             }
     );
@@ -316,6 +332,15 @@ function cargarModuloSucursal() {
     }).done(
             function (data) {
                 $('#divMainContainer').html(data);
+                
+                $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#tbSucursales tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
                 actualizarTablaSucursal();
                 
             }
@@ -328,6 +353,10 @@ function actualizarTablaSucursal() {
         async: true
     }).done(
             function (sucursales) {
+                alert(sucursales);
+                alert(sucursales.length);
+                var string = JSON.stringify(sucursales);
+                alert(string);
                 var str = '';
                 for (var i = 0; i < sucursales.length; i++) {
                     str += '<tr>' +
@@ -459,6 +488,14 @@ function cargarModuloTratamiento() {
     ).done(
             function (data) {
                 $('#divMainContainer').html(data);
+                $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#tbTratamiento tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
 
                 actualizarTablaTratamiento();
             }
@@ -602,6 +639,14 @@ function cargarModuloCliente() {
                     alert('Renglon: ' + $(this).index());
                 }
                 );
+        $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tbClientes tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
                 actualizarTablaClientes();
             }
     );
@@ -771,6 +816,15 @@ function cargarModuloEmpleado() {
                     alert('Renglon: ' + $(this).index());
                 }
                 );
+        
+         $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tbEmpleados tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
                 actualizarTablaEmpleados();
             }
     );
@@ -982,8 +1036,8 @@ function actualizarTablaReservacion() {
         async: true
     }).done(
             function (reservaciones)
-            {
-                var str = '';
+            {               
+                var str = '';                
                 for (var i = 0; i < reservaciones.length; i++)
                     str += '<tr>' +
                             '<td>' + reservaciones[i].id + '</td>' +
@@ -1382,13 +1436,13 @@ function actualizarTablaProductosServicio() {
                 $('#tblProductosServicio').html(str1);
                 $('#tblProductosServicio').find('tr').click(function ()
                 {
-                    str3 += '<tr>' +
+                    strProductoServicio += '<tr>' +
                             '<td>' + productos[$(this).index()].id + '</td>' +
                             '<td>' + productos[$(this).index()].nombre + '</td>' +
                             '<td>' + productos[$(this).index()].precioUso + '</td>' +
                             '</tr>';
                       
-                    $('#tbProductosServicio').html(strProductoServicio + str3);                    
+                    $('#tbProductosServicio').html(strProductoServicio);                    
                     $('#divModalProductosServicio').modal('hide');                    
                 });
             }
@@ -1399,27 +1453,28 @@ function actualizarTablaProductosServicio() {
 function mostrarProductosServicio(){
                 $("#tbProductosServicio").empty();
                //vaciamos la variable global que guarda los datos de la tabla de productos
-                str3 = '';
+                strProductoServicio = '';
                //alert(prueba.producto[0].id);    
                //
                //JSONTratamiento.tratamiento = tratamientos;
                //  alert(prueba);
                //JSONTRATAMIENTO es un objeto de tipo JSON que guarda los trtamientos con sus productos (falta que soporte o de tener mas de 1 tratamiento je)
-                alert(JSONTratamiento.tratamiento[0].id);
-                alert(JSONTratamiento.tratamiento[0].productos[0].id);
+                 //alert(JSONTratamiento);
+                alert(JSONTratamiento[0].productos.length);
                 //alert(JSONTratamientoString.tratamiento[0].productos.id);
-                for (var i = 0; i < JSONTratamiento.length; i++)  
-                    alert("entre");
-                    if(JSONTratamiento.tratamiento[0].id === 1){
-                       //variable  GLOBAL que guarda los datos de productos para cada tratamiento
+                alert(JSONTratamiento[0].productos[0].id);
+                alert(JSONTratamiento[0].productos[1].id);
+                for (var i = 0; i < JSONTratamiento.length; i++)                      
+                    if(JSONTratamiento[i].id === 1){                       
+                        for(var j = 0; j < JSONTratamiento[i].productos.length; j++)
                     strProductoServicio += '<tr>' +
-                            '<td>' + JSONTratamiento.tratamiento[i].productos[i].id + '</td>' +
-                            '<td>' + JSONTratamiento.tratamiento[i].productos[i].nombre + '</td>' +
-                            '<td>' + JSONTratamiento.tratamiento[i].productos[i].precio + '</td>' +
+                            '<td>' + JSONTratamiento[i].productos[j].id + '</td>' +
+                            '<td>' + JSONTratamiento[i].productos[j].nombre + '</td>' +
+                            '<td>' + JSONTratamiento[i].productos[j].precio + '</td>' +
                             '</tr>';
                     
                 $('#tbProductosServicio').html(strProductoServicio);                           
-            }
+                }
 }
 //
 //@dieggh
@@ -1431,45 +1486,72 @@ function mostrarProductosServicio(){
 //  por si se quiere seguir agregando productos al tratamiento, solo funciona con 1 tratamiento a la vez, 
 //  aun esta en proceso todo lo demás
 function guardarProductosTratamiento() {
-    var id;
-    var nombre;
-    var precio;
+    var idProducto;
+    var nombreProducto;
+    var precioProducto;
+    var idTratamiento;
+    var nombreTratamiento;
     $(function () {
         $("#tbProductosServicio tr").each(function (index) {
             $(this).children("td").each(function (index2) {
                 switch (index2) {
                     case 0:
-                        id = parseInt($(this).text());
+                        idProducto = parseInt($(this).text());
                         break;
                     case 1:
-                        nombre = $(this).text();
+                        nombreProducto = $(this).text();
                         break;
                     case 2:
-                        precio = parseFloat($(this).text());
+                        precioProducto = parseFloat($(this).text());
                         break;
                 }
             });
             //se crea un objeto de productos y luego se agrega a un array de productos
             var producto = new Object();
-            producto.id = id;
-            producto.nombre = nombre;
-            producto.precio = precio;
+            producto.id = idProducto;
+            producto.nombre = nombreProducto;
+            producto.precio = precioProducto;
             productos.push(producto);
-
         });
-        // los mismo que arriba pero en es objeto de tratamiento con un ID y un array de productos
-        var tratamiento = new Object();
-        tratamiento.id = tratamientoId;
-        tratamiento.productos = productos;        
-        tratamientos.push(tratamiento);      
+        var tratamientoArray = new Object();
+        tratamientoArray.id = tratamientoId;
+        tratamientoArray.productos = productos;        
+        tratamientos.push(tratamientoArray);      
         // JSONTratamiento variable global, solo tiene una propiedad la cual es un array de tratamientos
         // y el array de tratamientos por cada tratamiento tiene un array de productos 
-        JSONTratamiento.tratamiento = tratamientos;                
+        JSONTratamiento = tratamientos;                
         //probamos que se genere bien, aun tiene problemas ya que el array de tratamientos debe de crearse en una function aparte y aun
         // no he empezado a hacerlo
+    //    JSONTratamiento.parse(JSON);
         JSONTratamientoString = JSON.stringify(JSONTratamiento);        
         alert(JSONTratamientoString);
-    });
+        alert(JSONTratamiento);
+        alert(JSONTratamiento.length);
+        alert(JSONTratamiento[0].id);
+       
+    });             
+        $(function () {
+        $("#tbTratamientosServicio tr").each(function (index) {
+            $(this).children("td").each(function (index2) {
+                switch (index2) {
+                    case 0:
+                        idTratamiento = parseInt($(this).text());
+                        break;
+                    case 1:
+                        nombreTratamiento = $(this).text();
+                        break;                                         
+                }
+            });
+            var tratamientoa = new Object();
+            tratamientoa.id = idTratamiento;
+            tratamientoa.nombre = nombreTratamiento;
+            //tratamiento.push(tratamientoa); 
+        });
+    
+        });
+                 // los mismo que arriba pero en es objeto de tratamiento con un ID y un array de productos
+        
+    
 }
 
 function realizarAccionesGuardar(){    
