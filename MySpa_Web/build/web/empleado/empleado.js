@@ -1,14 +1,10 @@
-
+var tablaTratamiento;
 var tratamientoId = 0;
+var tratamientoIdElimiinado = 0;
 var tratamientos = new Array();
-var productos = new Array();
+//var productos = new Array();
 var JSONTratamientoString;
 var JSONTratamiento = new Object();
-var JSONFINAL;
-var prueba = new Object();
-prueba.id = 0;
-prueba.producto = productos;
-var pruebaString = JSON.stringify(prueba);
 
 function inicializar() {
     if (localStorage.getItem('MYSPA_CREDENCIAL') === null)
@@ -28,14 +24,14 @@ function cargarModuloProducto() {
     ).done(
             function (data) {
                 $('#divMainContainer').html(data);
-                $(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#tbProductos tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
+                $(document).ready(function () {
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $("#tbProductos tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                });
                 actualizarTablaProductos();
             }
     );
@@ -50,7 +46,7 @@ function actualizarTablaProductos() {
             function (productos)
             {
                 var str = '';
-                
+
                 for (var i = 0; i < productos.length; i++)
                     str += '<tr>' +
                             '<td>' + productos[i].id + '</td>' +
@@ -59,7 +55,7 @@ function actualizarTablaProductos() {
                             '<td>' + productos[i].precioUso + '</td>' +
                             '</tr>';
                 $('#tbProductos').html(str);
-               
+
                 $('#tbProductos').find('tr').click(function ()
                 {
                     //this en esta funcion es el renglon
@@ -157,17 +153,17 @@ function cargarModuloSala() {
     ).done(
             function (data) {
                 $('#divMainContainer').html(data);
-                $('#tbSalas').find('tr').click(function () {               
+                $('#tbSalas').find('tr').click(function () {
                 });
-                
+
                 $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#tbSalas tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $("#tbSalas tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                });
                 actualizarTablaSalas();
             }
     );
@@ -332,17 +328,17 @@ function cargarModuloSucursal() {
     }).done(
             function (data) {
                 $('#divMainContainer').html(data);
-                
+
                 $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#tbSucursales tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $("#tbSucursales tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
                 });
-            });
-        });
                 actualizarTablaSucursal();
-                
+
             }
     );
 }
@@ -489,13 +485,13 @@ function cargarModuloTratamiento() {
             function (data) {
                 $('#divMainContainer').html(data);
                 $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#tbTratamiento tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $("#tbTratamiento tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
                 });
-            });
-        });
 
                 actualizarTablaTratamiento();
             }
@@ -589,7 +585,6 @@ function actualizarTablaTratamiento() {
                     $('#txtDescripcionTratamiento').val(tratamientos[$(this).index()].descripcion);
                     $('#divModalTratamientoDetalle').modal();
                 });
-
             }
     );
 }
@@ -639,14 +634,14 @@ function cargarModuloCliente() {
                     alert('Renglon: ' + $(this).index());
                 }
                 );
-        $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#tbClientes tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
+                $(document).ready(function () {
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $("#tbClientes tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                });
                 actualizarTablaClientes();
             }
     );
@@ -816,15 +811,15 @@ function cargarModuloEmpleado() {
                     alert('Renglon: ' + $(this).index());
                 }
                 );
-        
-         $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#tbEmpleados tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
+
+                $(document).ready(function () {
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $("#tbEmpleados tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                });
                 actualizarTablaEmpleados();
             }
     );
@@ -1036,8 +1031,8 @@ function actualizarTablaReservacion() {
         async: true
     }).done(
             function (reservaciones)
-            {               
-                var str = '';                
+            {
+                var str = '';
                 for (var i = 0; i < reservaciones.length; i++)
                     str += '<tr>' +
                             '<td>' + reservaciones[i].id + '</td>' +
@@ -1095,7 +1090,7 @@ function cargarSalaReservacion() {
                     $('#txtIdSalaReservacion').val(salas[$(this).index()].id);
                     if ($('#txtIdSalaReservacion').val.length > 0) {
                         swal('Sala Seleccionada', '', 'success');
-                           $("#divModalSalaReservaciones").modal('hide');
+                        $("#divModalSalaReservaciones").modal('hide');
                     } else {
                         swal('No se selecciono la sala', '', 'warning');
                     }
@@ -1104,7 +1099,7 @@ function cargarSalaReservacion() {
     );
 }
 function cargarHorariosReservacion() {
-alert($('#txtFecha').val());
+    alert($('#txtFecha').val());
     $.ajax({
         type: "POST",
         url: "../rshorario/getAllHorarioWithoutUsed",
@@ -1131,7 +1126,7 @@ alert($('#txtFecha').val());
                     $('#txtIdHorarioReservacion').val(horarios[$(this).index()].id);
                     if ($('#txtIdHorarioReservacion').val.length > 0) {
                         swal('Horario Selecionado', '', 'success');
-                       $("#divModalHorarioReservaciones").modal('hide');
+                        $("#divModalHorarioReservaciones").modal('hide');
                     } else {
                         swal('No se selecciono el Horario', '', 'warning');
                     }
@@ -1264,7 +1259,6 @@ function actualizarTablaReservacion() {
                 {
                     //this en esta funcion es el renglon
                     //seleccionado por el usuario                                                            
-
                     $('#txtIdReservacion').val(reservaciones[$(this).index()].id);
                     var fechaHoraInicio = reservaciones[$(this).index()].fechaHoraInicio;
                     var fechaHoraFin = reservaciones[$(this).index()].fechaHoraFin;
@@ -1309,17 +1303,17 @@ function cargarReservacionServicio() {
                 var str = '';
                 for (var i = 0; i < reservaciones.length; i++)
                     str += '<tr>' +
-                            '<td>' + reservaciones[i].id + '</td>' +                          
+                            '<td>' + reservaciones[i].id + '</td>' +
                             '<td>' + reservaciones[i].cliente.persona.nombre + '</td>' +
                             '<td>' + reservaciones[i].fechaHoraInicio + '</td>' +
                             '<td>' + reservaciones[i].fechaHoraFin + '</td>' +
-                            '<td>' + reservaciones[i].sala.nombre + '</td>' +                          
+                            '<td>' + reservaciones[i].sala.nombre + '</td>' +
                             '</tr>';
                 $('#tbReservacionesServicio').html(str);
                 $('#tbReservacionesServicio').find('tr').click(function ()
-                {                   
+                {
                     $('#txtIdReservacionServicio').val(reservaciones[$(this).index()].id);
-                   if ($('#txtIdReservacionServicio').val.length > 0) {
+                    if ($('#txtIdReservacionServicio').val.length > 0) {
                         swal('Reservación Seleccionada', '', 'success');
                         $("#divModalReservacionServicio").modal('hide');
                     } else {
@@ -1341,14 +1335,14 @@ function cargarEmpleadoServicio() {
                 var str = '';
                 for (var i = 0; i < empleados.length; i++)
                     str += '<tr>' +
-                            '<td>' + empleados[i].id + '</td>' +                          
-                            '<td>' + empleados[i].persona.nombre + " " + empleados[i].persona.apellidoPaterno + '</td>' +                                                 
+                            '<td>' + empleados[i].id + '</td>' +
+                            '<td>' + empleados[i].persona.nombre + " " + empleados[i].persona.apellidoPaterno + '</td>' +
                             '</tr>';
                 $('#tbEmpleadosServicio').html(str);
                 $('#tbEmpleadosServicio').find('tr').click(function ()
-                {                   
+                {
                     $('#txtIdEmpleadoServicio').val(empleados[$(this).index()].id);
-                   if ($('#txtIdEmpleadoServicio').val.length > 0) {
+                    if ($('#txtIdEmpleadoServicio').val.length > 0) {
                         swal('Empleado Seleccionada', '', 'success');
                         $("#divModalEmpleadoServicio").modal('hide');
                     } else {
@@ -1359,22 +1353,26 @@ function cargarEmpleadoServicio() {
     );
 }
 
-function productoSetVisible(idTratamiento ,valor){
-    
-    if(valor){
+function productoSetVisible(idTratamiento, valor) {
+
+    if (valor) {
         $('#divTratamiento').removeClass('col-sm-8');
-        $('#divTratamiento').addClass('col-sm-4');        
-        $('#divProductosTratamientos').show();        
-        if(tratamientoId != 0){
-        mostrarProductosServicio();
+        $('#divTratamiento').addClass('col-sm-4');
+        $('#divProductosTratamientos').show();
+        if (tratamientoId === 0) {
+            mostrarProductosServicio();
+            tratamientoId = idTratamiento;
+        } else {
+            tratamientoId = idTratamiento;
+            mostrarProductosServicio();
         }
-        tratamientoId = idTratamiento;
-        
-    }else{
+
+
+    } else {
         $('#divTratamiento').removeClass('col-sm-4');
-        $('#divTratamiento').addClass('col-sm-8');  
+        $('#divTratamiento').addClass('col-sm-8');
         $('#divProductosTratamientos').hide();
-        
+
     }
 }
 
@@ -1390,7 +1388,7 @@ function actualizarTablaTratamientoServicio() {
     }).done(
             function (tratamientos)
             {
-                var str1 = '';                
+                var str1 = '';
                 for (var i = 0; i < tratamientos.length; i++)
                     str1 += '<tr>' +
                             '<td>' + tratamientos[i].id + '</td>' +
@@ -1400,18 +1398,26 @@ function actualizarTablaTratamientoServicio() {
                 $('#tblTratamientosServicio').html(str1);
                 $('#tblTratamientosServicio').find('tr').click(function ()
                 {
-                    
                     str2 += '<tr>' +
-                            '<td>' + tratamientos[$(this).index()].id  + '</td>' +
+                            '<td>' + tratamientos[$(this).index()].id + '</td>' +
                             '<td>' + tratamientos[$(this).index()].nombre + '</td>' +
-                            '<td>' + + '</td>' +
-                            '<td> <button class="btn btn-outline-success" onclick="productoSetVisible( '+ tratamientos[$(this).index()].id + ' , ' + true  +')">Detalles</button></td>' + 
-                            '</tr>';                       
+                            '<td>' + + '</td>'  +
+                            '<td> <button class="btn btn-circle btn-outline-primary btn-sm" onclick="productoSetVisible( ' + tratamientos[$(this).index()].id + ' , ' + true + ')">Detalles</button></td>' +
+                            '<td> <button class="btn btn-circle btn-outline-primary btn-sm" id="borrar">Eliminar</button></td>' +
+                            '</tr>';
                     $('#tbTratamientosServicio').html(str2);
                     $('#divModalTratamientosServicio').modal('hide');
-                });                
+                });
             }
     );
+    $(document).on('click', '#borrar', function (event) {
+        event.preventDefault();
+        $(this).closest('tr').remove();
+    });  
+}
+
+function eliminarTratamientoServicio() {    
+       
 }
 
 function actualizarTablaProductosServicio() {
@@ -1423,9 +1429,9 @@ function actualizarTablaProductosServicio() {
             function (productos)
             {
                 $("#tbProductosServicio").empty();
-            //    var aux = strProductoServicio;
-             //   strProductoServicio = '';
-               // var str3 = '';
+                //    var aux = strProductoServicio;
+                //   strProductoServicio = '';
+                // var str3 = '';
                 var str1 = '';
                 for (var i = 0; i < productos.length; i++)
                     str1 += '<tr>' +
@@ -1441,40 +1447,29 @@ function actualizarTablaProductosServicio() {
                             '<td>' + productos[$(this).index()].nombre + '</td>' +
                             '<td>' + productos[$(this).index()].precioUso + '</td>' +
                             '</tr>';
-                      
-                    $('#tbProductosServicio').html(strProductoServicio);                    
-                    $('#divModalProductosServicio').modal('hide');                    
+
+                    $('#tbProductosServicio').html(strProductoServicio);
+                    $('#divModalProductosServicio').modal('hide');
                 });
             }
     );
 }
 
 //Esta función mostrará solo los productos que se han elegido para el tratamiento seleccionado
-function mostrarProductosServicio(){
-                $("#tbProductosServicio").empty();
-               //vaciamos la variable global que guarda los datos de la tabla de productos
-                strProductoServicio = '';
-               //alert(prueba.producto[0].id);    
-               //
-               //JSONTratamiento.tratamiento = tratamientos;
-               //  alert(prueba);
-               //JSONTRATAMIENTO es un objeto de tipo JSON que guarda los trtamientos con sus productos (falta que soporte o de tener mas de 1 tratamiento je)
-                 //alert(JSONTratamiento);
-                alert(JSONTratamiento[0].productos.length);
-                //alert(JSONTratamientoString.tratamiento[0].productos.id);
-                alert(JSONTratamiento[0].productos[0].id);
-                alert(JSONTratamiento[0].productos[1].id);
-                for (var i = 0; i < JSONTratamiento.length; i++)                      
-                    if(JSONTratamiento[i].id === 1){                       
-                        for(var j = 0; j < JSONTratamiento[i].productos.length; j++)
-                    strProductoServicio += '<tr>' +
-                            '<td>' + JSONTratamiento[i].productos[j].id + '</td>' +
-                            '<td>' + JSONTratamiento[i].productos[j].nombre + '</td>' +
-                            '<td>' + JSONTratamiento[i].productos[j].precio + '</td>' +
-                            '</tr>';
-                    
-                $('#tbProductosServicio').html(strProductoServicio);                           
-                }
+function mostrarProductosServicio() {
+    $("#tbProductosServicio").empty();
+    //vaciamos la variable global que guarda los datos de la tabla de productos
+    strProductoServicio = '';
+    for (var i = 0; i < JSONTratamiento.length; i++)
+        if (JSONTratamiento[i].id === tratamientoId) {
+            for (var j = 0; j < JSONTratamiento[i].productos.length; j++)
+                strProductoServicio += '<tr>' +
+                        '<td>' + JSONTratamiento[i].productos[j].id + '</td>' +
+                        '<td>' + JSONTratamiento[i].productos[j].nombre + '</td>' +
+                        '<td>' + JSONTratamiento[i].productos[j].precio + '</td>' +
+                        '</tr>';
+            $('#tbProductosServicio').html(strProductoServicio);
+        }
 }
 //
 //@dieggh
@@ -1486,6 +1481,7 @@ function mostrarProductosServicio(){
 //  por si se quiere seguir agregando productos al tratamiento, solo funciona con 1 tratamiento a la vez, 
 //  aun esta en proceso todo lo demás
 function guardarProductosTratamiento() {
+    var productos = new Array();
     var idProducto;
     var nombreProducto;
     var precioProducto;
@@ -1507,6 +1503,7 @@ function guardarProductosTratamiento() {
                 }
             });
             //se crea un objeto de productos y luego se agrega a un array de productos
+
             var producto = new Object();
             producto.id = idProducto;
             producto.nombre = nombreProducto;
@@ -1515,47 +1512,51 @@ function guardarProductosTratamiento() {
         });
         var tratamientoArray = new Object();
         tratamientoArray.id = tratamientoId;
-        tratamientoArray.productos = productos;        
-        tratamientos.push(tratamientoArray);      
-        // JSONTratamiento variable global, solo tiene una propiedad la cual es un array de tratamientos
-        // y el array de tratamientos por cada tratamiento tiene un array de productos 
-        JSONTratamiento = tratamientos;                
-        //probamos que se genere bien, aun tiene problemas ya que el array de tratamientos debe de crearse en una function aparte y aun
-        // no he empezado a hacerlo
-    //    JSONTratamiento.parse(JSON);
-        JSONTratamientoString = JSON.stringify(JSONTratamiento);        
+        tratamientoArray.reservacion = parseInt($('#txtIdReservacionServicio').val());
+        tratamientoArray.empleado = parseInt($('#txtIdEmpleadoServicio').val());
+        tratamientoArray.fecha = $('#txtFechaServicio').val();
+        tratamientoArray.productos = productos;
+        tratamientos.push(tratamientoArray);
+
+        JSONTratamiento = tratamientos;
+        JSONTratamientoString = JSON.stringify(JSONTratamiento);
         alert(JSONTratamientoString);
         alert(JSONTratamiento);
-        alert(JSONTratamiento.length);
-        alert(JSONTratamiento[0].id);
-       
-    });             
-        $(function () {
-        $("#tbTratamientosServicio tr").each(function (index) {
-            $(this).children("td").each(function (index2) {
-                switch (index2) {
-                    case 0:
-                        idTratamiento = parseInt($(this).text());
-                        break;
-                    case 1:
-                        nombreTratamiento = $(this).text();
-                        break;                                         
-                }
-            });
-            var tratamientoa = new Object();
-            tratamientoa.id = idTratamiento;
-            tratamientoa.nombre = nombreTratamiento;
-            //tratamiento.push(tratamientoa); 
-        });
-    
-        });
-                 // los mismo que arriba pero en es objeto de tratamiento con un ID y un array de productos
-        
-    
+        alert("LENGHT" + JSONTratamiento.length);
+
+    });
+//    
+//        $(function () {
+//        $("#tbTratamientosServicio tr").each(function (index) {
+//            $(this).children("td").each(function (index2) {
+//                switch (index2) {
+//                    case 0:
+//                        idTratamiento = parseInt($(this).text());
+//                        break;
+//                    case 1:
+//                        nombreTratamiento = $(this).text();
+//                        break;                                         
+//                }
+//            });
+//            var tratamientoa = new Object();
+//            tratamientoa.id = idTratamiento;
+//            tratamientoa.nombre = nombreTratamiento;
+//            //tratamiento.push(tratamientoa); 
+//        });
+//    
+//        });
+//                 // los mismo que arriba pero en es objeto de tratamiento con un ID y un array de productos
+
+
 }
 
-function realizarAccionesGuardar(){    
+function guardarServicio() {
+
+
+}
+
+function realizarAccionesGuardar() {
     guardarProductosTratamiento();
-    productoSetVisible(false, 0); 
+    productoSetVisible(false, 0);
 }
 
