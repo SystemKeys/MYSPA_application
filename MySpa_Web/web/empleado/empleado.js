@@ -3,8 +3,9 @@ var tratamientoId = 0;
 var tratamientoIdElimiinado = 0;
 var tratamientos = new Array();
 //var productos = new Array();
-var JSONTratamientoString;
+var JSONTratamientoString = '';
 var JSONTratamiento = new Object();
+var precio = 0.0;
 
 function inicializar() {
     if (localStorage.getItem('MYSPA_CREDENCIAL') === null)
@@ -1290,6 +1291,7 @@ function cargarModuloServicio() {
                 $('#divMainContainer').html(data);
             }
     );
+
 }
 
 function cargarReservacionServicio() {
@@ -1366,8 +1368,6 @@ function productoSetVisible(idTratamiento, valor) {
             tratamientoId = idTratamiento;
             mostrarProductosServicio();
         }
-
-
     } else {
         $('#divTratamiento').removeClass('col-sm-4');
         $('#divTratamiento').addClass('col-sm-8');
@@ -1376,7 +1376,9 @@ function productoSetVisible(idTratamiento, valor) {
     }
 }
 
-
+//esta funcion realiza lo mismo que la de actualizarTablaProductosServicio
+//pero además estoy tratando de implementar la elinación de tratamientos de la tabla
+//lo cual ya viste que complica las cosas y que muestra que algo esta mal desde el principio
 var str2 = '';
 var str3 = '';
 var strProductoServicio = '';
@@ -1390,36 +1392,57 @@ function actualizarTablaTratamientoServicio() {
             {
                 var str1 = '';
                 for (var i = 0; i < tratamientos.length; i++)
-                    str1 += '<tr>' +
+                    str1 +=
+                            '<tr id="'+ tratamientos.id +'">' +
                             '<td>' + tratamientos[i].id + '</td>' +
                             '<td>' + tratamientos[i].nombre + '</td>' +
                             '<td>' + tratamientos[i].descripcion + '</td>' +
+                            '<td id="'+ tratamientos[i].id +'"></td>' +
                             '</tr>';
                 $('#tblTratamientosServicio').html(str1);
                 $('#tblTratamientosServicio').find('tr').click(function ()
                 {
-                    str2 += '<tr>' +
+                    str2 += '<tr >' + tratamientos[$(this).index()].id + '">' +
                             '<td>' + tratamientos[$(this).index()].id + '</td>' +
-                            '<td>' + tratamientos[$(this).index()].nombre + '</td>' +
-                            '<td>' + + '</td>'  +
+                            '<td>' + tratamientos[$(this).index()].nombre + '</td>' + 
+                            '<td id="'+ tratamientos[$(this).index()].id +'">'+ + '</td>' +
                             '<td> <button class="btn btn-circle btn-outline-primary btn-sm" onclick="productoSetVisible( ' + tratamientos[$(this).index()].id + ' , ' + true + ')">Detalles</button></td>' +
-                            '<td> <button class="btn btn-circle btn-outline-primary btn-sm" id="borrar">Eliminar</button></td>' +
+                            '<td> <button class="btn btn-circle btn-outline-primary btn-sm" id="borrar" onclick="eliminarTratamiento(' + tratamientos[$(this).index()].id + ')">Eliminar</button></td>' +
                             '</tr>';
                     $('#tbTratamientosServicio').html(str2);
                     $('#divModalTratamientosServicio').modal('hide');
-                });
+                    });
             }
     );
+    //funcion interesante que permite eliminar un tr de una tabla
+    //              evento clic cuando el objeto clickeado tenga el id borrar
+
+}
+function eliminarTratamiento(idTratamientoEliminado) {
+    alert(idTratamientoEliminado);
+    str2 = '';
     $(document).on('click', '#borrar', function (event) {
         event.preventDefault();
         $(this).closest('tr').remove();
-    });  
+        str2 = $('#tbTratamientosServicio').html();
+    });
+    if (JSONTratamientoString.length > 0) {
+        for (var i = 0; i < JSONTratamiento.length; i++) {
+            if (JSONTratamiento[i].id === idTratamientoEliminado) {
+                var tratamientoEliminado = JSONTratamiento.splice(i, 1);
+                alert(tratamientoEliminado);
+                alert(JSONTratamiento);
+                var string = JSON.stringify(JSONTratamiento);
+                alert(string);
+            }
+        }
+    }
 }
 
-function eliminarTratamientoServicio() {    
-       
-}
-
+//carga la informacion para la tabla de productos del modal
+//y agrega el listener a la tabla del modal para agregar el producto seleccionado 
+//a la tabla de productos tratamiento,
+//aqui strProductoServicio es global
 function actualizarTablaProductosServicio() {
     $.ajax({
         type: "GET",
@@ -1429,9 +1452,6 @@ function actualizarTablaProductosServicio() {
             function (productos)
             {
                 $("#tbProductosServicio").empty();
-                //    var aux = strProductoServicio;
-                //   strProductoServicio = '';
-                // var str3 = '';
                 var str1 = '';
                 for (var i = 0; i < productos.length; i++)
                     str1 += '<tr>' +
@@ -1446,15 +1466,49 @@ function actualizarTablaProductosServicio() {
                             '<td>' + productos[$(this).index()].id + '</td>' +
                             '<td>' + productos[$(this).index()].nombre + '</td>' +
                             '<td>' + productos[$(this).index()].precioUso + '</td>' +
+                            '<td> <button class="btn btn-circle btn-outline-primary btn-sm" id="borrar" onclick="eliminarProducto(' + productos[$(this).index()].id + ' , ' + tratamientoId + ' )">Eliminar</button></td>' +
                             '</tr>';
-
                     $('#tbProductosServicio').html(strProductoServicio);
                     $('#divModalProductosServicio').modal('hide');
+                    //Funciones para treeTable
+                    //$("#treeTableTratamientosServicio").treetable({});
+//                    if(num === 2){
+//                    $("#treeTableTratamientosServicio").treetable({force : true, expandable: true, clickableNodeNames :true});                     
+//                }else{
+//                    $("#treeTableTratamientosServicio").treetable({force : true});
+//                }                
                 });
-            }
-    );
-}
+            });
 
+}
+function eliminarProducto(idProducto, idTratamientoProductoEliminado) {
+    alert(idProducto);
+    $(document).on('click', '#borrar', function (event) {
+        event.preventDefault();
+        $(this).closest('tr').remove();
+
+        strProductoServicio = '';
+        strProductoServicio = $('#tbProductosServicio').html();
+
+    });
+    if (JSONTratamientoString.length > 0) {
+        
+        for (var i = 0; i < JSONTratamiento.length; i++) {
+           
+            for (var j = 0; j < JSONTratamiento[i].productos.length; j++) {
+               
+                if (JSONTratamiento[i].id === idTratamientoProductoEliminado && JSONTratamiento[i].productos[j].id === idProducto) {
+                    
+                    var productoEliminado = JSONTratamiento[i].productos.splice(j, 1);
+                    alert(productoEliminado);
+                    alert(JSONTratamiento);
+                    var string = JSON.stringify(JSONTratamiento);
+                    alert(string);
+                }
+            }
+        }
+    }
+}
 //Esta función mostrará solo los productos que se han elegido para el tratamiento seleccionado
 function mostrarProductosServicio() {
     $("#tbProductosServicio").empty();
@@ -1467,26 +1521,41 @@ function mostrarProductosServicio() {
                         '<td>' + JSONTratamiento[i].productos[j].id + '</td>' +
                         '<td>' + JSONTratamiento[i].productos[j].nombre + '</td>' +
                         '<td>' + JSONTratamiento[i].productos[j].precio + '</td>' +
+                        '<td> <button class="btn btn-circle btn-outline-primary btn-sm" id="borrar" onclick="eliminarProducto(' + JSONTratamiento[i].productos[j].id + ' , ' + tratamientoId + ' )">Eliminar</button></td>' +
                         '</tr>';
             $('#tbProductosServicio').html(strProductoServicio);
+           
         }
+//    $('btnGuardarProductos').remove();
+//        $('#divTablaProductos').
+//            append($('<button>').
+//                    attr("class", "text-center btn btn-success btn-sm").
+//                    attr("type", "button").
+//                    attr("id", "btnGuardarProductos").
+//                    attr("onclick", "eliminarTratamientoGuardar()").
+//                    attr("style", "float : right").
+//                    text("Guardar")
+//                    );
 }
-//
-//@dieggh
-//dieggh avance de servicio
 
-//El problema ahora es ir generando arrays y JSON para alimentar tablas de la vista,
-// para que cada tratamiento tenga sus propios productos se debe de guardar un JSON con el idTratamiento 
-// y  los productos que tiene y luego se toma el JSON creado y se llena la tabla de detalles productos
-//  por si se quiere seguir agregando productos al tratamiento, solo funciona con 1 tratamiento a la vez, 
-//  aun esta en proceso todo lo demás
 function guardarProductosTratamiento() {
     var productos = new Array();
     var idProducto;
     var nombreProducto;
-    var precioProducto;
-    var idTratamiento;
-    var nombreTratamiento;
+    var precioProducto;    
+    precio = 0.0;
+    if (JSONTratamientoString.length > 0) {
+        for (var i = 0; i < JSONTratamiento.length; i++) {
+            if (JSONTratamiento[i].id === tratamientoId) {
+                var tratamientoEliminado = JSONTratamiento.splice(i, 1);
+                alert(tratamientoEliminado);
+                alert(JSONTratamiento);
+                var string = JSON.stringify(JSONTratamiento);
+                alert(string);
+            }
+        }
+    }
+    
     $(function () {
         $("#tbProductosServicio tr").each(function (index) {
             $(this).children("td").each(function (index2) {
@@ -1497,65 +1566,87 @@ function guardarProductosTratamiento() {
                     case 1:
                         nombreProducto = $(this).text();
                         break;
-                    case 2:
+                    case 2:                                    
                         precioProducto = parseFloat($(this).text());
                         break;
                 }
             });
             //se crea un objeto de productos y luego se agrega a un array de productos
-
             var producto = new Object();
             producto.id = idProducto;
             producto.nombre = nombreProducto;
             producto.precio = precioProducto;
             productos.push(producto);
+            precio += precioProducto;
         });
+        //Se crea un objeto y se le agregan las propiedades
         var tratamientoArray = new Object();
         tratamientoArray.id = tratamientoId;
-        tratamientoArray.reservacion = parseInt($('#txtIdReservacionServicio').val());
-        tratamientoArray.empleado = parseInt($('#txtIdEmpleadoServicio').val());
-        tratamientoArray.fecha = $('#txtFechaServicio').val();
         tratamientoArray.productos = productos;
+        //agrego el objeto creado a un array
         tratamientos.push(tratamientoArray);
-
+        //agrego el array a otro objeto, el cual termina siendo por asi decirce el JSONFINAL    
         JSONTratamiento = tratamientos;
+        //el objeto JSONTratamiento (o "JSON FINAL") lo paso a string para ver que este bien
+        alert("para ver" + JSONTratamientoString.length);
         JSONTratamientoString = JSON.stringify(JSONTratamiento);
         alert(JSONTratamientoString);
+        //verifico que el objeto JSON este bien formado (debe de salir en el alert que contiene un object)
         alert(JSONTratamiento);
-        alert("LENGHT" + JSONTratamiento.length);
-
+        //alert("el precio"  + precio);
+        str2 = '';
+        $('#'+tratamientoId+'').text(''+precio);                        
+        
+        
+        str2 += $('#tbTratamientosServicio').html();
+       // $('#tbTratamientosServicio tr').eq(1).find('td').eq(3).text(precio);
     });
-//    
-//        $(function () {
-//        $("#tbTratamientosServicio tr").each(function (index) {
-//            $(this).children("td").each(function (index2) {
-//                switch (index2) {
-//                    case 0:
-//                        idTratamiento = parseInt($(this).text());
-//                        break;
-//                    case 1:
-//                        nombreTratamiento = $(this).text();
-//                        break;                                         
-//                }
-//            });
-//            var tratamientoa = new Object();
-//            tratamientoa.id = idTratamiento;
-//            tratamientoa.nombre = nombreTratamiento;
-//            //tratamiento.push(tratamientoa); 
-//        });
-//    
-//        });
-//                 // los mismo que arriba pero en es objeto de tratamiento con un ID y un array de productos
-
-
 }
 
 function guardarServicio() {
+    var s = JSON.stringify(JSONTratamiento);
+    alert("je " + s);
+    var tratamientos = new Array();
+    var objetoFinal = new Object();
+    var arrayFinal = new Array();
+    var JSONServicioFinal = new Object();
+    for (var i = 0; i < JSONTratamiento.length; i++) {
+        tratamientos.push(JSONTratamiento[i]);
+    }
 
+    objetoFinal.reservacion = parseInt($('#txtIdReservacionServicio').val());
+    objetoFinal.empleado = parseInt($('#txtIdEmpleadoServicio').val());
+    objetoFinal.fecha = $('#txtFechaServicio').val();
+    objetoFinal.tratamientos = tratamientos;
+    arrayFinal.push(objetoFinal);
 
+    JSONServicioFinal = arrayFinal;
+    var JSONServicioFinalString = JSON.stringify(JSONServicioFinal);
+    alert(JSONServicioFinalString);
+    
+    $.ajax({
+        type: "POST",
+        asyn: true,
+        url: '../rsservicio/insertServicio',
+        data: {
+            JSONServicio: JSONServicioFinal
+        }
+    }).done(function (data)
+    {
+        if (data.error !== null) {
+            swal("Error", data.error, 'warning');
+            return;
+        }
+        actualizarTablaReservacion();
+        $('#txtIdServicio').val(data.result);
+        swal('Realizado', 'Hecho', 'success');
+    }
+    );
+    
 }
 
 function realizarAccionesGuardar() {
+
     guardarProductosTratamiento();
     productoSetVisible(false, 0);
 }

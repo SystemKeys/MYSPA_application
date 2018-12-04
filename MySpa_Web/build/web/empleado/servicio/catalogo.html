@@ -1,13 +1,4 @@
 
-<!-- boton de nuevo
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand">Navbar</a>
-    <form class="form-inline">
-        <button type = "button" class="btn btn-outline-success my-2 my-sm-0" name="agregar" id="btnAgregarTratamientoS" value="Agragar" onclick="selectTratamiento()">+</button>
-    </form>
-</nav>
--->
-<!-- Aqui se agrega el formulario para agregar nuevos servicios -->
 <div class="container">
     <div class="row">
         <div class="col-sm-12">    
@@ -54,17 +45,18 @@
                     <h3>Tratamientos a Aplicar<button type="button" id="btnDesplegarTratamiento" onclick="actualizarTablaTratamientoServicio()" class="text-center btn btn-success btn-sm" data-toggle="modal" data-target="#divModalTratamientosServicio" style="float: right;">Agregar</button> </h3>                                          
                 </div>
                 <div class="card-body">            
-                    <table class=" table table-info table-responsive" cellspacing="0">
+                    <table id="treeTableTratamientosServicio" class="table table-info table-bordered table-hover table-responsive" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Clave Tratamiento</th>
                                 <th>Nombre Tratamiento</th>
-                                <th>Subtotal</th>
-                                <th></th>
+                                <th>Subtotal</th>                                
                             </tr>
                         </thead>
                         <tbody id="tbTratamientosServicio">  
-
+                          
+                            
+                            
                         </tbody>
                     </table>
                 </div>
@@ -76,7 +68,7 @@
                     <h3>Detalle de Tratamiento<button type="button" id="btnProducto" class="text-center btn btn-success btn-sm" onclick="actualizarTablaProductosServicio()" data-toggle="modal" data-target="#divModalProductosServicio" style="float: right;">Agregar Producto</button> </h3>                                          
                 </div>
                 <div class="card-body">            
-                    <table class=" table table-info"   cellspacing="0">
+                    <table class="table table-info table-bordered table-hover table-responsive"   cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Clave Producto</th>
@@ -88,8 +80,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="modal-footer" style="text-align: center;">
-                    <button type="button" id="btnGuardarProductos" class="text-center btn btn-success btn-sm" onclick="realizarAccionesGuardar()" style="float: right;">Guardar</button>
+                <div class="modal-footer" id="divTablaProductos" style="text-align: center;">
+                    <button id="btnGuardarProductos" class="text-center btn btn-success btn-sm" onclick="realizarAccionesGuardar()" style="float: right" > Guardar </button>              
                 </div>
             </div>
         </div>
@@ -134,7 +126,7 @@
                                 <h3>Cat&aacute;logo de Reservaciones</h3>
                             </div>
                             <div class="card-body">
-                                <table class=" table table-info"  id="dataTable" width="400%" cellspacing="0">
+                                <table class="table table-info table-bordered table-hover table-responsive">
                                     <thead>
                                         <tr>
                                             <th>Clave Reservación</th>
@@ -177,7 +169,7 @@
                                 <h3>Cat&aacute;logo de Empleados</h3>
                             </div>
                             <div class="card-body">
-                                <table class=" table table-info"  id="dataTable" width="400%" cellspacing="0">
+                                <table class="table table-info table-bordered table-hover table-responsive">
                                     <thead>
                                         <tr>
                                             <th>Clave Empleado</th>
@@ -218,7 +210,7 @@
                             <div class="card-body">
                                 <input class="form-control" id="myInput" type="text" placeholder="Search..">
                                 <br>
-                                <table class=" table table-info"  id="dataTable" width="150%" cellspacing="0">
+                                <table class="table table-info table-bordered table-hover table-responsive">
                                     <thead>
                                         <tr>
                                             <th>Clave Tratamiento</th>
@@ -260,15 +252,16 @@
                             <div class="card-body">
                                 <input class="form-control" id="myInput" type="text" placeholder="Search..">
                                 <br>
-                                <table class=" table table-info"  id="dataTable" width="150%" cellspacing="0">
+                                <table id="treeTrableTratamiento" class="table table-info table-bordered table-hover table-responsive">
                                     <thead>
                                         <tr>
                                             <th>Nombre Producto</th>
                                             <th>Marca</th>
-                                            <th>Precio</th>
+                                            <th>Precio</th>                                          
                                         </tr>
                                     </thead>
-                                    <tbody id="tblProductosServicio">                
+                                    <tbody id="tblProductosServicio">
+
                                     </tbody>
                                 </table>
                             </div>
@@ -284,46 +277,3 @@
         </div>
     </div>
 </div>
-<!--  
-<div class="table-responsive">
-    <div class="card border-primary">
-        <div class="card-header text-center">
-            <h3>Agregar Servicio</h3>
-        </div>
-        <div class = "card-body">
-            <input class="form-control" id="myInput" type="text" placeholder="Search..">
-            <br>
-            <table class="table table-info">
-                <tbody id="tblTratamientosSelected">
-                    
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
--->
-<!-- Tabla Tratamientos
-
-        <div class="col-sm-6">
-            <div class="card-body">
-                <table class=" table table-info table-responsive"  id="dataTable" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Clave Reservación</th>
-                            <th>Clave Cliente</th>
-                            <th>Número Único Cliente</th>
-                            <th>Inicio</th>
-                            <th>Fin</th>                            
-                            <th>Clave Sala</th>
-                            <th>Estatus</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbTratamientosAgregados">                
-                        
-                    </tbody>
-                </table>
-            </div>
-            
-        </div>
-
->

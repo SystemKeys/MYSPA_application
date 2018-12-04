@@ -5,6 +5,7 @@
  */
 package org.solsistemas.myspa.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.joda.time.DateTime;
 
@@ -18,7 +19,15 @@ public class Servicio {
     private int estatus;
     private Reservacion reservacion;
     private Empleado empleado;
-    private List<ServicioTratamiento> tratamientos; 
+    private ArrayList<ServicioTratamiento> tratamientos; 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public DateTime getFecha() {
         return fecha;
@@ -52,20 +61,13 @@ public class Servicio {
         this.empleado = empleado;
     }
 
-    public List<ServicioTratamiento> getTratamientos() {
+    public ArrayList<ServicioTratamiento> getTratamientos() {
         return tratamientos;
     }
 
-    public void setTratamientos(List<ServicioTratamiento> tratamientos) {
+    public void setTratamientos(ArrayList<ServicioTratamiento> tratamientos) {
         this.tratamientos = tratamientos;
     }
-    
-    
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }    
+   
 }
